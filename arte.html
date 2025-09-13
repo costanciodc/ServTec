@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venda de Logotipos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 1.1rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(40px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 70px;
+    
+    }
+
+    
+     h1 span{
+      background: linear-gradient(90deg, #04ff82, #eeff00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: #ddd;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .3s;
+    }
+
+    nav a:hover {color: #facc15;}
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      background: url("https://images.unsplash.com/photo-1607082349566-1873429a99f1?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #e5e5e5;
+    }
+
+    .btn {
+      background: linear-gradient(45deg, #1519fa, #1df916);
+      padding: 1rem 2.2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #111;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(249,115,22,0.4);
+    }
+
+    section {
+      padding: 5rem 8%;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      color: #43fa15;
+    }
+
+    .beneficios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .beneficio {
+      background: rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: transform .3s;
+    }
+
+    .beneficio:hover {transform: translateY(-8px);}
+    .beneficio h3 {margin-bottom: 1rem; color: #43fa15}
+
+    /* PORTFÓLIO */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .portfolio img {
+      width: 100%;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s ease;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    /* PREÇOS */
+    .precos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .plano {
+      background: rgba(255,255,255,0.08);
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      width: 300px;
+      backdrop-filter: blur(12px);
+      transition: transform .3s;
+      border: 3px solid transparent;
+    }
+
+    .plano:hover {transform: translateY(-8px);}
+    .plano h3 {margin-bottom: 1rem; color: #43fa15}
+    .plano p {margin-bottom: 1rem; color: #ddd;}
+    .plano .preco {font-size: 1.8rem; font-weight: bold; margin: 1rem 0; color: #f97316;}
+
+    /* PLANO EM DESTAQUE */
+    .plano-destaque {
+      position: relative;
+      animation: pulseBorder 1.5s infinite;
+    }
+
+    @keyframes pulseBorder {
+      0%   { box-shadow: 0 0 10px 2px rgba(250, 204, 21, 0.8); }
+      50%  { box-shadow: 0 0 20px 5px rgba(249, 115, 22, 0.8); }
+      100% { box-shadow: 0 0 10px 2px rgba(250, 204, 21, 0.8); }
+    }
+
+    footer {
+      background: rgba(15, 23, 42, 0.9);
+      text-align: center;
+      padding: 2rem 8%;
+      margin-top: 3rem;
+      position: relative }
+
+    footer p {margin: 0.3rem 0; color: #bbbbbb; margin-top: px;}
+    footer p.bai {margin-top: 5px; margin-bottom: 30px; }
+   
+
+    a.btn-whatsapp {
+  position: absolute;     /* Faz o botão se posicionar relativo ao rodap*/
+  top: 10px;              /* Distância do topo do rodapé */
+  right: 20px;            /* Distância da lateral direita do rodapé */
+  background: #25d366;    /* Verde oficial do WhatsApp */
+  color: #fff;            /* Texto branco */
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all .3s ease-in-out;
+      
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5b;    /* Muda o tom de verde ao passar o mouse */
+  transform: scale(1.08); /* Dá um leve zoom no hover */
+}
+.base {
+  text-align: center;
+  margin-top: 20px;
+}
+   
+
+
+@media (max-width: 720px) {
+  a.btn-whatsapp{     
+    
+    font-size: 13px;
+      }
+  .hero h2{     
+    font-size: 32px;
+      }
+  .hero p{     
+    font-size: 15px;
+      }
+      nav a{     
+    
+    font-size: 12px;
+      }
+      footer p {font-size: 15;}
+    footer p.bai {font-size: 15;}
+      }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Serv<span>Tec</span></h1>
+    <nav>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#precos">Preços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Transforme sua ideia em uma arte profissional e inesquecível</h2>
+      <p>Design moderno, criativo e feito sob medida para promover você, seu negócio ou sua empresa.</p>
+      <a href="#precos" class="btn">Criar meu Logo</a>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios">
+    <h2 class="section-title">Por que escolher nossos serviços de Designer?</h2>
+    
+    <div class="beneficios">
+      <div class="beneficio">
+        <h3>Rápido</h3>
+        <p>Entrega rápida e dentro do prazo.</p>
+      </div>
+      <div class="beneficio">
+        <h3>Criativo</h3>
+        <p>Designs modernos e exclusivos para destacar sua marca.</p>
+      </div>
+      <div class="beneficio">
+        <h3>Profissional</h3>
+        <p>Transmita confiança com uma identidade visual forte.</p>
+      </div>
+    </div><p class="base">Na era digital, a primeira impressão é a que fica. 
+E nada transmite mais profissionalismo do que uma arte bem feita.</p>
+<p class="base">Nosso serviço de Arte de Designer foi criado para quem precisa de:</p> 
+<li class="base">Logotipos impactantes para negócios e marcas pessoais</li>
+ <li class="base">Banners e panfletos digitais para divulgação</li>
+<li class="base">Artes para redes sociais (Instagram, Facebook, TikTok, WhatsApp)Apresentações modernas e profissionais</li>
+<li class="base">Layouts criativos para qualquer projeto</li>
+
+  </section>
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio">
+    <h2 class="section-title">Seu negócio merece uma arte tão única quanto você. </h2>
+    <div class="portfolio">
+      <div class="portfolio-item">
+        <img src="img\2(5).png" alt="Logo 1">
+        <div class="portfolio-overlay">Comece agora e dê vida à sua marca.</div>
+      </div>
+      
+      <div class="portfolio-item">
+        <img src="img\1(5).png" alt="Logo 4">
+        <div class="portfolio-overlay">Não deixe sua ideia passar despercebida.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREÇOS -->
+  <section id="precos">
+    <h2 class="section-title">Planos e Preços</h2>
+    <div class="precos">
+      <div class="plano">
+        <h3>Básico</h3>
+        <p>Uma arte (Um Banner )<br> Tempo de espera: 30min à 2 horas</p>
+        <p class="preco">700 Kz</p>
+        <a href="checkout.html?plano=Simples&preco=700" class="btn">Comprar</a>
+      </div>
+      <div class="plano plano-destaque" id="planoDestaque">
+        <h3>Profissional</h3>
+        <p>Três artes de designer<br> Tempo de espera: 1 à 3 horas</p>
+        <p class="preco">1800 Kz</p>
+        <a href="checkout.html?plano=Profissional&preco=800" class="btn">Comprar</a>
+      </div>
+      <div class="plano">
+        <h3>Pacote empresarial</h3>
+        <p> 10 artes digitais personalizadas <br> Incluíndo: logo + 9 artes  Suporte e ajustes garantidos  <br> Tempo de espera: 2 à 5 horas</p>
+        <p class="preco">5000 Kz</p>
+        <a href="checkout.html?plano=Empresarial&preco=5000" class="btn">Comprar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contato">
+
+<h1>Serv<span>Tec</span></h1>
+    
+    <a href="https://wa.me/244974416377?text=Olá, preciso de suporte!"
+   class="btn-whatsapp"
+   target="_blank">Suporte</a><nav>
+      <a href="termos.html">Termos de Uso e Política de Privacidade</a>
+    </nav>
+    <p>Inovação digital feita em Angola, para Angola.
+    </p>
+    <p class="bai">Na ServTec, acreditamos que cada detalhe importa para destacar sua marca e sua carreira. 
+Por isso, reunimos em um único lugar serviços digitais essenciais: design de logotipos criativos, elaboração de currículos impactantes, cartas de apresentação personalizadas, contratos prontos para uso e outras soluções modernas. <br>
+
+
+    </p>
+    &copy; 2025 ServTec.ao. Feito para Angola. <br>
+    Todos os Direitos Reservados
+  </footer>
+
+  <script>
+    // Mudar cor da borda aleatoriamente no plano em destaque
+    const plano = document.getElementById("planoDestaque");
+    const cores = ["#facc15", "#f97316", "#22d3ee", "#a78bfa", "#34d399"];
+    setInterval(() => {
+      const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+      plano.style.borderColor = corAleatoria;
+    }, 800);
+  </script>
+</body>
+</html>

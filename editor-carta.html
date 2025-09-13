@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Currículo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+   
+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      padding: 20px;
+    }
+
+header.editor{
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem;
+      font-weight: 620;
+      text-align: center;
+      font-size: 1.5rem;
+      border-radius: 10px;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1rem;
+      gap: 2rem;
+    }
+
+    .formulario {
+      flex: 1 1 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px #02ad0b;
+    }
+
+    .formulario h2 {
+      margin-top: 0;
+    }
+    .formulario label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+.form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .form-group select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+      }
+    .formulario input,
+    .formulario textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .visualizacao {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+          
+    }
+
+    .cee{     
+      color: #0f172a;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .botoes {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .botoes button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .botoes button:hover {
+      background: #2a4bb5;
+    }
+
+    @media (max-width: 798px) {
+      .botoes{
+        transform-origin: top center;
+      }
+.cee{     
+     
+      font-size: 1.2rem;
+      
+    }
+     .formulario{
+        width: 470px;
+      }
+     header.editor{
+        font-size: 20px;
+      }
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+     .a4{
+        transform: scale(1);
+        transform-origin: top center;
+      }}
+
+    @media (max-width: 420px) {
+      .botoes{
+        transform-origin: top center;
+      }
+.cee{     
+      color: #0f172a;
+      font-size: 1.2rem;
+      ;
+    }
+     .formulario{
+        width: 490px;
+      }
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+     .a4{
+        transform: scale(1);
+        transform-origin: top center;
+      }}
+
+    @media (max-width: 500px) {
+      .botoes{
+        transform-origin: top center;
+      }
+.cee{     
+      color: #0f172a;
+      font-size: 1.2rem;
+      ;
+    }
+     .formulario{
+        width: 590px;
+      }
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+     .a4{
+        transform: scale(1.06);
+        transform-origin: top center;
+      }}
+      
+    @media (max-width: 370px) {
+      .botoes{
+        transform-origin: top center;
+      }
+.cee{     
+      color: #0f172a;
+      font-size: 1.2rem;
+      ;
+    }
+     .formulario{
+        width: 1000px;
+      }
+
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+
+     .a4{
+        transform: scale(1);
+        transform-origin: top center;
+      }}
+      
+
+  </style>
+</head>
+
+
+<body>
+ <header class="editor">Edita sua Carta de Apresentação </header>
+ <div class="container">
+  
+   <div class="formulario">
+    
+      <h2 class="cee">Preencha com os seus dados</h2>
+      <label>Nome completo:</label>
+      <input type="text" id="nome" placeholder="Nome Completo" data-input="nome"/>
+<div class="form-group">
+              <label for="genero">Gênero:</label>
+              <select id="genero" name="genero">
+                <option>Selecione</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </div>
+       <label>Cargo desejado:</label>
+      <input type="text" id="cargo" placeholder="Cargo desejado" data-input="cargo"/>
+
+     <label>Nome da Empresa:</label>
+      <input type="text" id="empresa" placeholder="Nome da Empresa" data-input="empresa"/>
+      <label>Seu Objectivo:</label>
+      <textarea id="objetivo" placeholder="Objetivo Profissional" data-input="objetivo"></textarea>
+      <label>Habilidades e Qualidades:</label>
+      <textarea id="habilidades" placeholder="Habilidades e pontos fortes" data-input="habilidades"></textarea>
+      <label>Nº de Telefone:</label>
+     <input type="text" id="telefone" placeholder="Telefone">
+     <label>Seu Email:</label>
+      <input type="email" id="email" placeholder="Email">
+      <label>Seu Endereço:</label>
+      <input type="text" id="local" placeholder="Província/Município">
+      <label>Data (ex: 07 de Agosto de 2025):</label>
+      <input type="text" id="data" placeholder="Data (ex: 07 de Agosto de 2025)">
+    </div>
+    
+
+    <!-- Currículo -->
+    <!-- ⛔️ Removemos a classe .a4 daqui -->
+    <div class="visualizacao">
+        <div class="a4" id="cartaVisual"></div>
+    </div>
+  
+  
+  
+
+
+  <div class="botoes">
+    <button onclick="baixarPDF()">Download PDF</button>
+    <button onclick="window.location.href='escolher-carta.html'">Voltar</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
+  const cartaVisual = document.getElementById('cartaVisual');
+  let modeloCarregado = false;
+
+  fetch(`modelos/${modelo}.html`)
+    .then(res => res.text())
+    .then(html => {
+      cartaVisual.innerHTML = html;
+      atualizarDados();
+      modeloCarregado = true; // ✅ marca como carregado
+    });
+
+// ----- Quando usuário muda gênero -----
+    document.getElementById("genero").addEventListener("change", function() {
+      const genero = this.value;
+      const mapeamento = {
+        masculino: { sexo: "o" },
+        feminino: { sexo: "a" }
+      };
+      Object.entries(mapeamento[genero]).forEach(([key, valor]) => {
+        document.querySelectorAll(`[data-id="${key}"]`).forEach(el => el.textContent = valor);
+      });
+    });
+
+  function atualizarDados() {
+    const campos = {
+      nome: document.getElementById('nome'),
+      cargo: document.getElementById('cargo'),
+      nome: document.getElementById('nome'),
+      cargo: document.getElementById('cargo'),
+      empresa: document.getElementById('empresa'),
+      empresa: document.getElementById('empresa'),
+      empresa: document.getElementById('empresa'),
+      objetivo: document.getElementById('objetivo'),
+      habilidades: document.getElementById('habilidades'),
+      telefone: document.getElementById('telefone'),
+      email: document.getElementById('email'),
+      email: document.getElementById('email'),
+      local: document.getElementById('local'),
+      data: document.getElementById('data')
+      
+    };
+
+    for (let key in campos) {
+      campos[key].addEventListener('input', () => {
+        const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
+          els.forEach(el => el.textContent = campos[key].value);
+      });
+    }
+  }
+
+
+
+  
+  function baixarPDF() {
+    if (!modeloCarregado) {
+      alert("Por favor, aguarde o carregamento completo da carta.");
+      return;
+    }
+
+    const a4Element = cartaVisual.querySelector(".a4");
+    if (!a4Element) {
+      alert("Não foi possível encontrar o conteúdo da carta.");
+      return;
+    }
+
+   
+
+    const opt = {
+      
+      filename: 'carta_apresentacao.pdf',
+      image: { type: 'jpeg', quality: 1 },
+      html2canvas: {
+        scale: 4,
+        useCORS: true,
+        logging: false,
+        allowTaint: true,
+        scrollY: 0
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(a4Element).save().then(() => {
+      a4Element.style.transform = originalTransform;
+      a4Element.style.width = originalWidth;
+    });
+  }
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

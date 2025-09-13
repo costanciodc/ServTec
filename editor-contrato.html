@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Currículo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+    
+  * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(145deg, #0c0c0c, #011427);
+        padding: 20px;
+      }
+
+  header.editor{
+        background-color: #1e3a8a;
+        color: white;
+        padding: 1rem;
+        font-weight: 620;
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 2rem;
+      }
+
+      .formulario {
+        flex: 1 1 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px #02ad0b;
+      }
+
+      .formulario h2 {
+        margin-top: 0;
+      }
+      .formulario label {
+        display: block;
+        margin-top: 12px;
+        font-weight: 500;
+      }
+
+      .formulario input,
+      .formulario textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .tr input {
+        width: 60%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+        .tr {
+          display: flex;
+          gap: 15px; /* espaço entre os dois campos */
+        }
+
+        .tr .campo {
+          flex: 1; /* os dois ocupam o mesmo tamanho */
+        }
+      .visualizacao {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+            
+      }
+
+      .cee{     
+        color: #0f172a;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 0.3rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .botoes {
+        text-align: center;
+        margin-top: 20px;
+      }
+  .form-group {
+      margin-bottom: 15px;
+    }
+
+    .formulario label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .form-group select {
+      width: 40%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+      gap: 20px;
+    }
+
+    .form-group select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+      }
+
+      
+      .botoes button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        background: #1e3a8a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .botoes button:hover {
+        background: #2a4bb5;
+      }
+/* ----- CSS extra para os novos campos (form-group para inputs datalist) ----- */
+    .form-group-datalist { margin-bottom: 15px; }
+    .form-group-datalist input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+      @media (max-width: 798px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+      
+        font-size: 1.2rem;
+        
+      }
+      .formulario{
+          width: 470px;
+        }
+      header.editor{
+          font-size: 20px;
+        }
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+      .a4{
+          transform: scale(1);
+          transform-origin: top center;
+        }}
+
+      @media (max-width: 420px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+        color: #0f172a;
+        font-size: 1.2rem;
+        ;
+      }
+      .formulario{
+          width: 490px;
+        }
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+      .a4{
+          transform: scale(1);
+          transform-origin: top center;
+        }}
+
+      @media (max-width: 500px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+        color: #0f172a;
+        font-size: 1.2rem;
+        ;
+      }
+      .formulario{
+          width: 590px;
+        }
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+      .a4{
+          transform: scale(1.06);
+          transform-origin: top center;
+        }}
+        
+      @media (max-width: 370px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+        color: #0f172a;
+        font-size: 1.2rem;
+        ;
+      }
+      .formulario{
+          width: 1000px;
+        }
+
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+
+      .a4{
+          transform: scale(1);
+          transform-origin: top center;
+        }}
+        
+
+    </style>
+  </head>
+
+
+  <body>
+    <header class="editor">Edite seu Requerimento</header>
+    <div class="container">
+      
+      <div class="formulario">
+          <h2 class="cee">Preencha com os seus dados</h2>
+          <div class="campo">
+          <label>Nome do Vendedor:</label>
+          <input type="text" id="nomevender" placeholder="Vendedor/Alienante" data-input="nomevender"/></div>
+          <div class="campo">
+          <label>Nome do Cliente:</label>
+          <input type="text" id="nomecomp" placeholder="Cliente/Adquirente" data-input="nomecomp"/>
+          
+          </div><div class="campo">
+          <label>Nome do Vendedor:</label>
+          <input type="text" id="nomear" placeholder="Dono/Arrendador" data-input="nomear"/></div>
+          <div class="campo">
+          <label>Nome do Cliente:</label>
+          <input type="text" id="nomecl" placeholder="Cliente/Arrendatário" data-input="nomecl"/>
+          
+          </div>
+          <div class="campo">
+          <label>Nº do BI do Vendedor:</label>
+          <input type="text" id="bi" placeholder="Nº do Bilhete de Identidade" data-input="bi"/></div>
+          <div class="campo">
+          <label>Nº do BI do Comprador:</label>
+          <input type="text" id="bic" placeholder="Nº do Bilhete de Identidade" data-input="bic"/></div>
+
+          <div class="campo">
+          <label>Nº do BI do Dono/Arrendador:</label>
+          <input type="text" id="biar" placeholder="Nº do Bilhete de Identidade" data-input="biar"/></div>
+          <div class="campo">
+          <label>Nº do BI do Cliente/Arrendatário:</label>
+          <input type="text" id="biccl" placeholder="Nº do Bilhete de Identidade" data-input="biccl"/></div>
+
+          <div class="campo">
+
+          <label>Localização do Vendedor:</label>
+          <input type="text" id="gpsal" placeholder="(ex: vila, Luanda)" data-input="gpsal"/></div>
+          <div class="campo">
+          <label>Localização do Comprador:</label>
+          <input type="text" id="gpsad" placeholder="(ex: Quilamba Quiaxi, Luanda)" data-input="gpsad"/></div>
+          <div class="campo">
+
+          <label>Localização do Dono/Arrendador:</label>
+          <input type="text" id="gpsalar" placeholder="(ex: vila, Luanda)" data-input="gpsalar"/></div>
+          <div class="campo">
+          <label>Localização do Cliente/Arrendatário:</label>
+          <input type="text" id="gpsadcl" placeholder="(ex: Quilamba Quiaxi, Luanda)" data-input="gpsadcl"/></div>
+          <div class="campo">
+
+         <label for="provincia">Localização da Casa:</label>
+          <input list="lista-provincias" id="provincia" placeholder="Digite ou selecione a província"/><datalist id="lista-provincias"></datalist></div>
+          <div class="campo">
+
+         <label for="provinciacs">Província actual:</label>
+          <input list="lista-provincias" id="provinciacs" placeholder="Digite ou selecione a província"/><datalist id="lista-provincias"></datalist></div>
+          
+          <div class="campo">
+         <label for="provinciatr">Localização do Terreno:</label>
+          <input list="lista-provincias" id="provinciatr" placeholder="Digite ou selecione a província"/><datalist id="lista-provincias"></datalist></div>
+          
+          <div class="campo">
+          <label>Marca do Carro:</label>
+          <input text="text" id="marca" placeholder="( Ex: Toyota)" /></div>
+          <div class="campo">
+          <label>Modelo do Carro:</label>
+          <input text="text" id="modelo" placeholder="( Ex: Hilux)" /></div>
+          <div class="campo">
+          <label>Cor do Carro:</label>
+          <input text="text" id="cor" placeholder="( Ex: Preto)" /></div>
+          <div class="campo">
+          <label>Matrícula do Carro:</label>
+          <input text="text" id="matricula" placeholder="( Ex: LD-45-90-AA)" /></div>
+          <div class="campo">
+          <label>Quilometragem do Carro:</label>
+          <input text="text" id="km" placeholder="( Ex: 1.474)" /></div>
+          <div class="campo">
+          <label>Localização da Casa (Município):</label>
+          <input text="text" id="municipio" placeholder="( Ex: de Viana)" /></div>
+          <div class="campo">
+          <label>Localização da Casa (Bairro):</label>
+          <input text="text" id="bairro" placeholder="Nome do bairro" />
+</div>
+          
+          <div class="campo">
+
+          <label>Localização do Terreno (Município):</label>
+          <input text="text" id="municipiotr" placeholder="( Ex: de Viana)" /></div>
+          <div class="campo">
+          <label>Localização do Terreno (Bairro):</label>
+          <input text="text" id="bairrotr" placeholder="Nome do bairro" />
+</div>
+          <div class="campo">
+        <label>Detalhes da Casa:</label>
+          <input type="text" id="detalhes" placeholder="Detalhes do do produto" data-input="detalhes"/></div>
+          <div class="tr">
+          <div class="campo">
+        <label>Largura do Terreno:</label>
+          <input type="number" id="largura" placeholder="Apenas número" data-input="largura"/></div>
+          <div class="campo">
+        <label>Comprimento do Terreno:</label>
+          <input type="number" id="comprimento" placeholder="Apenas número" data-input="comprimento"/></div></div>
+          <div class="campo">
+        <label>Duração do Arrendamento:</label>
+          <input type="text" id="mes" placeholder="( Ex: 6 meses/ 12 meses)" data-input="mes"/></div><div class="campo">
+        <label>Inicío do Arrendamento:</label>
+          <input type="date" id="inicio" placeholder="( Ex: 6 meses/ 12 meses)" data-input="inicio"/></div><div class="campo">
+        <label>Fim do Arrendamento:</label>
+          <input type="date" id="fim" placeholder="( Ex: 6 meses/ 12 meses)" data-input="fim"/></div>
+
+          <div class="campo">
+        <label for="valorInput">Preço total da Casa:</label>
+          <input type="number" id="valorInput" placeholder="Quanto custou ( Ex: 2.4555)" data-input="valor"/></div>
+          <div class="campo">
+        <label for="valortrInput">Preço do Terreno:</label>
+          <input type="number" id="valortrInput" placeholder="Quanto custou ( Ex: 2.4555)" /></div>
+          <div class="campo">
+        <label for="valorcsInput">Preço do Carro:</label>
+          <input type="number" id="valorcsInput" placeholder="Valor Total ( Ex: 2.4555)" /></div>
+          <div class="campo">
+        <label for="valormensalInput">Valor mensal da Casa:</label>
+          <input type="number" id="valormensalInput" placeholder="Quanto custa a mensalidade"/></div>
+          <div class="campo">
+        <label for="valortotalInput">Valor total a ser Pago:</label>
+          <input type="number" id="valortotalInput" placeholder="Valor total a ser pago por Renda"/></div>
+          
+          <div class="campo">
+        <label>Nome da Testemunha 1:</label>
+          <input type="text" id="testemunha1" placeholder="Nome da testenhuma" data-input="testemunha1"/></div>
+          <div class="campo">
+        <label>Nº do BI da Testemunha 1:</label>
+          <input type="text" id="bit1" placeholder="Nº do BI da Testemunha 1" data-input="bit1"/></div>
+          <div class="campo">
+        <label>Nome da Testemunha 2:</label>
+          <input type="text" id="testemunha2" placeholder="Nome da testenhuma" data-input="testemunha2"/></div>
+          <div class="campo">
+        <label>Nº do BI da Testemunha 2:</label>
+          <input type="text" id="bit2" placeholder="Nº do BI da Testemunha 2" data-input="bit2"/></div>
+        
+          <div class="campo">
+        <label>Província actual:</label>
+          <input type="text" id="proact" placeholder="( Ex: Malanje)" data-input="proact"/></div>
+          
+          <div class="campo">
+        <label>Data da Assinatura:</label>
+          <input type="date" id="dataaviso" placeholder="ex: 07 de Agosto de 2025" data-input="dataaviso"/></div>
+          <div class="campo">
+            <div class="form-group">
+              <label for="genero">Gênero do Vendedor/Dono:</label>
+              <select id="genero" name="genero">
+                <option class="po" value="masculino">Masculino</option>
+                <option class="po" value="feminino">Feminino</option>
+              </select>
+              <label for="gener">Gênero do Comprador/Cliente:</label>
+              <select id="gener" name="genero">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </div>
+</div>
+
+
+        </div>
+        
+
+        <!-- Currículo -->
+        <!-- ⛔️ Removemos a classe .a4 daqui -->
+        <div class="visualizacao">
+            <div class="a4" id="cartaVisual"></div>
+        </div></div>
+      
+      
+      
+
+
+      <div class="botoes">
+        <button onclick="baixarPDF()">Download PDF</button>
+        <button onclick="window.location.href='escolher-contrato.html'">Voltar</button>
+      </div>
+    </div>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    
+// Lista de províncias (uma só para todos os casos)
+const provinciasInfo = {
+  "Luanda": { prep: "na província de" },
+  "Benguela": { prep: "na província de" },
+  "Huambo": { prep: "na província do" },
+  "Huíla": { prep: "na província da" },
+  "Namibe": { prep: "na província do" },
+  "Malanje": { prep: "na província de" },
+  "Uíge": { prep: "na província do" },
+  "Cuanza Sul": { prep: "na província do" },
+  "Cuanza Norte": { prep: "na província do" },
+  "Bié": { prep: "na província do" },
+  "Moxico": { prep: "na província do" },
+  "Cuando Cubango": { prep: "na província do" },
+  "Lunda Norte": { prep: "na província da" },
+  "Lunda Sul": { prep: "na província da" },
+  "Cabinda": { prep: "na província de" },
+  "Zaire": { prep: "na província do" },
+  "Bengo": { prep: "na província do" }
+};
+
+// Função genérica para atualizar província em qualquer data-id
+function configurarProvincia(inputId, dataIdDestino) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+    const prov = input.value.trim();
+    const info = provinciasInfo[prov];
+    if (info) {
+      document.querySelector(`[data-id="${dataIdDestino}"]`).textContent =
+        `${info.prep} ${prov}`;
+    } else {
+      document.querySelector(`[data-id="${dataIdDestino}"]`).textContent = "";
+    }
+  });
+}
+
+// Configura os três campos
+configurarProvincia("provincia", "local-prov");
+configurarProvincia("provinciacs", "local-provecs");
+configurarProvincia("provinciatr", "local-provtr");
+
+
+    
+    // ----- Quando usuário muda gênero -----
+    function setConteudoPorChave(key, valor) {
+  // 1) data-id
+  const nodes = document.querySelectorAll(`[data-id="${key}"]`);
+  if (nodes.length) nodes.forEach(el => el.textContent = valor);
+  // 2) id (para as assinaturas: cargo, cargoo2)
+  const byId = document.getElementById(key);
+  if (byId) byId.textContent = valor;
+}
+
+function ligarGenero(selectId, mapa) {
+  const sel = document.getElementById(selectId);
+  if (!sel) return;
+  sel.addEventListener("change", () => {
+    const genero = sel.value;
+    if (!mapa[genero]) return;
+    Object.entries(mapa[genero]).forEach(([k, v]) => setConteudoPorChave(k, v));
+  });
+}
+
+// Vendedor/Dono
+const mapVendedor = {
+  masculino: { sexo: "o", port: "portador", Sexo: "O",   Cargo: "VENDEDOR", cargo: "Vendedor", Ssexo: "ARRENDADOR", artigo: "ao", cargo01: "Vendedor" },
+  feminino:  { sexo: "a", port: "portadora", Sexo: "A",  Cargo: "VENDEDORA", cargo: "Vendedora",  Ssexo: "ARRENDADORA", artigo: "à", cargo01: "Vendedora"}
+};
+
+// Comprador/Cliente
+const mapComprador = {
+  masculino: { sexa: "o", Sexa: "O", port2: "portador",   poss: "possuidor", artigoo2: "ao", este: "este",  cargoo02: "Comprador", Cargoo2: "COMPRADOR",  cargoo2: "Comprador"   },
+  feminino:  { sexa: "a", Sexa: "A", port2: "portadora",  poss: "possuidora", artigoo2: "à",  este: "esta",  cargoo2: "Compradora", Cargoo2: "COMPRADORA",  cargoo02: "Compradora"  }
+};
+
+ligarGenero("genero", mapVendedor);
+ligarGenero("gener",  mapComprador);
+
+// Dispara o estado inicial após carregar o modelo
+function aplicarGeneroInicial() {
+  const s1 = document.getElementById("genero");
+  const s2 = document.getElementById("gener");
+  s1 && s1.dispatchEvent(new Event("change"));
+  s2 && s2.dispatchEvent(new Event("change"));
+}
+
+
+    // ----- Atualiza outros campos que você já tinha (nome, BI, etc.) -----
+    // Reposicionei esse bloco conforme seu script:
+    function atualizarDados() {
+      const campos = {
+        nomevender: document.getElementById('nomevender'),
+        nomecomp: document.getElementById('nomecomp'),
+        nomear: document.getElementById('nomear'),
+        nomecl: document.getElementById('nomecl'),
+        gpsal: document.getElementById('gpsal'),
+        gpsad: document.getElementById('gpsad'),
+        gpsalar: document.getElementById('gpsalar'),
+        gpsadcl: document.getElementById('gpsadcl'),
+        bi: document.getElementById('bi'),
+        bic: document.getElementById('bic'),
+        biar: document.getElementById('biar'),
+        biccl7: document.getElementById('biccl'),
+        mes: document.getElementById('mes'),
+        inicio: document.getElementById('inicio'),
+        fim: document.getElementById('fim'),
+        municipio: document.getElementById('municipio'),
+        bairro: document.getElementById('bairro'),
+        proact: document.getElementById('proact'),
+        municipiotr: document.getElementById('municipiotr'),
+        bairrotr: document.getElementById('bairrotr'),
+        detalhes: document.getElementById('detalhes'),
+        largura: document.getElementById('largura'),
+        comprimento: document.getElementById('comprimento'),
+        marca: document.getElementById('marca'),
+        modelo: document.getElementById('modelo'),
+        cor: document.getElementById('cor'),
+        matricula: document.getElementById('matricula'),
+        km: document.getElementById('km'),
+        dataaviso: document.getElementById('dataaviso'),
+        testemunha1: document.getElementById('testemunha1'),
+        bit1: document.getElementById('bit1'),
+        bit2: document.getElementById('bit2'),
+        testemunha2: document.getElementById('testemunha2')
+      };
+      campos && Object.entries(campos).forEach(([key, input]) => {
+        input.addEventListener('input', () => {
+          document.querySelectorAll(`#cartaVisual [data-id="${key}"]`).forEach(el => el.textContent = input.value);
+        });
+      });
+    }
+
+    let modeloCarregado = false;
+    const cartaVisual = document.getElementById('cartaVisual');
+    const modelo = new URLSearchParams(window.location.search).get('modelo') || 'requerer1';
+
+    
+
+    function baixarPDF() {
+      if (!modeloCarregado) return alert("Aguarde o carregamento da carta.");
+      const a4Element = cartaVisual.querySelector(".a4") || cartaVisual;
+      html2pdf()
+        .set({
+          filename: 'requerimento.pdf',
+          image: { type: 'jpeg', quality: 1 },
+          html2canvas: { scale: 4 },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        })
+        .from(a4Element).save();
+    }
+
+
+
+
+// Mostra/oculta campos do formulário conforme existência no modelo (via data-id)
+function aplicarCamposDinamicos() {
+  const mapa = {
+    provincia: 'local-prov', // input -> data-id
+    provinciatr: 'local-provtr', // input -> data-id
+    provinciacs: 'local-provcs', // input -> data-id
+    valorInput: 'valor', // input -> data-id
+    valortrInput: 'valortr', // input -> data-id
+    valorcsInput: 'valorcs', // input -> data-id
+    valortotalInput: 'valortotal', // input -> data-id
+    valormensalInput: 'valormensal', // input -> data-id
+    genero: 'port',
+    gener: 'sexa'
+  };
+
+  // percorre todos os blocos de campo
+  document.querySelectorAll('.formulario .campo').forEach(campo => {
+    const ctrl = campo.querySelector('input, select, textarea');
+    if (!ctrl) return;
+    const id = ctrl.id;
+    if (!id) return;
+
+    const dataId = mapa[id] || id;
+    const existeNoModelo = cartaVisual.querySelector(`[data-id="${dataId}"]`);
+    campo.style.display = existeNoModelo ? 'block' : 'none';
+  });
+}
+// quando carregar o modelo, aplica essa lógica
+fetch(`modelos/${modelo}.html`)
+      .then(res => res.text())
+      .then(html => {
+        cartaVisual.innerHTML = html;
+        atualizarDados();
+        aplicarCamposDinamicos(); // 👈 aqui
+        modeloCarregado = true;
+        aplicarGeneroInicial();   // <<<<< aplica gênero inicial
+      });
+
+
+
+
+
+     // Função para formatar número em padrão angolano
+// Funções específicas para cada tipo de valor
+function formatarNumero(valor) {
+  return new Intl.NumberFormat('pt-PT', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(valor);
+}
+function formatarNumeroCS(valorcs) {
+  return new Intl.NumberFormat('pt-PT', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(valorcs);
+}
+function formatarNumeroTR(valortr) {
+  return new Intl.NumberFormat('pt-PT', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(valortr);
+}
+function formatarNumeroTotal(valortotal) {
+  return new Intl.NumberFormat('pt-PT', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(valortotal);
+}
+function formatarNumeroMensal(valormensal) {
+  return new Intl.NumberFormat('pt-PT', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(valormensal);
+}
+
+// Função para converter número em extenso (simplificada para Kz)
+function numeroPorExtenso(n) {
+  const unidades = ["", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"];
+  const dezenas10 = ["dez", "onze", "doze", "treze", "catorze", "quinze", "dezasseis", "dezassete", "dezoito", "dezanove"];
+  const dezenas = ["", "", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa"];
+  const centenas = ["", "cem", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos"];
+
+  function extensoMenor1000(num) {
+    let str = "";
+    if (num == 0) return "";
+    if (num < 10) return unidades[num];
+    if (num < 20) return dezenas10[num - 10];
+    if (num < 100) {
+      str = dezenas[Math.floor(num / 10)];
+      if (num % 10 != 0) str += " e " + unidades[num % 10];
+      return str;
+    }
+    if (num == 100) return "cem";
+    if (num < 1000) {
+      str = centenas[Math.floor(num / 100)];
+      if (num % 100 != 0) str += " e " + extensoMenor1000(num % 100);
+      return str;
+    }
+    return "";
+  }
+
+  if (n === 0) return "zero";
+
+  let partes = [];
+  let bilhoes = Math.floor(n / 1_000_000_000);
+  let milhoes = Math.floor((n % 1_000_000_000) / 1_000_000);
+  let milhares = Math.floor((n % 1_000_000) / 1000);
+  let resto = n % 1000;
+
+  if (bilhoes > 0) partes.push(extensoMenor1000(bilhoes) + (bilhoes > 1 ? " biliões" : " bilião"));
+  if (milhoes > 0) partes.push(extensoMenor1000(milhoes) + (milhoes > 1 ? " milhões" : " milhão"));
+  if (milhares > 0) partes.push(extensoMenor1000(milhares) + " mil");
+  if (resto > 0) partes.push(extensoMenor1000(resto));
+
+  return partes.join(" ") + " kwanzas";
+}
+
+// Listener para atualizar em tempo real
+document.getElementById("valorInput").addEventListener("input", function () {
+  let valorStr = this.value.replace(/\./g, "").replace(",", ".");
+  let valorNum = parseFloat(valorStr);
+
+  if (!isNaN(valorNum)) {
+    document.querySelectorAll('[data-id="valor"]').forEach(el => {
+      el.textContent = formatarNumero(valorNum);
+    });
+    document.querySelectorAll('[data-id="valorletra"]').forEach(el => {
+      el.textContent = numeroPorExtenso(Math.floor(valorNum));
+    });
+    document.querySelectorAll('[data-id="valormensal"]').forEach(el => {
+      el.textContent = formatarNumeroMensal(valorNum);
+    });
+    document.querySelectorAll('[data-id="valortotal"]').forEach(el => {
+      el.textContent = formatarNumeroTotal(valorNum);
+    });
+  }
+});
+
+document.getElementById("valormensalInput").addEventListener("input", function () {
+  let valorStr = this.value.replace(/\./g, "").replace(",", ".");
+  let valorNum = parseFloat(valorStr);
+
+  if (!isNaN(valorNum)) {
+    document.querySelectorAll('[data-id="valormensal"]').forEach(el => {
+      el.textContent = formatarNumeroMensal(valorNum);
+    });
+  }
+});
+
+document.getElementById("valortotalInput").addEventListener("input", function () {
+  let valorStr = this.value.replace(/\./g, "").replace(",", ".");
+  let valorNum = parseFloat(valorStr);
+
+  if (!isNaN(valorNum)) {
+    document.querySelectorAll('[data-id="valortotal"]').forEach(el => {
+      el.textContent = formatarNumeroTotal(valorNum);
+    });
+  }
+});
+
+document.getElementById("valorcsInput").addEventListener("input", function () {
+  let valorStr = this.value.replace(/\./g, "").replace(",", ".");
+  let valorNum = parseFloat(valorStr);
+
+  if (!isNaN(valorNum)) {
+    document.querySelectorAll('[data-id="valorcs"]').forEach(el => {
+      el.textContent = formatarNumeroCS(valorNum);
+    });
+    document.querySelectorAll('[data-id="valorletra"]').forEach(el => {
+      el.textContent = numeroPorExtenso(Math.floor(valorNum));
+    });
+  }
+});
+
+document.getElementById("valortrInput").addEventListener("input", function () {
+  let valorStr = this.value.replace(/\./g, "").replace(",", ".");
+  let valorNum = parseFloat(valorStr);
+
+  if (!isNaN(valorNum)) {
+    document.querySelectorAll('[data-id="valortr"]').forEach(el => {
+      el.textContent = formatarNumeroTR(valorNum);
+    });
+    document.querySelectorAll('[data-id="valorletra"]').forEach(el => {
+      el.textContent = numeroPorExtenso(Math.floor(valorNum));
+    });
+  }
+});
+
+
+  </script>
+
+
+  </body>
+</html>

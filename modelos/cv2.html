@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Currículo Modelo 2</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      
+    }
+
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .lateral {
+      width: 7.5cm;
+      background-color: #4a4552;
+      color: #f8fafc;
+      padding: 2.5cm 1.5cm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .lateral h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1.2rem;
+      text-align: left;
+      color: #ffffff;
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      padding-bottom: 0.3rem;
+    }
+
+    .lateral h3 {
+      font-size: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      color: #cbd5e1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 0.3rem;
+    }
+
+    .lateral .info, .lateral ul {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
+    }
+
+    .lateral ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .lateral li::before {
+      content: "• ";
+      color: #60a5fa;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 2.5cm;
+      padding-left: 2cm;
+      box-sizing: border-box;
+    }
+
+    .topo {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .topo h1 {
+      font-size: 2.5rem;
+      color: #1d4ed8;
+      border-bottom: 3px solid #1d4ed8;
+      padding-bottom: 0.4rem;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: #1e40af;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 0.6rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #1f2937;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="a4">
+
+    <!-- BARRA LATERAL ESTILIZADA -->
+    <div class="lateral">
+      <div>
+        <h2><span data-id="nome">Maria Laura</span></h2>
+        <h3>Dados pessoais</h3>
+        <div class="info">
+          Nº do BI: <span data-id="bi">004446572LA850</span><br>
+          Data de nascimento: <span data-id="nascimento">02/06/2001</span>
+        </div>
+        <h3>Contato</h3>
+        <div class="info">
+          Tel: <span data-id="telefone">+244 923 456 789</span> 
+        </div>
+
+        <h3>Localização</h3>
+        <div class="info">
+          <span data-id="localizacao"> Residência Luanda Calemba 2</span> </p>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo">
+      <div class="topo">
+        <h1>Curriculum Vitae</h1>
+      </div>
+
+      <h3>Resumo Profissional</h3>
+      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+
+      <h3>Formação</h3>
+      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+
+      <h3>Experiência</h3>
+      <ul data-id="experiencia">
+        <li>Gestão de documentos e arquivos</li>
+        <li>Atendimento de chamadas e e-mails corporativos</li>
+        <li>Organização de agendas e eventos</li>
+      </ul>
+
+     <h3>Habilidades</h3>
+        <ul data-id="habilidades">
+          <li>Comunicação eficaz</li>
+          <li>Gestão de tempo</li>
+          <li>Organização</li>
+          <li>Pacote Office</li>
+          <li>Trabalho em equipe</li>
+        </ul>
+        <h3>Observação</h3>
+<p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+    </div>
+  </div>
+</body>
+</html>

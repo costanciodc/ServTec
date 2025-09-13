@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carta de Apresentação - Modelo 2</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+    }
+.a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      display: flex;
+    }
+
+    .conteudo {
+      padding: 2.7cm;
+      padding-left: 3.5cm;
+      flex: 1;
+    }
+    
+
+    .cabecalho {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .cabecalho h1 {
+      font-size: 2rem;
+      color: #1f2937;
+      margin-bottom: 0.2rem;
+    }
+
+    .cabecalho p {
+      margin: 0;
+      font-size: 1rem;
+      color: #4b5563;
+    }
+
+    .corpo {
+      font-size: 1.1rem;
+      color: #111827;
+      line-height: 1.7;
+    }
+
+    .corpo p {
+      margin-bottom: 1.2rem;
+      text-align: justify;
+    }
+
+    .assinatura {
+      margin-top: 2rem;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    .assinatura p {
+      margin: 0.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .a4 {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="a4">
+    <div class="conteudo">
+      <div class="cabecalho">
+        <h1 data-id="nome">Maria Gabriel</h1>
+        <p data-id="email">maria.gabriel@email.com</p>
+        <p data-id="telefone">+244 923 456 789</p>
+      </div>
+
+      <div class="corpo">
+        <p>
+          <strong data-id="local">Luanda</strong>, <span data-id="data">07 de Agosto de 2025</span>
+        </p>
+
+        <p>
+          À <span data-id="empresa">Tudo Online</span>,
+        </p>
+
+        <p>
+          Escrevo para expressar meu interesse na vaga de <strong data-id="cargo">Assistente de Recursos Humanos</strong>. Acredito que minhas qualificações e experiências se alinham com os valores e objetivos da vossa empresa.
+        </p>
+
+        <p >
+          Possuo habilidades sólidas em <span data-id="habilidades">comunicação, organização e gestão de pessoas</span>. Tenho experiência e estou pronto para ganhar ainda mais, além de ser altamente dedicad<span data-id="sexo">a</span> e comprometid<span data-id="sexo">a</span> com resultados.
+        </p>
+
+        <p>
+          Agradeço pela atenção e coloco-me à disposição para uma entrevista. Eu, posso contribuir significativamente com a vossa equipe.
+        </p>
+      </div>
+
+      <div class="assinatura">
+        <p>Atenciosamente,</p>
+        <p><strong data-id="nome">Maria Gabriel</strong></p>
+      </div></div>
+  </div>
+</body>
+</html>

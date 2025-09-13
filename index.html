@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServTec.ao - Microserviços Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+     
+    }
+    body {
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #fefeff;
+    }
+      .besua{
+      font-size: 1.2rem;
+      color: #fefeff;
+      text-align: center;
+    }
+     header {
+      padding: 1.1rem 8%;
+      display: fle;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(40px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 70px;
+    
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(253, 253, 253, 0.075);
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 20px rgba(247, 246, 246, 0.192);
+      transition: all 0.3s ease;
+      padding: 1.8rem;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(82, 78, 78, 0.315);
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #4b7be2;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #bebebe;
+      margin-bottom: 1rem;
+    }
+    .card p.kz{
+      font-size: 1.10rem;
+      color: #d8d8d8;
+      margin-bottom: 1rem;
+      background: #fcfdfd10;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+    }
+    
+    .card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #1d4ed8;
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    footer {
+      background: rgba(15, 23, 42, 0.9);
+      text-align: center;
+      padding: 2rem 8%;
+      margin-top: 3rem;
+      color: #ffffff;
+      position: relative }
+
+
+    footer p {margin: 0.3rem 0; color: #bbbbbb; margin-top: px;}
+    footer p.bai {margin-top: 5px; margin-bottom: 30px; }
+   
+nav a {
+      color: #ddd;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .3s;
+      text-align: center;
+    }
+
+    nav a:hover {color: #facc15;}
+    a.btn-whatsapp {
+  position: absolute;     /* Faz o botão se posicionar relativo ao rodap*/
+  top: 10px;              /* Distância do topo do rodapé */
+  right: 20px;            /* Distância da lateral direita do rodapé */
+  background: #25d366;    /* Verde oficial do WhatsApp */
+  color: #fff;            /* Texto branco */
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all .3s ease-in-out;
+      
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5b;    /* Muda o tom de verde ao passar o mouse */
+  transform: scale(1.08); /* Dá um leve zoom no hover */
+}
+   
+
+
+@media (max-width: 720px) {
+  a.btn-whatsapp{     
+    
+    font-size: 13px;
+    
+
+      }
+  nav a{     
+    
+    font-size: 12px;
+      }
+      footer p {font-size: 15;}
+    footer p.bai {font-size: 15;}
+      }
+    .color-change {
+      font-weight: bold;
+      transition: color 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Serv<span>Tec</span></h1>
+   
+  </header>
+  <div class="besua">
+ <p>Microserviços prontos para ajudar pessoas e empresas em Angola</p>
+    <p>Gaste menos tempo criando. Investa mais tempo crescendo.</p></div>
+  <section class="grid">
+    <div class="card">
+      <h3>Currículo Profissional</h3>
+      <p>Monte seu currículo em minutos com modelos modernos em PDF.</p> <p class="kz"> Por apenas <span class="color-change">400Kz.</span></p>
+      <a href="escolher-modelo.html">Começar</a>
+    </div>
+    
+    <div class="card">
+      <h3>Carta de Apresentação</h3>
+      <p>Gere uma carta personalizada para acompanhar seu currículo.</p><p class="kz"> Por apenas <span class="color-change">100Kz.</span></p>
+      <a href="escolher-carta.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Requerimento</h3>
+      <p>Gere uma carta personalizada para acompanhar seu currículo.</p><p class="kz"> Por apenas <span class="color-change">100Kz.</span></p>
+      <a href="escolher-requerimento.html">Começar</a>
+    </div>
+    
+    <div class="card">
+      <h3> Contrato de Compra e Venda</h3>
+      <p>Documentize suas Vendas ou Compras, Baixa o contrato em PDF pronto para assinar.</p><p class="kz"> Por apenas <span  class="color-change">100Kz.</span></p>
+      <a href="escolher-contrato.html">Começar</a>
+    </div>
+
+    <div class="card">
+      <h3>Logotipo Profissinais</h3>
+      <p>Cria e Gere Logotipos Profissionais para uso Pessoal ou Social.</p><p class="kz"> Por apenas <span  class="color-change">300Kz.</span>.</p>
+      <a href="logo.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Certificado Academico e de Merito</h3>
+      <p>Gere Certificados personalizados e baixa em PDF.</p><p class="kz"> Escolhe o seu Plano Aproveita a <span  class="color-change">Promoção</span></p>
+      <a href="arte.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Designer Profissinal</h3>
+      <p>Solicite a sua Arte de Designer Profissional e Recebe em 2h:00 uteis.</p><p class="kz">Escolhe o seu Plano Aproveita a <span  class="color-change">Promoção</span></p>
+      <a href="arte.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Agente de Tráfego-Pago</h3>
+      <p>Aumenta as sua vendas. Torne seu Negócio Mais conhecido em Apenas 24H Alcance 2.000 Pessoas.</p><p class="kz">Escolhe o seu pacote Aproveita a <span class="color-change">Promoção</span></p>
+      <a href="modelo-carta.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Convites de festas em PDF com QR code</h3>
+      <p>Aumenta as sua vendas. Torne seu Negócio Mais conhecido em Apenas 24H Alcance 2.000 Pessoas.</p><p class="kz">Escolhe o seu Plano Aproveita a <span  class="color-change">Promoção</span></p>
+      <a href="modelo-carta.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Cardapio Digital</h3>
+      <p>Aumenta as sua vendas. Torne seu Negócio Mais conhecido em Apenas 24H Alcance 2.000 Pessoas.</p><p class="kz">Escolhe o seu Plano Aproveita a <span  class="color-change">Promoção</span></p>
+      <a href="modelo-carta.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Corrija erros ortográficos de Texto/Trabalho</h3>
+      <p>Corrija erros ortográficos e melhore a escrita automaticamente.</p> <p class="kz"> Grátis.</p>
+      <a href="servicos/revisao.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Converter Documento(PDF, Word, PowerPoint...)</h3>
+      <p>Converta um documento para a forma desejada.</p> <p class="kz"> Por apenas 50kz por conversão.</p>
+      <a href="servicos/revisao.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Calcular Lucro ou Orçamento</h3>
+      <p>Use nossa calculadora de lucros para seu negócio.</p> <p class="kz"> Grátis.</p>
+      <a href="servicos/lucro.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Controle de Stoke Online</h3>
+      <p>Controle o seu Stoke via Online com opção de baixar em PDF.</p> <p class="kz"> Grátis.</p>
+      <a href="servicos/banner-modelos.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Cartão de Visita Digital</h3>
+      <p>Monte seu cartão digital personalizado e compartilhe.</p> <p class="kz"> Por apenas <span class="color-change">100Kz.</span></p>
+      <a href="servicos/cartao.html">Começar</a>
+    </div>
+    
+    <div class="card">
+      <h3>Relatório de Vendas (PDF)</h3>
+      <p>Crie relatórios diários ou semanais com seus dados de venda.</p> <p class="kz"> Grátis.</p>
+      <a href="servicos/relatorio.html">Começar</a>
+    </div>
+    <div class="card">
+      <h3>Cardápio Digital</h3>
+      <p>Monte um cardápio bonito com imagens e preços dos pratos.</p> <p class="kz"> Por apenas <span  class="color-change">100Kz.</span></p>
+      <a href="servicos/cardapio.html">Começar</a>
+    </div>
+  </section>
+
+<section class="recomendados">
+  <div class="interface">
+    <h4 class="mais">Forma de <SPAn>Pagamento.</SPAn></h4>
+    <h4 class="mas">Segurança em <SPAn>Primeiro Lugar.</SPAn></h4>
+  </div><!--inteface-->
+ </section><!--recomendados-->
+<section class="grid">
+ <div class="pag">
+      <h3 class="baixa">Transferência Expresse</h3>
+      <p>
+Trabalhamos apenas com transferência expressa para garantir rapidez e segurança.
+Após efetuar a transferência, basta enviar o comprovativo pelo WhatsApp.
+Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticamente.</p> 
+      
+    </div>
+ </section>
+
+   <style>
+
+.pag {
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 20px rgba(247, 246, 246, 0.192);
+    transition: all 0.3s ease;
+    font-size: 10px;
+    padding: 20px 50px;
+    margin: 5px 5px;
+    gap: 50px;
+
+     border: 1px solid #ffffff;
+    padding: 30px 30px;
+    margin: 10px 10px;
+    font-size: 10px;
+    transition: 0.55s;
+    cursor: pointer;
+    }
+    .pag:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(82, 78, 78, 0.315);
+    }
+    .pag h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #4b7be2;
+      text-align: center;
+    }
+    .pag p {
+      font-size: 0.95rem;
+      color: #bebebe;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+  /* recomendados */
+  
+
+  h4.mais{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 70px;
+    color: #8f8f8f;
+  }
+
+  h4.mas{
+    text-align: center;
+    font-size: 15px;
+    color: #8f8f8f;
+  }
+  h4.mas span{
+    text-align: center;
+    font-size: 15px;
+    color: #4b7be2;;
+  }
+  h1 span{
+    text-align: center;
+    background: linear-gradient(90deg, #04ff82, #eeff00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  
+  h5{
+    font-size: 20px;
+  }
+
+  h4.mais span{
+    color: #4b7be2;
+  }
+  .baixa p{
+    display: flex;
+    position: relative;
+    margin-bottom: 2px;
+  }
+  
+  
+
+</style>
+
+  <footer id="contato">
+
+<h1>Serv<span>Tec</span></h1>
+    
+    <a href="https://wa.me/244974416377?text=Olá, preciso de suporte!"
+   class="btn-whatsapp"
+   target="_blank">Suporte</a>
+   <nav>
+     <p><a href="termos.html">Termos de Uso e Política de Privacidade</a></p> 
+    </nav>
+    <p>Inovação digital feita em Angola, para Angola.
+    </p>
+    <p class="bai">Na ServTec, acreditamos que cada detalhe importa para destacar sua marca e sua carreira. 
+Por isso, reunimos em um único lugar serviços digitais essenciais: design de logotipos criativos, elaboração de currículos impactantes, cartas de apresentação personalizadas, contratos prontos para uso e outras soluções modernas. <br>
+
+
+    </p>
+    &copy; 2025 ServTec.ao. Feito para Angola. <br>
+    Todos os Direitos Reservados
+  </footer>
+  </footer>
+
+  
+  <script>
+    
+    // Lista de cores
+    const cores = ["red", "blue", "lime", "orange", "purple",
+      "gold", "magenta", "cyan", "deeppink", 
+      "springgreen", "dodgerblue", "crimson", 
+      "orangered", "chartreuse", "turquoise"];
+
+    // Função para trocar cor de forma aleatória
+    function trocaCorAleatoria(elemento, intervalo) {
+      setInterval(() => {
+        let cor = cores[Math.floor(Math.random() * cores.length)];
+        elemento.style.color = cor;
+      }, intervalo);
+    }
+
+    // Seleciona todos os elementos
+    const palavras = document.querySelectorAll(".color-change");
+
+    // Aplica intervalos diferentes para cada palavra
+    palavras.forEach((palavra, i) => {
+      // Intervalos variando entre 2s e 6s para cada palavra
+      let intervalo = 700 + Math.floor(Math.random() * 700);
+      trocaCorAleatoria(palavra, intervalo);
+    });
+  </script>
+</body>
+</html>

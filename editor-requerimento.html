@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Currículo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+    
+  * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(145deg, #0c0c0c, #011427);
+        padding: 20px;
+      }
+
+  header.editor{
+        background-color: #1e3a8a;
+        color: white;
+        padding: 1rem;
+        font-weight: 620;
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 10px;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 2rem;
+      }
+
+      .formulario {
+        flex: 1 1 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px #02ad0b;
+      }
+
+      .formulario h2 {
+        margin-top: 0;
+      }
+      .formulario label {
+        display: block;
+        margin-top: 12px;
+        font-weight: 500;
+      }
+
+      .formulario input,
+      .formulario textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .visualizacao {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+            
+      }
+
+      .cee{     
+        color: #0f172a;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 0.3rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .botoes {
+        text-align: center;
+        margin-top: 20px;
+      }
+  .form-group {
+      margin-bottom: 15px;
+    }
+
+    .formulario label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .form-group select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+      }
+      .botoes button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        background: #1e3a8a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .botoes button:hover {
+        background: #2a4bb5;
+      }
+/* ----- CSS extra para os novos campos (form-group para inputs datalist) ----- */
+    .form-group-datalist { margin-bottom: 15px; }
+    .form-group-datalist input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+      @media (max-width: 798px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+      
+        font-size: 1.2rem;
+        
+      }
+      .formulario{
+          width: 470px;
+        }
+      header.editor{
+          font-size: 20px;
+        }
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+      .a4{
+          transform: scale(1);
+          transform-origin: top center;
+        }}
+
+      @media (max-width: 420px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+        color: #0f172a;
+        font-size: 1.2rem;
+        ;
+      }
+      .formulario{
+          width: 490px;
+        }
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+      .a4{
+          transform: scale(1);
+          transform-origin: top center;
+        }}
+
+      @media (max-width: 500px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+        color: #0f172a;
+        font-size: 1.2rem;
+        ;
+      }
+      .formulario{
+          width: 590px;
+        }
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+      .a4{
+          transform: scale(1.06);
+          transform-origin: top center;
+        }}
+        
+      @media (max-width: 370px) {
+        .botoes{
+          transform-origin: top center;
+        }
+  .cee{     
+        color: #0f172a;
+        font-size: 1.2rem;
+        ;
+      }
+      .formulario{
+          width: 1000px;
+        }
+
+      .visualizacao{
+          transform: scale(0.4);
+          transform-origin: top center;
+        }
+
+      .a4{
+          transform: scale(1);
+          transform-origin: top center;
+        }}
+        
+
+    </style>
+  </head>
+
+
+  <body>
+    <header class="editor">Edite seu Requerimento</header>
+    <div class="container">
+      
+      <div class="formulario">
+          <h2 class="cee">Preencha com os seus dados</h2>
+          <div class="campo">
+          <label>Sua/Vossa Excelência:</label>
+          <input type="text" id="excelencia" placeholder="Substantivo da Excelência" data-input="excelencia"/></div>
+          <div class="campo">
+          <label>Dirigido ao Exmo Sr:</label>
+          <input type="text" id="excelencias" placeholder="( Ex: Diretor do Instituto ServTec...)" data-input="excelencias"/></div>
+          <div class="campo">
+          <label>Nome completo:</label>
+          <input type="text" id="nome" placeholder="Nome Completo" data-input="nome"/></div>
+          <div class="campo">
+          <label>Nome do Pai:</label>
+          <input type="text" id="pai" placeholder="Nome do Pai" data-input="pai"/></div>
+          <div class="campo">
+          <label>Nome da Mãe:</label>
+          <input type="text" id="mae" placeholder="Nome da Mãe" data-input="mae"/></div>
+          <div class="campo">
+          <label>Nº do BI:</label>
+          <input type="text" id="bi" placeholder="Nº do Bilhete de Identidade" data-input="bi"/></div>
+          <div class="campo">
+          <label>BI tratado na Província de: </label>
+          <input type="text" id="arquivo" placeholder="BI passado pelo Arquivo da Província de" data-input="arquivo"/></div>
+          <div class="campo">
+          <label>Data de Emissão do BI:</label>
+          <input type="text" id="databi" placeholder="(ex: 07 de Agosto de 2025)" data-input="databi"/></div>
+          <div class="campo">
+
+         <label for="provincia">Natural da Província de:</label>
+          <input list="lista-provincias" id="provincia" placeholder="Digite ou selecione a província"/><datalist id="lista-provincias"></datalist></div>
+          <div class="campo">
+
+          <label for="municipio">Natural do Município de:</label>
+          <input list="lista-municipios" id="municipio" placeholder="Digite ou selecione o município" disabled/>
+          <datalist id="lista-municipios"></datalist></div>
+          <div class="campo">
+        <label>Província actual:</label>
+          <input type="text" id="actual" placeholder="Província onde vives" data-input="actual"/>
+        
+       
+
+
+
+
+
+
+
+</div>
+          <div class="campo">
+
+        <label>Data de nascimento (ex: 07 de Agosto de 2025):</label>
+          <input type="" id="datanascimento" placeholder="ex: 07 de Agosto de 2025" data-input="datanascimento"/>
+            <div class="form-group">
+              <label for="genero">Gênero:</label>
+              <select id="genero" name="genero">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="gener">Gênero do Exmo:</label>
+              <select id="gener" name="gener">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </div>
+
+</div>
+          <div class="campo">
+          <label>Assunto do requerimento:</label>
+        <input type="text" id="assunto" placeholder="(Ex: Troca de período)" data-input="assunto"></div>
+          <div class="campo">
+          <label>Assunto/Objectivo do requerimento de forma detalhada:</label>
+        <input type="text" id="assuntos" placeholder="(Ex: troca de período: tarde para manhã)" data-input="assuntos"></div>
+          <div class="campo">
+          <label>Classe que frequenta ou frequentou:</label>
+        <input type="text" id="classe" placeholder="(Ex: 12ª Classe ou 2º Ano)" data-input="classe"></div>
+          <div class="campo">
+          <label>Turma:</label>
+        <input type="text" id="turma" placeholder="(Ex: A)" data-input="turma"></div>
+          <div class="campo">
+         <label>Período:</label>
+        <input type="text" id="periodo" placeholder="(Ex: manhã)" data-input="periodo"></div>
+          <div class="campo">
+         <label>Número de estudante:</label>
+        <input type="number" id="numero" placeholder="(Ex: 20)" data-input="numero"></div>
+          
+          <div class="campo">
+         <label>Ano lectivo</label>
+          <input type="text" id="anolectivo" placeholder="(ex: 2024/2025)" data-input="anolectivo"></div>
+          
+          
+          
+          
+          <div class="campo">
+          <label>Provimento de Vaga/Categoria:</label>
+        <input type="text" id="vaga" placeholder="Vaga ou categoria desejada" data-input="vaga"></div>
+          <div class="campo">
+          <label>Data do aviso público</label>
+          <input type="date" id="dataaviso" placeholder="04/11/2025" data-input="dataaviso"></div>
+          <div class="campo">
+          <label>Data actual (ex: 09 de Agosto de 2025)</label>
+          <input type="text" id="dataactual" placeholder="(ex: 09 de Agosto de 2025)" data-input="dataactual">
+        </div></div>
+        
+
+        <!-- Currículo -->
+        <!-- ⛔️ Removemos a classe .a4 daqui -->
+        <div class="visualizacao">
+            <div class="a4" id="cartaVisual"></div>
+        </div>
+      
+      
+      
+
+
+      <div class="botoes">
+        <button onclick="baixarPDF()">Download PDF</button>
+        <button onclick="window.location.href='escolher-requerimento.html'">Voltar</button>
+      </div>
+    </div>
+
+     
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  // ----- Dados completos de Angola -----
+  const provinciasInfo = {
+    "Bengo": { genero: "masculino", prep: "do" },
+    "Benguela": { genero: "feminino", prep: "de" },
+    "Bié": { genero: "masculino", prep: "do" },
+    "Cabinda": { genero: "feminino", prep: "de" },
+    "Cuando Cubango": { genero: "masculino", prep: "do" },
+    "Cuanza Norte": { genero: "masculino", prep: "do" },
+    "Cuanza Sul": { genero: "masculino", prep: "do" },
+    "Cunene": { genero: "masculino", prep: "do" },
+    "Huambo": { genero: "masculino", prep: "do" },
+    "Huíla": { genero: "feminino", prep: "da" },
+    "Luanda": { genero: "feminino", prep: "de" },
+    "Lunda Norte": { genero: "feminino", prep: "da" },
+    "Lunda Sul": { genero: "feminino", prep: "da" },
+    "Malanje": { genero: "feminino", prep: "de" },
+    "Moxico": { genero: "masculino", prep: "do" },
+    "Namibe": { genero: "masculino", prep: "do" },
+    "Uíge": { genero: "masculino", prep: "do" },
+    "Zaire": { genero: "masculino", prep: "do" },
+    "Icolo e Bengo": { genero: "feminino", prep: "de" }
+  };
+
+  const municipiosPorProvincia = {
+    "Bengo": ["Ambriz", "Bula Atumba", "Dande", "Dembos", "Nambuangongo", "Pango Aluquém"],
+    "Benguela": ["Balombo","Baía Farta","Benguela","Bocoio","Caimbambo","Catumbela","Chongorói","Cubal","Ganda","Lobito"],
+    "Bié": ["Andulo","Camacupa","Catabola","Chinguar","Chitembo","Cuemba","Cunhinga","Cuíto","Nharea"],
+    "Cabinda": ["Belize","Buco-Zau","Cabinda","Cacongo"],
+    "Cuando Cubango": ["Calai","Cuangar","Cuchi","Cuito Cuanavale","Dirico","Mavinga","Menongue","Nancova","Rivungo"],
+    "Cuanza Norte": ["Ambaca","Banga","Bolongongo","Cambambe","Cazengo","Golungo Alto","Gonguembo","Lucala","Quiculungo","Samba Caju"],
+    "Cuanza Sul": ["Amboim","Cassongue","Cela","Conda","Ebo","Libolo","Mussende","Porto Amboim","Quibala","Quilenda","Seles","Sumbe"],
+    "Cunene": ["Cahama","Cuanhama","Curoca","Cuvelai","Namacunde","Ombadja"],
+    "Huambo": ["Bailundo","Cachiungo","Caála","Ecunha","Huambo","Londuimbali","Longonjo","Mungo","Chicala-Choloanga","Chinjenje","Ucuma"],
+    "Huíla": ["Caconda","Cacula","Caluquembe","Chiange","Chibia","Chicomba","Chipindo","Cuvango","Humpata","Jamba","Lubango","Matala","Quilengues","Quipungo"],
+    "Luanda": ["Belas","Cacuaco","Cazenga","Ícolo e Bengo","Luanda","Quilamba Quiaxi","Quissama","Talatona","Viana"],
+    "Lunda Norte": ["Cambulo","Capenda-Camulemba","Caungula","Chitato","Cuango","Cuílo","Lóvua","Lubalo","Lucapa","Xá-Muteba"],
+    "Lunda Sul": ["Cacolo","Dala","Muconda","Saurimo"],
+    "Malanje": ["Cacuso","Calandula","Cambundi-Catembo","Cangandala","Caombo","Cuaba Nzoji","Cunda-Dia-Baze","Luquembo","Malanje","Marimba","Massango","Mucari","Quela","Quirima"],
+    "Moxico": ["Alto Zambeze","Bundas","Camanongue","Léua","Luau","Luacano","Luchazes","Cameia","Moxico"],
+    "Namibe": ["Bibala","Camucuio","Moçâmedes","Tômbua","Virei"],
+    "Uíge": ["Alto Cauale","Ambuíla","Bembe","Buengas","Bungo","Damba","Milunga","Mucaba","Negage","Puri","Quimbele","Quitexe","Sanza Pombo","Songo","Uíge","Zombo"],
+    "Zaire": ["Cuimba","Mabanza Congo","Nóqui","Nezeto","Soio","Tomboco"],
+    "Icolo e Bengo": ["Bom Jesus","Cabiri","Cabo Ledo","Calumbo","Catete","Quiçama","Sequele"]
+  };
+
+  // preenche lista de províncias
+  const provInput = document.getElementById("provincia");
+  const listaProv = document.getElementById("lista-provincias");
+  Object.keys(provinciasInfo).forEach(prov => {
+    const opt = document.createElement("option");
+    opt.value = prov;
+    listaProv.appendChild(opt);
+  });
+
+  // muda província → preenche municípios
+  provInput.addEventListener("input", () => {
+    const prov = provInput.value;
+    const info = provinciasInfo[prov];
+    if (info) {
+      document.querySelectorAll('[data-id="local-prov"]').forEach(el => {
+        el.textContent = `${info.prep} ${prov}`;
+      });
+    }
+    const muns = municipiosPorProvincia[prov] || [];
+    const municipioInput = document.getElementById("municipio");
+    const listaMun = document.getElementById("lista-municipios");
+    listaMun.innerHTML = "";
+    muns.forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = m;
+      listaMun.appendChild(opt);
+    });
+    municipioInput.value = "";
+    municipioInput.disabled = muns.length === 0;
+  });
+
+  // muda município
+  document.getElementById("municipio").addEventListener("input", function() {
+    const mun = this.value;
+    document.querySelectorAll('[data-id="local-mun"]').forEach(el => {
+      el.textContent = mun ? `de ${mun}` : "";
+    });
+  });
+
+   // ----- Quando usuário muda gênero -----
+    function setConteudoPorChave(key, valor) {
+  // 1) data-id
+  const nodes = document.querySelectorAll(`[data-id="${key}"]`);
+  if (nodes.length) nodes.forEach(el => el.textContent = valor);
+  // 2) id (para as assinaturas: cargo, cargoo2)
+  const byId = document.getElementById(key);
+  if (byId) byId.textContent = valor;
+}
+
+function ligarGenero(selectId, mapa) {
+  const sel = document.getElementById(selectId);
+  if (!sel) return;
+  sel.addEventListener("change", () => {
+    const genero = sel.value;
+    if (!mapa[genero]) return;
+    Object.entries(mapa[genero]).forEach(([k, v]) => setConteudoPorChave(k, v));
+  });
+}
+
+// Vendedor/Dono
+const mapVendedor = {
+  masculino: { sexo: "o", port: "portador", Sexo: "O",   Cargo: "VENDEDOR", cargo: "Vendedor", Ssexo: "ARRENDADOR", artigo: "ao", cargo01: "Vendedor" },
+  feminino:  { sexo: "a", port: "portadora", Sexo: "A",  Cargo: "VENDEDORA", cargo: "Vendedora",  Ssexo: "ARRENDADORA", artigo: "à", cargo01: "Vendedora"}
+};
+
+// Comprador/Cliente
+const mapComprador = {
+  masculino: { sexa: "o", Sexa: "Ao", port2: "portador",   poss: "possuidor", artigoo2: "ao", este: "este",  cargoo02: "Comprador", Cargoo2: "COMPRADOR",  cargoo2: "Sonhor"   },
+  feminino:  { sexa: "a", Sexa: "À", port2: "portadora",  poss: "possuidora", artigoo2: "à",  este: "esta",  cargoo2: "Sonhora", Cargoo2: "COMPRADORA",  cargoo02: "Compradora"  }
+};
+
+ligarGenero("genero", mapVendedor);
+ligarGenero("gener",  mapComprador);
+
+  // atualização geral
+  function atualizarDados() {
+    const campos = document.querySelectorAll(".formulario input, .formulario select, .formulario textarea");
+    campos.forEach(input => {
+      const id = input.id;
+      input.addEventListener("input", () => {
+        document.querySelectorAll(`#cartaVisual [data-id="${id}"]`).forEach(el => {
+          el.textContent = input.value;
+        });
+      });
+    });
+  }
+
+  // oculta campos que não existirem no modelo
+  function aplicarCamposDinamicos() {
+  const mapa = {
+    provincia: 'local-prov',     // input -> data-id
+    municipio: 'local-mun',      // input -> data-id
+    genero: 'sexo',
+    gener: 'sexa'
+  };
+
+  const campos = document.querySelectorAll(".formulario .campo");
+  campos.forEach(div => {
+    const ctrl = div.querySelector("input, select, textarea");
+    if (!ctrl) return;
+    const id = ctrl.id;
+    if (!id) return;
+
+    // pega o nome correto no mapa (se existir), senão usa o próprio id
+    const nomeModelo = mapa[id] || id;
+
+    // procura se existe algo no modelo com esse data-id
+    const existe = document.querySelector(`#cartaVisual [data-id="${nomeModelo}"]`);
+
+    div.style.display = existe ? "" : "none";
+  });
+}
+
+  let modeloCarregado = false;
+  const cartaVisual = document.getElementById('cartaVisual');
+  const modelo = new URLSearchParams(window.location.search).get('modelo') || 'requerer1';
+
+  // carrega modelo
+  fetch(`modelos/${modelo}.html`)
+    .then(res => res.text())
+    .then(html => {
+      cartaVisual.innerHTML = html;
+      atualizarDados();
+      aplicarCamposDinamicos();
+      modeloCarregado = true;
+    });
+
+  function baixarPDF() {
+    if (!modeloCarregado) return alert("Aguarde o carregamento da carta.");
+    const a4Element = cartaVisual.querySelector(".a4") || cartaVisual;
+    html2pdf()
+      .set({
+        filename: 'requerimento.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 4 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      })
+      .from(a4Element).save();
+  }
+</script>
+
+
+
+  </body>
+</html>

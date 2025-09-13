@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editor de Carta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .formulario {
+      flex: 1 1 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px #02ad0b;
+    }
+
+    .formulario h2 {
+      margin-top: 0;
+    }
+
+    .formulario input,
+    .formulario textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .visualizacao {
+      flex: 2 1 600px;
+      background: white;
+      border-radius: px;
+      box-shadow: 0 0 8px #02ad0b;
+      padding: 50px;
+    }
+
+    .cee{     
+      color: #0f172a;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+    .a4 {
+      width: 100%;
+      max-width: 794px; /* 21cm */
+      min-height: 1123px; /* 29.7cm */
+      margin: auto;
+      background: white;
+      padding: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .a4 {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+      }
+    }
+
+    .botoes {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .botoes button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .botoes button:hover {
+      background: #2a4bb5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="formulario">
+      <h2 class="cee">Preencha sua carta</h2>
+      <input type="text" id="nome" placeholder="Nome completo">
+      <input type="text" id="cargo" placeholder="Cargo desejado">
+      <input type="text" id="empresa" placeholder="Empresa">
+      <textarea id="objetivo" placeholder="Objetivo profissional"></textarea>
+      <textarea id="habilidades" placeholder="Habilidades e pontos fortes"></textarea>
+      <input type="text" id="telefone" placeholder="Telefone">
+      <input type="email" id="email" placeholder="Email">
+      <input type="text" id="local" placeholder="Local">
+      <input type="text" id="data" placeholder="Data (ex: 07 de Agosto de 2025)">
+    </div>
+
+    <div class="visualizacao">
+      <div id="modelo-container" class="a4"></div>
+    </div>
+  </div>
+
+  <div class="botoes">
+    <button onclick="baixarPDF()">Download PDF</button>
+    <button onclick="window.location.href='escolher-modelo-carta.html'">Voltar</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
+    const container = document.getElementById('modelo-container');
+
+    fetch(`modelos/${modelo}.html`)
+      .then(res => res.text())
+      .then(html => {
+        container.innerHTML = html;
+        atualizarDados();
+      });
+
+    function atualizarDados() {
+      const campos = {
+        nome: document.getElementById('nome'),
+        cargo: document.getElementById('cargo'),
+        empresa: document.getElementById('empresa'),
+        objetivo: document.getElementById('objetivo'),
+        habilidades: document.getElementById('habilidades'),
+        telefone: document.getElementById('telefone'),
+        email: document.getElementById('email'),
+        local: document.getElementById('local'),
+        data: document.getElementById('data')
+      };
+
+      for (let key in campos) {
+        campos[key].addEventListener('input', () => {
+          const el = container.querySelector(`[data-id="${key}"]`);
+          if (el) el.textContent = campos[key].value;
+        });
+      }
+    }
+
+    function baixarPDF() {
+  const a4Element = document.querySelector("#modelo-container .a4");
+  if (!a4Element) return;
+
+  const originalTransform = a4Element.style.transform;
+  const originalWidth = a4Element.style.width;
+
+  a4Element.style.transform = "none";
+  a4Element.style.width = "794px";
+
+  const opt = {
+    margin: 0,
+    filename: 'carta_apresentacao.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: {
+      scale: 4,
+      useCORS: true,
+      logging: false,
+      allowTaint: true,
+      scrollY: 0
+    },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(a4Element).save().then(() => {
+    a4Element.style.transform = originalTransform;
+    a4Element.style.width = originalWidth;
+  });
+}
+
+  </script>
+</body>
+</html>

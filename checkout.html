@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finalizar Pedido</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .checkout-box {
+      background: #ffffff00;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(55, 248, 7, 0.527);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+      color: #f2f2f2;
+    }
+
+    input, textarea {
+      width: 93%;
+      padding: 0.8rem;
+      border: 1px solid #34e907;
+      border-radius: 10px;
+      outline: none;
+      transition: border 0.3s ease;
+      font-size: 0.95rem;
+      background: #0c0c0c;
+      color: #f2f2f2;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00f7ff;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 100px;
+      color: #ffffff;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #3498db, #9b59b6);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .readonly {
+      background: #050505;
+      cursor: not-allowed;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="checkout-box">
+    <h2>Finalizar Pedido</h2>
+    <form id="pedidoForm">
+      <div class="form-group">
+        <label for="plano">Plano Escolhido</label>
+        <input type="text" id="plano" class="readonly" readonly>
+      </div>
+      <div class="form-group">
+        <label for="preco">Preço</label>
+        <input type="text" id="preco" class="readonly" readonly>
+      </div>
+      <div class="form-group">
+        <label for="nome">Seu Nome</label>
+        <input type="text" id="nome" required>
+      </div>
+     
+      <div class="form-group">
+        <label for="telefone">Telefone/WhatsApp</label>
+        <input type="text" id="telefone" required>
+      </div>
+      <div class="form-group">
+        <label for="marca">Nome da Marca</label>
+        <input type="text" id="marca" required>
+      </div>
+      <div class="form-group">
+        <label for="descricao">Descrição do Pedido/Designer</label>
+        <textarea id="descricao" required></textarea>
+      </div>
+      <button type="submit" class="btn">Enviar Pedido via WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    // Captura os parâmetros da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const plano = urlParams.get("plano") || "Não informado";
+    const preco = urlParams.get("preco") || "";
+
+    // Preenche nos campos readonly
+    document.getElementById("plano").value = plano;
+    document.getElementById("preco").value = preco + " Kz";
+
+    document.getElementById("pedidoForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Captura os dados
+      let nome = document.getElementById("nome").value;
+      let telefone = document.getElementById("telefone").value;
+      let marca = document.getElementById("marca").value;
+      let descricao = document.getElementById("descricao").value;
+
+      // Número do WhatsApp de destino (coloque o seu)
+      let numeroWhatsApp = "244974416377"; 
+
+      // Monta a mensagem
+      let mensagem = `*Novo Pedido de Logotipo*%0A
+💼 Plano: ${plano}%0A
+💰 Preço: ${preco} Kz%0A
+👤 Nome: ${nome}%0A
+📱 Telefone: ${telefone}%0A
+🏷 Marca: ${marca}%0A
+📝 Descrição: ${descricao}`;
+
+      // Redireciona para o WhatsApp
+      let url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>

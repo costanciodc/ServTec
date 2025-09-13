@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolher Modelo de Requerimento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      color: #ffffff;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+    }
+    h1.req{
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .modelos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .modelo {
+      background: rgba(253, 253, 253, 0.075);
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .modelo:hover {
+      transform: translateY(-5px);
+    }
+
+    .modelo img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .modelo a {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .modelo a:hover {
+      background: #1e40af;
+    }
+  
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(253, 253, 253, 0.075);
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 20px rgba(247, 246, 246, 0.192);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(82, 78, 78, 0.315);
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #4b7be2;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #bebebe;
+      margin-bottom: 1rem;
+    }
+    .card p.kz{
+      font-size: 1.10rem;
+      color: #d8d8d8;
+      margin-bottom: 1rem;
+      background: #fcfdfd10;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+    }
+    .card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #1d4ed8;
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Escolha o <span> tipo de Requerimento</span><p class="topo">Crie Contrato Profissional em minutos com modelos modernos em PDF.</p></h1>
+  <div class="modelos">
+    <div class="modelo">
+      <img src="modelos\requerer1.png" alt="Modelo 1">
+        <h1 class="req">Requerimento para o Concurso Público</h1>
+      <a href="editor-requerimento.html?modelo=requerer1">Usar este modelo</a>
+    </div>
+    <div class="modelo">
+      <img src="modelos\requerer2.png" alt="Modelo 2">
+      <h1 class="req">Requerimento para o Concurso Público </h1>
+      <a href="editor-requerimento.html?modelo=requerer2">Usar este modelo</a>
+    </div>
+    <div class="modelo">
+      <img src="modelos\requerer3.png" alt="Modelo 3">
+      <h1 class="req">Requerimento para Escola </h1>
+      <a href="editor-requerimento.html?modelo=requerer3">Usar este modelo</a>
+    </div>
+    <div class="modelo">
+      <img src="modelos\carta (4).png" alt="Modelo 4">
+      <h1 class="req">Requerimento para qualquer instituição</h1>
+      <a href="editor-requerimento.html?modelo=requerer4">Usar este modelo</a>
+    </div>
+    
+  </div>
+  <section class="recomendados">
+  <div class="interface">
+    <h4 class="mais">Formas de <SPAn>Pagamentos.</SPAn><br>Segurança em <SPAn>Primeiro Lugar.</SPAn></h4>
+  </div><!--inteface-->
+ </section><!--recomendados-->
+  <section class="grid">
+ <div class="pag">
+        <h3 class="baixa">Transferência Expresse</h3>
+      <p>
+Trabalhamos apenas com transferência expressa para garantir rapidez e segurança.
+Após efetuar a transferência, basta enviar o comprovativo pelo WhatsApp.
+Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticamente.</p> 
+      
+    </div></section>
+<style>
+ p.topo{
+    text-align: center;
+    font-size: 16px;
+    color: #8f8f8f;
+    margin-top: 2px;
+  }
+.pag {
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 20px rgba(247, 246, 246, 0.192);
+    transition: all 0.3s ease;
+    font-size: 10px;
+    padding: 20px 50px;
+    margin: 5px 5px;
+    gap: 50px;
+
+     border: 1px solid #ffffff;
+    padding: 30px 30px;
+    margin: 10px 10px;
+    font-size: 10px;
+    transition: 0.55s;
+    cursor: pointer;
+    }
+    .pag:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(82, 78, 78, 0.315);
+    }
+    .pag h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #4b7be2;
+      text-align: center;
+    }
+    .pag p {
+      font-size: 0.95rem;
+      color: #bebebe;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    
+
+  /* recomendados */
+  
+
+  h4.mais{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 70px;
+    color: #8f8f8f;
+  }
+
+  h4.mas{
+    text-align: center;
+    font-size: 15px;
+    color: #8f8f8f;
+  }
+  h4.mas span{
+    text-align: center;
+    font-size: 15px;
+    color: #4b7be2;;
+  }
+  
+  
+  h5{
+    font-size: 20px;
+  }
+
+  h4.mais span{
+    color: #4b7be2;
+  }
+  h1 span{
+    color: #4b7be2;
+  }
+
+  
+
+</style>
+
+  <footer>
+    &copy; 2025 ServTec.ao. Feito para Angola. <br>
+    Todos os Direitos Reservados
+  </footer>
+</body>
+</html>
