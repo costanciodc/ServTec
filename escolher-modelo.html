@@ -46,7 +46,7 @@
       margin-bottom: 1rem;
     }
 
-    .modelo a {
+    .modelo .btn {
       display: inline-block;
       background: #2563eb;
       color: white;
@@ -55,10 +55,13 @@
       text-decoration: none;
       font-weight: 600;
       transition: background 0.2s ease;
+      border: 1px solid #ffffff;
+      font-size: 15px;
+      cursor: pointer;
     }
 
-    .modelo a:hover {
-      background: #1e40af;
+    .modelo .btn:hover {
+      background: #131c3a;
     }
   
     .grid {
@@ -98,15 +101,7 @@
       text-decoration: none;
       padding: 0.5rem 1rem;
     }
-    .card a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: #1d4ed8;
-      color: white;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-    }
+    
     header {
       text-align: center;
       margin-bottom: 2rem;
@@ -149,35 +144,35 @@
   <div class="modelos">
     <div class="modelo">
       <img src="modelos/cv1.png" alt="Modelo 1">
-      <a href="editor.html?modelo=cv1">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(1)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv2.png" alt="Modelo 2">
-      <a href="editor.html?modelo=cv2">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(2)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv3.png" alt="Modelo 3">
-      <a href="editor.html?modelo=cv3">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(3)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv4.png" alt="Modelo 4">
-      <a href="editor.html?modelo=cv4">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(4)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv5.png" alt="Modelo 5">
-      <a href="editor.html?modelo=cv5">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(5)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv6.png" alt="Modelo 6">
-      <a href="editor.html?modelo=cv6">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(6)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv7.png" alt="Modelo 7">
-      <a href="editor.html?modelo=cv7">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(7)">Usar este modelo</button>
     </div>
     <div class="modelo">
       <img src="modelos/cv8.png" alt="Modelo 8">
-      <a href="editor.html?modelo=cv8">Usar este modelo</a>
+      <button class="btn" onclick="escolherModelo(8)">Usar este modelo</button>
     </div>
   </div>
   <section class="recomendados">
@@ -269,5 +264,12 @@ Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticam
     &copy; 2025 ServTec.ao. Feito para Angola. <br>
     Todos os Direitos Reservados
   </footer>
+  <script>
+function escolherModelo(modelo) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const servico = urlParams.get("servico"); // pega o serviço da URL
+  window.location.href = `pagina-pagamento.html?servico=${servico}&modelo=${modelo}`;
+}
+</script>
 </body>
 </html>
