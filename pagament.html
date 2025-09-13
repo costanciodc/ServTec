@@ -182,104 +182,102 @@
                 
                 <div style="margin-top:14px" class="field">
             
-                <label style="display:block;margin-bottom:8px;font-weight:700;color:var(--accent)">Número Expresse</label>
-                <div class="copy-box">
-            <div class="copy-num" id="expresse-number">943799795</div>
-            <button class="btn" onclick="copyNumber()">Copiar</button>
-            </div>
-
-        
-
-
-            <div style="margin-top:18px" class="card">
-                <h2 class="comprovativo" style="margin:0 0 6px;font-size:18px;color:var(--accent)">Enviar comprovativo</h2>
-                <p class="small">Depois de finalizar a transferência no Multicaixa Expresse, faça o upload do comprovativo aqui. O sistema fará validação automática.</p>
-                <div class="beco">
-            <form id="uploadForm" >
-            <input type="file" id="comprovativo" accept="application/pdf" class="file" required>
-                    <div style="margin-top:12px;display:flex;gap:10px;align-items:center" class="beco">
-                    <button class="btn" type="submit" >Enviar Comprovativo</button><div class="small" style="color:var(--muted)">Formatos: PDF.</div>
                 
-            </form></div>
-        
-            <div id="message" class="message"></div>
-            <div id="mensagemBox" class="mensagem-box"></div>
-            <div id="statusBox" class="status">Aguardando envio do comprovativo.</div>
+
+    <div class="copy-box">
+      <div class="copy-num" id="expresse-number">943799795</div>
+      <button class="btn" onclick="copyNumber()">Copiar</button>
+    </div>
+
+    <div style="margin-top:18px" class="card">
+      <h2 style="margin:0 0 6px;font-size:18px;color:var(--accent)">Enviar comprovativo</h2>
+      <p class="small">Depois de finalizar a transferência no Multicaixa Expresse, faça o upload do comprovativo aqui.</p>
+      <form id="uploadForm">
+        <input type="file" id="comprovativo" accept="application/pdf" class="file" required>
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Enviar Comprovativo</button>
+          <div class="small">Formatos: PDF.</div>
         </div>
-</div>
+      </form>
+      <div id="mensagemBox" class="mensagem-box"></div>
+      <div id="statusBox" class="status">Aguardando envio do comprovativo.</div>
+    </div>
+  </div>
+
   <script>
+    // Pega parâmetros da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const servico = urlParams.get("servico") || "desconhecido";
+    const modelo = urlParams.get("modelo") || "1";
+
+    // Mostra informações do serviço
+    document.getElementById("info-servico").innerText = 
+      `Você selecionou o serviço: ${servico.toUpperCase()} | Modelo ${modelo}`;
+
     function showToast(msg) {
-  const toast = document.createElement("div");
-  toast.className = "toast";
-  toast.innerText = msg;
-  document.body.appendChild(toast);
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.innerText = msg;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add("show"), 100);
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
 
-  setTimeout(() => toast.classList.add("show"), 100);
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
-
-function copyNumber() {
-  const number = document.getElementById("expresse-number").innerText;
-  navigator.clipboard.writeText(number).then(() => {
-    showToast("Número copiado com sucesso!");
-  });
-}
-
+    function copyNumber() {
+      const number = document.getElementById("expresse-number").innerText;
+      navigator.clipboard.writeText(number).then(() => {
+        showToast("Número copiado com sucesso!");
+      });
+    }
 
     document.getElementById("uploadForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+      e.preventDefault();
+      const fileInput = document.getElementById("comprovativo");
+      if (fileInput.files.length === 0) {
+        mostrarMensagem("⚠️ Selecione um arquivo PDF antes de enviar.", "erro");
+        return;
+      }
 
-  const fileInput = document.getElementById("comprovativo");
-  if (fileInput.files.length === 0) {
-    mostrarMensagem("⚠️ Selecione um arquivo PDF antes de enviar.", "erro");
-    return;
-  }
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
 
-  const formData = new FormData();
-  formData.append("file", fileInput.files[0]);
+      mostrarMensagem("⏳ Validando comprovativo, aguarde...", "info");
 
-  mostrarMensagem("⏳ Validando comprovativo, aguarde...", "info");
+      try {
+        const resposta = await fetch("/api/verificarComprovativo", {
+          method: "POST",
+          body: formData,
+        });
 
-  try {
-    const resposta = await fetch("/api/verificarComprovativo", {
-      method: "POST",
-      body: formData,
+        const dados = await resposta.json();
+
+        if (dados.sucesso) {
+          mostrarMensagem("✅ Pagamento validado com sucesso!", "sucesso");
+          // Redirecionar após 2 segundos com servico e modelo
+          setTimeout(() => {
+            window.location.href = `editor.html?servico=${servico}&modelo=${modelo}`;
+          }, 2000);
+        } else {
+          mostrarMensagem("❌ " + dados.mensagem, "erro");
+        }
+      } catch (error) {
+        console.error(error);
+        mostrarMensagem("⚠️ Erro ao enviar comprovativo. Tente novamente.", "erro");
+      }
     });
 
-    const dados = await resposta.json();
-
-    if (dados.sucesso) {
-      mostrarMensagem("✅ Pagamento validado com sucesso!", "sucesso");
-
-      // Redirecionar após 2 segundos
-      setTimeout(() => {
-        window.location.href = "editor.html?modelo=1"; // ajuste a URL de destino
-      }, 2000);
-    } else {
-      mostrarMensagem("❌ " + dados.mensagem, "erro");
+    function mostrarMensagem(texto, tipo) {
+      const mensagemBox = document.getElementById("mensagemBox");
+      mensagemBox.innerText = texto;
+      mensagemBox.className = "mensagem-box";
+      if (tipo === "sucesso") mensagemBox.classList.add("sucesso");
+      if (tipo === "erro") mensagemBox.classList.add("erro");
+      if (tipo === "info") mensagemBox.classList.add("info");
+      mensagemBox.style.display = "block";
     }
-  } catch (error) {
-    console.error(error);
-    mostrarMensagem("⚠️ Erro ao enviar comprovativo. Tente novamente.", "erro");
-  }
-});
-
-// Função para exibir mensagens no centro da tela
-function mostrarMensagem(texto, tipo) {
-  const mensagemBox = document.getElementById("mensagemBox");
-  mensagemBox.innerText = texto;
-
-  mensagemBox.className = "mensagem-box"; // reset classes
-  if (tipo === "sucesso") mensagemBox.classList.add("sucesso");
-  if (tipo === "erro") mensagemBox.classList.add("erro");
-  if (tipo === "info") mensagemBox.classList.add("info");
-
-  mensagemBox.style.display = "block";
-}
   </script>
 </body>
 </html>
