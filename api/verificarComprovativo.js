@@ -66,7 +66,9 @@ export default async function handler(req, res) {
       texto = texto.replace(/\s+/g, " ").toLowerCase(); // normalizar espaços
 
       // validar valor
-      const contemValor = texto.includes(VALOR_ESPERADO_TEXT);
+      // Regex que aceita "400 Kz", "400,00 Kz", "400.00 Kz" (ignora maiúsc/minúsc)
+const valorRegex = /\b400(?:[,.]00)?\s*Kz\b/i;
+const contemValor = valorRegex.test(texto);
 
       // validar número (aceita mesmo se vier com espaços quebrados)
       const numeroRegex = new RegExp(NUMERO_EXPRESSE_ESPERADO.split("").join("\\s*"), "i");
