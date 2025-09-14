@@ -67,8 +67,9 @@ export default async function handler(req, res) {
 
       // validar valor
       // Regex que aceita "400 Kz", "400,00 Kz", "400.00 Kz" (ignora maiúsc/minúsc)
-const valorRegex = /\b400(?:[,.]00)?\s*Kz\b/i;
-const contemValor = valorRegex.test(texto);
+// Aceita "400 Kz", "400,00 Kz", "400.00 Kz", "400,00Kz", "400.00Kz"
+const valorRegex = /\b400(?:[,.]00)?\s*Kz\b|\b400(?:[,.]00)?Kz\b/i;
+
 
       // validar número (aceita mesmo se vier com espaços quebrados)
       const numeroRegex = new RegExp(NUMERO_EXPRESSE_ESPERADO.split("").join("\\s*"), "i");
