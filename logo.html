@@ -31,8 +31,9 @@
     
      h1 span{
       background: linear-gradient(90deg, #04ff82, #eeff00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text; /* fallback para alguns browsers */
+  -webkit-text-fill-color: transparent;
     }
 
     nav a {

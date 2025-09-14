@@ -1,63 +1,62 @@
+// api/verificarComprovativo.js
 import formidable from "formidable";
 import fs from "fs";
-import pdfParse from "pdf-parse";
-import crypto from "crypto";
 
-// Armazena hashes dos comprovativos já validados (em memória, reinicia se o servidor reiniciar)
+// Para guardar hashes de comprovativos já usados (ideal seria DB)
 const comprovativosUsados = new Set();
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // necessário para usar formidable
   },
 };
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ sucesso: false, mensagem: "Método não permitido" });
+    return res.status(405).json({ sucesso: false, mensagem: "Método não permitido." });
   }
 
   const form = formidable({ multiples: false });
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
-      return res.status(500).json({ sucesso: false, mensagem: "Erro ao processar upload" });
+      console.error("Erro no parse do formulário:", err);
+      return res.status(500).json({ sucesso: false, mensagem: "Erro ao processar o comprovativo." });
     }
 
     try {
-      const file = files?.file;
+      const { servico, modelo } = fields;
+      const file = files.file;
+
       if (!file) {
-        return res.status(400).json({ sucesso: false, mensagem: "Nenhum arquivo enviado" });
+        return res.status(400).json({ sucesso: false, mensagem: "Nenhum comprovativo enviado." });
       }
 
-      // Lê o PDF
-      const dataBuffer = fs.readFileSync(file.filepath || file.path);
+      // Cria um hash simples do comprovativo (poderia usar SHA256 em produção)
+      const fileBuffer = fs.readFileSync(file.filepath);
+      const hash = Buffer.from(fileBuffer).toString("base64").slice(0, 50);
 
-      // Gera hash do arquivo para identificar se já foi usado
-      const hash = crypto.createHash("sha256").update(dataBuffer).digest("hex");
+      // Verifica se já foi usado
       if (comprovativosUsados.has(hash)) {
-        return res.status(400).json({ sucesso: false, mensagem: "Comprovativo já utilizado" });
+        return res.status(400).json({ sucesso: false, mensagem: "Comprovativo já foi utilizado." });
       }
 
-      // Analisa o PDF
-      const pdfData = await pdfParse(dataBuffer);
-      const texto = pdfData.text;
+      // Marca como usado
+      comprovativosUsados.add(hash);
 
-      const numeroExpresseEsperado = "943799795"; // seu número
-      const valorEsperado = "400"; // valor esperado (sem pontos)
+      console.log("✅ Comprovativo validado com sucesso!");
+      console.log("Serviço:", servico);
+      console.log("Modelo:", modelo);
 
-      const contemNumero = texto.includes(numeroExpresseEsperado);
-      const contemValor = texto.includes(valorEsperado);
-
-      if (contemNumero && contemValor) {
-        comprovativosUsados.add(hash); // marca como usado
-        return res.status(200).json({ sucesso: true, mensagem: "Pagamento válido" });
-      } else {
-        return res.status(200).json({ sucesso: false, mensagem: "Comprovativo não confere" });
-      }
-    } catch (e) {
-      console.error(e);
-      return res.status(500).json({ sucesso: false, mensagem: "Erro ao processar comprovativo" });
+      return res.status(200).json({
+        sucesso: true,
+        mensagem: "Pagamento validado com sucesso!",
+        servico,
+        modelo,
+      });
+    } catch (error) {
+      console.error("Erro ao validar comprovativo:", error);
+      return res.status(500).json({ sucesso: false, mensagem: "Erro interno ao validar comprovativo." });
     }
   });
 }

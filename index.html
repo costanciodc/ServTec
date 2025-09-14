@@ -204,9 +204,14 @@ nav a {
     
     
     <div class="card">
+      <h3>Baixa livros</h3>
+      <p>Converta seu tempo livre em aprendizado.</p> <p class="kz"> 3 livros por apenas <span  class="color-change">500Kz</span></p>
+      <a href="livros.html">Começar</a>
+    </div>
+    <div class="card">
       <h3>Converter Documento(PDF, Word, PowerPoint...)</h3>
       <p>Converta um documento para a forma desejada.</p> <p class="kz"> Por apenas 50kz por conversão.</p>
-      <a href="servicos/revisao.html">Começar</a>
+      <a href="converter.html">Começar</a>
     </div>
     
   </section>
@@ -284,10 +289,10 @@ Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticam
     color: #4b7be2;;
   }
   h1 span{
-    text-align: center;
     background: linear-gradient(90deg, #04ff82, #eeff00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text; /* fallback para alguns browsers */
+  -webkit-text-fill-color: transparent;
   }
   
   
@@ -328,7 +333,7 @@ Por isso, reunimos em um único lugar serviços digitais essenciais: design de l
     &copy; 2025 ServTec.ao. Feito para Angola. <br>
     Todos os Direitos Reservados
   </footer>
-  </footer>
+  
 
   
   <script>
