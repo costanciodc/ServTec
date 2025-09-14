@@ -107,122 +107,92 @@
   </div>
 
   <script>
-    // Captura parâmetros da URL (servico e modelo)
-    const urlParams = new URLSearchParams(window.location.search);
-    const servico = urlParams.get("servico") || "desconhecido";
-    const modelo = urlParams.get("modelo") || "1";
+    // Mostra mensagem centralizada (reutiliza mensagemBox) com desaparecimento automático
+function mostrarMensagem(texto, tipo) {
+  const mensagemBox = document.getElementById("mensagemBox");
+  if (!mensagemBox) {
+    alert(texto);
+    return;
+  }
+  mensagemBox.innerText = texto;
+  mensagemBox.className = "mensagem-box";
+  if (tipo === "sucesso") mensagemBox.classList.add("sucesso");
+  if (tipo === "erro") mensagemBox.classList.add("erro");
+  if (tipo === "info") mensagemBox.classList.add("info");
+  mensagemBox.style.display = "block";
 
-    // Coloca os valores nos hidden (para envio ao backend)
-    document.getElementById("servicoHidden").value = servico;
-    document.getElementById("modeloHidden").value = modelo;
+  // desaparece automaticamente após 3 segundos
+  setTimeout(() => {
+    mensagemBox.style.display = "none";
+  }, 3000);
+}
 
-    // Função toast (mantive teu estilo)
-    function showToast(msg) {
-      const toast = document.createElement("div");
-      toast.className = "toast";
-      toast.innerText = msg;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.classList.add("show"), 100);
-      setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
-    }
+// Handler do envio do comprovativo
+document.getElementById("uploadForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    function copyNumber() {
-      const number = document.getElementById("expresse-number").innerText;
-      navigator.clipboard.writeText(number).then(() => {
-        showToast("Número copiado com sucesso!");
-      }).catch(() => {
-        showToast("Não foi possível copiar automaticamente. Selecione e copie manualmente.");
-      });
-    }
+  const submitBtn = document.getElementById("submitBtn");
+  const fileInput = document.getElementById("comprovativo");
+  if (!fileInput || fileInput.files.length === 0) {
+    mostrarMensagem("⚠️ Selecione um arquivo PDF antes de enviar.", "erro");
+    return;
+  }
 
-    // Mostra mensagem centralizada (reutiliza mensagemBox)
-    function mostrarMensagem(texto, tipo) {
-      const mensagemBox = document.getElementById("mensagemBox");
-      if (!mensagemBox) {
-        alert(texto);
-        return;
-      }
-      mensagemBox.innerText = texto;
-      mensagemBox.className = "mensagem-box";
-      if (tipo === "sucesso") mensagemBox.classList.add("sucesso");
-      if (tipo === "erro") mensagemBox.classList.add("erro");
-      if (tipo === "info") mensagemBox.classList.add("info");
-      mensagemBox.style.display = "block";
-    }
+  const formData = new FormData();
+  formData.append("file", fileInput.files[0]);
+  formData.append("servico", document.getElementById("servicoHidden").value);
+  formData.append("modelo", document.getElementById("modeloHidden").value);
 
-    // Handler do envio do comprovativo
-    document.getElementById("uploadForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Enviando...";
+  document.getElementById("statusBox").innerText = "Enviando comprovativo...";
 
-      const submitBtn = document.getElementById("submitBtn");
-      const fileInput = document.getElementById("comprovativo");
-      if (!fileInput || fileInput.files.length === 0) {
-        mostrarMensagem("⚠️ Selecione um arquivo PDF antes de enviar.", "erro");
-        return;
-      }
+  mostrarMensagem("⏳ Validando comprovativo, aguarde...", "info");
 
-      // Prepara FormData (envia file + serviço + modelo)
-      const formData = new FormData();
-      formData.append("file", fileInput.files[0]);
-      formData.append("servico", document.getElementById("servicoHidden").value);
-      formData.append("modelo", document.getElementById("modeloHidden").value);
-
-      // UI: desabilita botão e informa status
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Enviando...";
-      document.getElementById("statusBox").innerText = "Enviando comprovativo...";
-
-      mostrarMensagem("⏳ Validando comprovativo, aguarde...", "info");
-
-      try {
-        const resposta = await fetch("/api/verificarComprovativo", {
-          method: "POST",
-          body: formData,
-        });
-
-        // tenta interpretar JSON mesmo quando status != 200
-        let dados;
-        try {
-          dados = await resposta.json();
-        } catch (err) {
-          // resposta inválida
-          console.error("Resposta inválida do servidor:", err);
-          mostrarMensagem("⚠️ Resposta inválida do servidor.", "erro");
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Enviar Comprovativo";
-          document.getElementById("statusBox").innerText = "Aguardando envio do comprovativo.";
-          return;
-        }
-
-        // tratamento genérico (compatível com {sucesso: true/false, mensagem: "..."} ou {erro: "..."} )
-        const sucesso = dados.sucesso === true || dados.sucesso === "true";
-        const mensagem = dados.mensagem || dados.erro || "Falha na validação.";
-
-        if (sucesso) {
-          mostrarMensagem("✅ Pagamento validado com sucesso!", "sucesso");
-          document.getElementById("statusBox").innerText = "Pagamento validado.";
-          // redireciona mantendo serviço e modelo
-          setTimeout(() => {
-            window.location.href = `editor.html?servico=${encodeURIComponent(servico)}&modelo=${encodeURIComponent(modelo)}`;
-          }, 1400);
-        } else {
-          // caso: comprovativo já usado -> backend deve enviar mensagem apropriada
-          mostrarMensagem("❌ " + mensagem, "erro");
-          document.getElementById("statusBox").innerText = "Comprovativo inválido.";
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Enviar Comprovativo";
-        }
-      } catch (error) {
-        console.error("Erro no envio do comprovativo:", error);
-        mostrarMensagem("⚠️ Erro ao enviar comprovativo. Tente novamente.", "erro");
-        document.getElementById("statusBox").innerText = "Erro no envio.";
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar Comprovativo";
-      }
+  try {
+    const resposta = await fetch("/api/verificarComprovativo", {
+      method: "POST",
+      body: formData,
     });
+
+    let dados;
+    try {
+      dados = await resposta.json();
+    } catch (err) {
+      console.error("Resposta inválida do servidor:", err);
+      mostrarMensagem("⚠️ Resposta inválida do servidor.", "erro");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Enviar Comprovativo";
+      document.getElementById("statusBox").innerText = "Aguardando envio do comprovativo.";
+      return;
+    }
+
+    const sucesso = dados.sucesso === true || dados.sucesso === "true";
+    const mensagem = dados.mensagem || dados.erro || "Falha na validação.";
+
+    if (sucesso) {
+      mostrarMensagem("✅ Pagamento validado com sucesso!", "sucesso");
+      document.getElementById("statusBox").innerText = "Pagamento validado.";
+
+      // redireciona mantendo serviço e modelo
+      setTimeout(() => {
+        window.location.href = `editor.html?servico=${encodeURIComponent(servico)}&modelo=${encodeURIComponent(modelo)}`;
+      }, 1400); // redireciona após 1.4s para dar tempo da mensagem aparecer
+    } else {
+      mostrarMensagem("❌ " + mensagem, "erro");
+      document.getElementById("statusBox").innerText = "Comprovativo inválido.";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Enviar Comprovativo";
+    }
+  } catch (error) {
+    console.error("Erro no envio do comprovativo:", error);
+    mostrarMensagem("⚠️ Erro ao enviar comprovativo. Tente novamente.", "erro");
+    document.getElementById("statusBox").innerText = "Erro no envio.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Enviar Comprovativo";
+  }
+});
+
   </script>
 </body>
 </html>
