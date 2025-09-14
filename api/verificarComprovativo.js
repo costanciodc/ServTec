@@ -67,7 +67,7 @@ export default async function handler(req, res) {
 
       // validar valor
       // Regex que aceita "400 Kz", "400,00 Kz", "400.00 Kz" (ignora maiúsc/minúsc)
-// Aceita "400 Kz", "400,00 Kz", "400.00 Kz", "400,00Kz", "400.00Kz"
+        // aceita com ou sem espaço antes do Kz
 const valorRegex = /\b400(?:[,.]00)?\s*Kz\b|\b400(?:[,.]00)?Kz\b/i;
 
 
