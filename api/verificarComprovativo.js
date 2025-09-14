@@ -22,7 +22,22 @@ export const config = {
 };
 
 // Número Expresse que o sistema espera (altera se necessário)
-const NUMERO_EXPRESSE_ESPERADO = "943799795";
+// Normaliza o texto do PDF
+const texto = data.text.replace(/\s+/g, " ").toLowerCase();
+
+// Número esperado (sem espaços, sempre em minúsculo)
+const numeroEsperado = "943799795";
+
+// Verifica se o número aparece mesmo que venha com espaços no PDF
+const numeroRegex = new RegExp(numeroEsperado.split("").join("\\s*"), "i"); 
+
+if (!numeroRegex.test(texto)) {
+  return res.status(400).json({
+    sucesso: false,
+    mensagem: "Número Expresse não encontrado no comprovativo."
+  });
+}
+
 
 // Valor esperado fixo (400 Kz)
 const VALOR_ESPERADO_TEXT = "400";
