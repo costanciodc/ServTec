@@ -1,16 +1,16 @@
 {
-  "dependencies": {
-    "formidable": "^3.5.4"
-  },
   "name": "laura-chandungo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^3.5.4",
+    "pdf-parse": "^1.1.1"
+  }
 }
