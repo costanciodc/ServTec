@@ -146,12 +146,9 @@
   mostrarMensagem("✅ Pagamento validado!", "sucesso");
   document.getElementById("statusBox").innerText = "Pagamento validado.";
   setTimeout(() => {
-    // Recupera o modelo que veio da tela anterior
-    const urlParams = new URLSearchParams(window.location.search);
-    const modelo = urlParams.get("modelo") || "cv1"; // default se não vier
-
+    
     // Redireciona com o modelo incluído
-    window.location.href = `editor.html?modelo=cv${encodeURIComponent(modelo)}`;
+    window.location.href = `editor.html?modelo=${encodeURIComponent(modelo)}`;
   }, 1400);
 
         } else {

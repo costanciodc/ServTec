@@ -312,7 +312,7 @@ const modelo = urlParams.get("modelo"); // vai vir "cv1", "cv2"...
 fetch(`modelos/${modelo}.html`)
   .then(r => r.text())
   .then(html => {
-    document.getElementById("curriculoContainer").innerHTML = html;
+    document.getElementById("curriculoVisual").innerHTML = html;
   });
 
 
