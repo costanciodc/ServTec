@@ -266,9 +266,8 @@ Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticam
   </footer>
   <script>
 function escolherModelo(modelo) {
-  const urlParams = new URLSearchParams(window.location.search);
-  const servico = urlParams.get("servico"); // pega o serviço da URL
-  window.location.href = `pagament.html?servico=${servico}&modelo=${modelo}`;
+  
+  window.location.href = `pagament.html?modelo=cv${modelo}`;
 }
 </script>
 </body>

@@ -6,186 +6,252 @@
   <title>Editor de Currículo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    
 * {
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(145deg, #0c0c0c, #011427);
-  margin: 0;
-  padding: 20px;
-}
-header {
-  background-color: #1e3a8a;
-  color: white;
-  padding: 1rem;
-  font-weight: 620;
-  text-align: center;
-  font-size: 1.5rem;
-  border-radius: 10px;
-  align-items: center;
-}
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 1rem;
-  gap: 2rem;
-}
-.editor-panel {
-  flex: 1 1 300px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px #02ad0b;
-  max-width: 400px;
-}
-.editor-panel h2 {
-  margin-bottom: 16px;
-  font-size: 20px;
-}
-.editor-panel label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 500;
-}
-.editor-panel input,
-.editor-panel textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.curriculo-container {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #0c0c0c, #011427);
+      margin: 0;
+      padding: 20px;
+    }
+
+    header{
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem;
+      font-weight: 620;
+      text-align: center;
+      font-size: 1.5rem;
+      border-radius: 10px;
+      align-items: center;
+    }
+
+    .wrapper {
+     display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 1rem;
+      gap: 2rem;
+    }
+
+    .editor-panel {
+     flex: 1 1 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px #02ad0b;
+      max-width: 400px;
+    }
+
+    .editor-panel h2 {
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    .editor-panel label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+
+
+    .editor-panel input,
+    .editor-panel textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .curriculo-container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.acoes {
-  margin-top: 1rem;
-  text-align: center;
-}
-.acoes button {
-  margin: 0.5rem;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  background-color: #393cff;
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-}
-.acoes button:hover {
-  background-color: #4caf50;
-}
+
+    .acoes {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .acoes button {
+      margin: 0.5rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #393cff;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .acoes button:hover{
+      background-color: #4caf50;
+    }
+
+    .acoess {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .acoess button {
+      margin: 5px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      background: #393cff;
+      padding: 16px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 620;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 .botoes {
-  text-align: center;
-  margin-top: 1rem;
-  align-items: center;
-}
-button {
-  margin: 0.5rem;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #1e3a8a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-}
-button:hover {
-  background-color: #374bb3;
-}
-.cee {
-  color: #0f172a;
-  font-size: 1.6rem;
-  border-bottom: 2px solid #3b82f6;
-  padding-bottom: 0.3rem;
-  margin-bottom: 1.5rem;
-}
-/* Responsividade */
-@media (max-width: 798px) {
-  .editor-panel {
-    width: 370px;
-  }
-  .curriculo-container.a4 {
+      text-align: center;
+      margin-top: 1rem;
+      align-items: center;
+      
+    }
+
+    button {
+      margin: 0.5rem;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background-color: #374bb3;
+    }
+     .cee{     
+      color: #0f172a;
+      font-size: 1.6rem;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 798px) {
+      
+
+      .editor-panel {
+        width: 370px;
+      }
+
+       .curriculo-container.a4 {
     transform: scale(0.5);
     transform-origin: top center;
-    align-items: center;
+      align-items: center;
   }
-  h2.cee {
-    font-size: 1.1rem;
-  }
-}
-@media (max-width: 420px) {
-  .cee {
-    font-size: 1.2rem;
-  }
-  .editor-panel {
-    width: 350px;
-  }
-  .curriculo-container {
+h2.cee{     
+      font-size: 1.1rem;
+      ;
+    }
+
+    }
+
+    @media (max-width: 420px) {
+      
+.cee{     
+      
+      font-size: 1.2rem;
+      ;
+    }
+      .editor-panel {
+        width: 350px;
+      }
+
+     .curriculo-container {
     transform: scale(0.35);
     transform-origin: top center;
-    align-items: center;
+      align-items: center;
   }
-}
-@media (max-width: 440px) {
-  .cee {
-    font-size: 1.2rem;
-  }
-  .editor-panel {
-    width: 348px;
-  }
-  .curriculo-container {
+    }
+    
+    @media (max-width: 440px) {
+      .cee{     
+     
+      font-size: 1.2rem;
+      ;
+    }
+
+
+      .editor-panel {
+        width: 348px;
+      }
+
+     .curriculo-container {
     transform: scale(0.47);
-    transform-origin: top center;
-    align-items: center;
+   transform-origin: top center;
+     align-items: center;
   }
-}
-@media (max-width: 398px) {
-  .cee {
-    font-size: 1.2rem;
-  }
-  .editor-panel {
-    width: 360px;
-  }
-  .curriculo-container {
+    }
+    @media (max-width: 398px) {
+     
+.cee{     
+     
+      font-size: 1.2rem;
+      ;
+    }
+
+      .editor-panel {
+        width: 360px;
+      }
+
+     .curriculo-container {
     transform: scale(0.43);
-    transform-origin: top center;
-    align-items: center;
+   transform-origin: top center;
+     align-items: center;
   }
   .botoes {
-    margin: 2px;
-  }
-}
-@media (max-width: 374px) {
-  .cee {
-    font-size: 1.2rem;
-  }
-  .editor-panel {
-    width: 300px;
-  }
-  .curriculo-container {
+      margin: 2px;
+      
+    }
+    }
+    @media (max-width: 374px) {
+      
+.cee{     
+     
+      font-size: 1.2rem;
+      ;
+    }
+
+      .editor-panel {
+        width: 300px;
+      }
+
+     .curriculo-container {
     transform: scale(0.4);
     transform-origin: top center;
     align-items: center;
   }
   .botoes {
-    margin: 2px;
-  }
-}
+      margin: 2px;
+      
+    }
+    }
   </style>
 </head>
+
+
 <body>
-  <header>Editor de Currículo</header>
-  <div class="wrapper">
+ <header>Editor de Currículo</header>
+ <div class="wrapper">
+  
+ 
     <!-- Painel de Edição -->
     <div class="editor-panel">
       <h2 class="cee">Preencha com os seus dados</h2>
@@ -198,6 +264,7 @@ button:hover {
       <label>Telefone:</label>
       <input type="text" id="telefone" placeholder="Telefone" data-input="telefone"/>
 
+
       <label>Data de nascimento:</label>
       <input type="date" id="nascimento" data-input="nascimento"/>
 
@@ -206,8 +273,7 @@ button:hover {
 
       <label>Objetivo:</label>
       <textarea id="objetivo" placeholder="Escreva seu objetivo" rows="3" data-input="objetivo"></textarea>
-
-      <label>Perfil Profissional (suas Qualidades):</label>
+      <label>Perfil Profissional(suas Qualidades):</label>
       <textarea id="qualidade" placeholder="Fale sobre Você/Suas Qualidades" rows="3" data-input="qualidade"></textarea>
 
       <label>Formação Acadêmica:</label>
@@ -221,78 +287,81 @@ button:hover {
        
       <div class="acoes">
         <button onclick="document.getElementById('curriculoVisual').scrollIntoView({behavior:'smooth'})">Ver Currículo</button>
-      </div>
-    </div>
+      </div></div>
+    
+    
 
     <!-- Currículo -->
+    <!-- ⛔️ Removemos a classe .a4 daqui -->
     <div class="curriculo-container">
-      <!-- Agora só container, sem classe .a4 -->
-      <div id="curriculoVisual"></div>
+        <div class="a4" id="curriculoVisual"></div>
     </div>
+  
 
-    <div class="botoes">
-      <button onclick="baixarPDF()">Download PDF</button>
-      <button onclick="window.location.href='index.html'">Voltar</button>
-    </div>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-  <script>
-    const modelo = new URLSearchParams(window.location.search).get("modelo") || "cv1";
-    const curriculoVisual = document.getElementById("curriculoVisual");
+  <div class="botoes">
+    <button onclick="baixarPDF()">Download PDF</button>
+    <button onclick="window.location.href='index.html'">Voltar</button>
+  </div></div>
 
-    // Carrega o modelo escolhido
-    fetch(`modelos/${modelo}.html`)
-      .then((res) => res.text())
-      .then((html) => {
-        curriculoVisual.innerHTML = html;
 
-        // Liga os inputs do painel ao currículo
-        document.querySelectorAll("[data-input]").forEach((input) => {
-          input.addEventListener("input", () => {
-            const id = input.getAttribute("data-input");
-            const target = curriculoVisual.querySelector(`[data-id="${id}"]`);
-            if (!target) return;
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<script>
+  const modelo = new URLSearchParams(window.location.search).get("modelo") || "cv1";
+  const curriculoVisual = document.getElementById("curriculoVisual");
 
-            if (input.tagName === "TEXTAREA" && (id === "experiencia" || id === "habilidades")) {
-              const items = input.value.split("\n").filter(item => item.trim() !== "");
-              target.innerHTML = items.map(i => `<li> ${i}</li>`).join("");
-            } else {
-              target.textContent = input.value;
-            }
-          });
+  fetch(`modelos/${modelo}.html`)
+    .then((res) => res.text())
+    .then((html) => {
+      curriculoVisual.innerHTML = html;
+
+      document.querySelectorAll("[data-input]").forEach((input) => {
+        input.addEventListener("input", () => {
+          const id = input.getAttribute("data-input");
+          const target = curriculoVisual.querySelector(`[data-id="${id}"]`);
+          if (!target) return;
+
+          if (input.tagName === "TEXTAREA" && (id === "experiencia" || id === "habilidades")) {
+            const items = input.value.split("\n").filter(item => item.trim() !== "");
+            target.innerHTML = items.map(i => `<li> ${i}</li>`).join("");
+          } else {
+            target.textContent = input.value;
+          }
         });
       });
+    });
 
-    function baixarPDF() {
-      const a4Element = document.querySelector("#curriculoVisual .a4"); 
-      if (!a4Element) return;
+  function baixarPDF() {
+  const a4Element = document.querySelector("#curriculoVisual .a4"); // <-- CORRIGIDO
+  if (!a4Element) return;
 
-      const originalTransform = a4Element.style.transform;
-      const originalWidth = a4Element.style.width;
+  const originalTransform = a4Element.style.transform;
+  const originalWidth = a4Element.style.width;
 
-      a4Element.style.transform = "none";
-      a4Element.style.width = "794px";
+  a4Element.style.transform = "none";
+  a4Element.style.width = "794px";
 
-      const opt = {
-        margin: 0,
-        filename: 'curriculo.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: {
-          scale: 4,
-          useCORS: true,
-          logging: false,
-          allowTaint: true,
-          scrollY: 0
-        },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
+  const opt = {
+    margin: 0,
+    filename: 'curriculo_cv1.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: {
+      scale: 4,
+      useCORS: true,
+      logging: false,
+      allowTaint: true,
+      scrollY: 0
+    },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
 
-      html2pdf().set(opt).from(a4Element).save().then(() => {
-        a4Element.style.transform = originalTransform;
-        a4Element.style.width = originalWidth;
-      });
-    }
-  </script>
+  html2pdf().set(opt).from(a4Element).save().then(() => {
+    a4Element.style.transform = originalTransform;
+    a4Element.style.width = originalWidth;
+  });
+}
+
+</script>
+
 </body>
 </html>
