@@ -307,13 +307,24 @@ h2.cee{
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-const modelo = urlParams.get("modelo"); // vai vir "cv1", "cv2"...
+ const urlParams = new URLSearchParams(window.location.search);
+const modelo = urlParams.get("modelo") || "cv1"; // sempre algo tipo "cv1", "cv2"...
+console.log("Modelo carregado:", modelo);
+
+// Carregar o HTML do modelo
 fetch(`modelos/${modelo}.html`)
-  .then(r => r.text())
+  .then(res => {
+    if (!res.ok) throw new Error("Modelo não encontrado: " + modelo);
+    return res.text();
+  })
   .then(html => {
     document.getElementById("curriculoVisual").innerHTML = html;
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("curriculoVisual").innerHTML = "<p style='color:red'>Erro ao carregar modelo.</p>";
   });
+
 
 
       
