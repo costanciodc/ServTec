@@ -140,6 +140,9 @@
         const dados = await resposta.json();
         const sucesso = dados.sucesso === true || dados.sucesso === "true";
         const mensagem = dados.mensagem || dados.erro || "Falha na validação.";
+    // Pegar os parâmetros da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelo = urlParams.get("modelo");
 
         if (sucesso) {
           mostrarMensagem("✅ Pagamento validado!", "sucesso");
