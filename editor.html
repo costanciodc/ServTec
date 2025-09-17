@@ -307,13 +307,22 @@ h2.cee{
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 <script>
-  const modelo = new URLSearchParams(window.location.search).get("modelo") || "cv1";
-  const curriculoVisual = document.getElementById("curriculoVisual");
+  const urlParams = new URLSearchParams(window.location.search);
+const modelo = urlParams.get("modelo") || "cv1";
 
-  fetch(`modelos/${modelo}.html`)
-    .then((res) => res.text())
-    .then((html) => {
-      curriculoVisual.innerHTML = html;
+fetch(`modelos/${modelo}.html`)
+  .then(res => {
+    if (!res.ok) throw new Error("Modelo não encontrado");
+    return res.text();
+  })
+  .then(html => {
+    document.getElementById("curriculoVisual").innerHTML = html;
+  })
+  .catch(err => {
+    console.error("Erro ao carregar modelo:", err);
+    document.getElementById("curriculoVisual").innerHTML = "<p>Erro ao carregar o modelo.</p>";
+  });
+
 
       document.querySelectorAll("[data-input]").forEach((input) => {
         input.addEventListener("input", () => {
