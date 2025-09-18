@@ -145,11 +145,13 @@
         if (sucesso) {
   mostrarMensagem("✅ Pagamento validado!", "sucesso");
   document.getElementById("statusBox").innerText = "Pagamento validado.";
-  setTimeout(() => {
-    
-    // Redireciona com o modelo incluído
-    window.location.href = `editor.html?modelo=${encodeURIComponent(modelo)}`;
+  
+   setTimeout(() => {
+    // pega o token devolvido pelo backend
+    const token = dados.token || "";
+    window.location.href = `editor.html?modelo=${encodeURIComponent(modelo)}&token=${encodeURIComponent(token)}`;
   }, 1400);
+}
 
         } else {
           mostrarMensagem("❌ " + mensagem, "erro");

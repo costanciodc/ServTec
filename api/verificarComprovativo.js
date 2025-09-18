@@ -18,6 +18,13 @@ const VALOR_ESPERADO = 100;
 
 // Set para evitar comprovativos repetidos (reinicia em cold start)
 const comprovativosUsados = new Set();
+const tokensValidos = new Map(); // token -> timestamp
+
+
+
+function gerarToken() {
+  return crypto.randomBytes(16).toString("hex");
+}
 
 function getFileObject(files) {
   if (!files) return null;
@@ -83,10 +90,31 @@ export default async function handler(req, res) {
       // Tudo certo: marca como usado
       comprovativosUsados.add(hash);
 
-      return res.status(200).json({ sucesso: true, mensagem: "Pagamento validado com sucesso" });
+     // 🔑 Gerar token válido por 30 minutos
+      const token = gerarToken();
+      tokensValidos.set(token, Date.now() + 30 * 60 * 1000);
+
+      return res.status(200).json({ 
+        sucesso: true, 
+        mensagem: "Pagamento validado com sucesso", 
+        token 
+      });
     } catch (e) {
       console.error("Erro interno ao validar comprovativo:", e);
       return res.status(500).json({ sucesso: false, mensagem: "Erro interno ao validar comprovativo" });
     }
   });
 }
+
+// Função auxiliar para validar token em outras rotas
+export function validarToken(token) {
+  if (!tokensValidos.has(token)) return false;
+  const expira = tokensValidos.get(token);
+  if (Date.now() > expira) {
+    tokensValidos.delete(token);
+    return false;
+  }
+  return true;
+}
+  
+

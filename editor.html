@@ -310,6 +310,15 @@ h2.cee{
  const urlParams = new URLSearchParams(window.location.search);
 const modelo = urlParams.get("modelo") || "cv1"; // sempre algo tipo "cv1", "cv2"...
 console.log("Modelo carregado:", modelo);
+ const token = urlParams.get("token");
+
+  // 🔒 Bloqueio de acesso sem token
+  if (!token) {
+    alert("Acesso negado! Por favor, realize o pagamento primeiro.");
+    window.location.href = "pagament.html";
+  }
+
+
 
 // Carregar o HTML do modelo
 fetch(`modelos/${modelo}.html`)
@@ -344,8 +353,8 @@ fetch(`modelos/${modelo}.html`)
       });
     
 
-  function baixarPDF() {
-  const a4Element = document.querySelector("#curriculoVisual .a4"); // <-- CORRIGIDO
+ function baixarPDF() {
+  const a4Element = document.querySelector("#curriculoVisual .a4"); 
   if (!a4Element) return;
 
   const originalTransform = a4Element.style.transform;
@@ -356,23 +365,23 @@ fetch(`modelos/${modelo}.html`)
 
   const opt = {
     margin: 0,
-    filename: 'curriculo_cv1.pdf',
+    filename: 'curriculo.pdf',
     image: { type: 'jpeg', quality: 1 },
-    html2canvas: {
-      scale: 4,
-      useCORS: true,
-      logging: false,
-      allowTaint: true,
-      scrollY: 0
-    },
+    html2canvas: { scale: 4, useCORS: true, logging: false, allowTaint: true, scrollY: 0 },
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   };
 
   html2pdf().set(opt).from(a4Element).save().then(() => {
     a4Element.style.transform = originalTransform;
     a4Element.style.width = originalWidth;
+
+    // 🔥 Após download, redireciona para a página principal com Upsell
+    setTimeout(() => {
+      window.location.href = "index.html?upsell=carta";
+    }, 2000);
   });
 }
+
 
 </script>
 
