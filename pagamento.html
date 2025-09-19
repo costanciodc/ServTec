@@ -163,15 +163,27 @@
           document.getElementById("statusBox").innerText = "Pagamento validado.";
 
           setTimeout(() => {
-            const token = dados.token || "";
-            let destino = "";
-            if (servico === "requerimento") destino = "editor-requerimento.html";
-            else if (servico === "contrato") destino = "editor-contrato.html";
-            else if (servico === "carta") destino = "editor-carta.html";
-            else destino = "editor.html"; // fallback
+  const token = dados.token || "";
+  let destino = "";
+  let modeloFinal = modelo;
 
-            window.location.href = `${destino}?modelo=${encodeURIComponent(modelo)}&token=${encodeURIComponent(token)}`;
-          }, 1400);
+  if (servico === "requerimento") {
+    destino = "editor-requerimento.html";
+    if (!modelo.startsWith("requerer")) modeloFinal = "requerer1";
+  }
+  else if (servico === "contrato") {
+    destino = "editor-contrato.html";
+    if (!modelo.startsWith("contrato")) modeloFinal = "contrato1";
+  }
+  else if (servico === "carta") {
+    destino = "editor-carta.html";
+    if (!modelo.startsWith("carta")) modeloFinal = "carta1";
+  }
+  
+
+  window.location.href = `${destino}?modelo=${encodeURIComponent(modeloFinal)}&token=${encodeURIComponent(token)}`;
+}, 1400);
+
 
         } else {
           mostrarMensagem("❌ " + mensagem, "erro");
