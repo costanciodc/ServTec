@@ -266,17 +266,48 @@ header.editor{
   const cartaVisual = document.getElementById("cartaVisual");
   let modeloCarregado = false;
 
-  // --- 2. Carregar modelo selecionado ---
-  fetch(`modelos/${modelo}.html`)
-    .then(res => res.text())
-    .then(html => {
-      cartaVisual.innerHTML = html;
-      atualizarDados();
-      modeloCarregado = true;
-    })
-    .catch(() => {
-      cartaVisual.innerHTML = "<p style='color:red'>Erro ao carregar o modelo.</p>";
-    });
+ // --- 2. Carregar modelo selecionado ---
+fetch(`modelos/${modelo}.html`)
+  .then(res => res.text())
+  .then(html => {
+    cartaVisual.innerHTML = html;
+    modeloCarregado = true;
+
+    // só depois que o modelo já está no DOM
+    inicializarEventos();
+  })
+  .catch(() => {
+    cartaVisual.innerHTML = "<p style='color:red'>Erro ao carregar o modelo.</p>";
+  });
+
+// --- 4. Inicializar eventos de atualização dinâmica ---
+function inicializarEventos() {
+  const campos = {
+    nome: document.getElementById("nome"),
+    cargo: document.getElementById("cargo"),
+    empresa: document.getElementById("empresa"),
+    objetivo: document.getElementById("objetivo"),
+    habilidades: document.getElementById("habilidades"),
+    telefone: document.getElementById("telefone"),
+    email: document.getElementById("email"),
+    local: document.getElementById("local"),
+    data: document.getElementById("data")
+  };
+
+  for (let key in campos) {
+    if (campos[key]) {
+      campos[key].addEventListener("input", () => {
+        const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
+        els.forEach(el => {
+          if (campos[key].value.trim() !== "") {
+            el.textContent = campos[key].value;
+          }
+        });
+      });
+    }
+  }
+}
+
 
   // --- 3. Alteração de gênero ---
   document.getElementById("genero").addEventListener("change", function () {
@@ -292,33 +323,7 @@ header.editor{
     }
   });
 
-  // --- 4. Atualização dinâmica dos campos ---
-  function atualizarDados() {
-    const campos = {
-      nome: document.getElementById("nome"),
-      cargo: document.getElementById("cargo"),
-      empresa: document.getElementById("empresa"),
-      objetivo: document.getElementById("objetivo"),
-      habilidades: document.getElementById("habilidades"),
-      telefone: document.getElementById("telefone"),
-      email: document.getElementById("email"),
-      local: document.getElementById("local"),
-      data: document.getElementById("data")
-    };
-
-    for (let key in campos) {
-      if (campos[key]) {
-        campos[key].addEventListener("input", () => {
-          const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
-          els.forEach(el => {
-  if (campos[key].value.trim() !== "") {
-    el.textContent = campos[key].value;
-  }
-});
-        });
-      }
-    }
-  }
+  
 
   // --- 5. Baixar PDF ---
   function baixarPDF() {
