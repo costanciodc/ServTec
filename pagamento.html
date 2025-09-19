@@ -100,105 +100,32 @@
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const modelo = urlParams.get("modelo") || "cv1";
-    const servico = urlParams.get("servico") || "requerimento, " ; // serviço escolhido
-    document.getElementById("modeloHidden").value = modelo;
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const modelo = urlParams.get("modelo"); // ex: carta1, contrato1, requerer1
 
-    function showToast(msg) {
-      const toast = document.createElement("div");
-      toast.className = "toast";
-      toast.innerText = msg;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.classList.add("show"), 100);
-      setTimeout(() => { toast.classList.remove("show"); setTimeout(() => toast.remove(), 300); }, 3000);
-    }
+  if (modelo) {
+    fetch(`modelos/${modelo}.html`)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("preview").innerHTML = html;
 
-    function copyNumber() {
-      navigator.clipboard.writeText(document.getElementById("expresse-number").innerText)
-        .then(() => showToast("Número copiado com sucesso!"))
-        .catch(() => showToast("Não foi possível copiar automaticamente."));
-    }
-
-    function mostrarMensagem(texto, tipo) {
-      const mensagemBox = document.getElementById("mensagemBox");
-      mensagemBox.innerText = texto;
-      mensagemBox.className = "mensagem-box " + tipo;
-      mensagemBox.style.display = "block";
-      setTimeout(() => { mensagemBox.style.display = "none"; }, 3000);
-    }
-
-    document.getElementById("uploadForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const submitBtn = document.getElementById("submitBtn");
-      const fileInput = document.getElementById("comprovativo");
-      if (!fileInput || fileInput.files.length === 0) {
-        mostrarMensagem("⚠️ Selecione um arquivo PDF antes de enviar.", "erro");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("file", fileInput.files[0]);
-      formData.append("modelo", modelo);
-      formData.append("servico", servico);
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Enviando...";
-      document.getElementById("statusBox").innerText = "Enviando comprovativo...";
-
-      mostrarMensagem("⏳ Validando comprovativo, aguarde...", "info");
-
-      try {
-        const resposta = await fetch("/api/verificarComprovativotodos", {
-          method: "POST",
-          body: formData
+        // Agora verifica os campos do formulário em relação ao modelo carregado
+        const formFields = document.querySelectorAll("form [name]");
+        formFields.forEach(field => {
+          const targetId = field.getAttribute("name");
+          const targetElement = document.getElementById(targetId);
+          if (!targetElement) {
+            field.closest(".form-group, .campo")?.classList.add("hidden");
+          } else {
+            field.closest(".form-group, .campo")?.classList.remove("hidden");
+          }
         });
-
-        const dados = await resposta.json();
-        const sucesso = dados.sucesso === true || dados.sucesso === "true";
-        const mensagem = dados.mensagem || dados.erro || "Falha na validação.";
-
-        if (sucesso) {
-          mostrarMensagem("✅ Pagamento validado!", "sucesso");
-          document.getElementById("statusBox").innerText = "Pagamento validado.";
-
-          setTimeout(() => {
-  const token = dados.token || "";
-  let destino = "";
-  let modeloFinal = modelo;
-
-  if (servico === "requerimento") {
-    destino = "editor-requerimento.html";
-    if (!modelo.startsWith("requerer")) modeloFinal = "requerer1";
+      })
+      .catch(err => console.error("Erro ao carregar modelo:", err));
   }
-  else if (servico === "contrato") {
-    destino = "editor-contrato.html";
-    if (!modelo.startsWith("contrato")) modeloFinal = "contrato1";
-  }
-  else if (servico === "carta") {
-    destino = "editor-carta.html";
-    if (!modelo.startsWith("carta")) modeloFinal = "carta1";
-  }
-  
+});
+</script>
 
-  window.location.href = `${destino}?modelo=${encodeURIComponent(modeloFinal)}&token=${encodeURIComponent(token)}`;
-}, 1400);
-
-
-        } else {
-          mostrarMensagem("❌ " + mensagem, "erro");
-          document.getElementById("statusBox").innerText = "Comprovativo inválido.";
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Enviar Comprovativo";
-        }
-      } catch (error) {
-        console.error(error);
-        mostrarMensagem("⚠️ Erro ao enviar comprovativo. Tente novamente.", "erro");
-        document.getElementById("statusBox").innerText = "Erro no envio.";
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar Comprovativo";
-      }
-    });
-  </script>
 </body>
 </html>
