@@ -100,10 +100,33 @@
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const modelo = urlParams.get("modelo") || "cv1";
-    const servico = urlParams.get("servico") || "requerimento"; // serviço escolhido
-    document.getElementById("modeloHidden").value = modelo;
+    document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const modelo = urlParams.get("modelo"); // ex: carta1, contrato1, requerer1
+
+  if (modelo) {
+    fetch(`modelos/${modelo}.html`)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("preview").innerHTML = html;
+
+        // Agora verifica os campos do formulário em relação ao modelo carregado
+        const formFields = document.querySelectorAll("form [name]");
+        formFields.forEach(field => {
+          const targetId = field.getAttribute("name");
+          const targetElement = document.getElementById(targetId);
+          if (!targetElement) {
+            field.closest(".form-group, .campo")?.classList.add("hidden");
+          } else {
+            field.closest(".form-group, .campo")?.classList.remove("hidden");
+          }
+        });
+      })
+      .catch(err => console.error("Erro ao carregar modelo:", err));
+  }
+});
+
+
 
     function showToast(msg) {
       const toast = document.createElement("div");
