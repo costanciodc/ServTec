@@ -102,7 +102,7 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const modelo = urlParams.get("modelo") || "cv1";
-    const servico = urlParams.get("servico") || "requerimento"; // serviço escolhido
+    const servico = urlParams.get("servico") || "requerimento, " ; // serviço escolhido
     document.getElementById("modeloHidden").value = modelo;
 
     function showToast(msg) {

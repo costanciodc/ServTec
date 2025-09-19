@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Editor de Carta</title>
+  <title>Editor de Currículo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
    
@@ -130,12 +130,14 @@ header.editor{
      header.editor{
         font-size: 20px;
       }
-     
-     .a4 {
-    transform: scale(0.7);   /* só reduz o modelo, não o formulário */
-    transform-origin: top center;
-  }
-}
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+     .a4{
+        transform: scale(1);
+        transform-origin: top center;
+      }}
 
     @media (max-width: 420px) {
       .botoes{
@@ -149,11 +151,14 @@ header.editor{
      .formulario{
         width: 490px;
       }
-     .a4 {
-    transform: scale(0.6);   /* só reduz o modelo, não o formulário */
-    transform-origin: top center;
-  }
-}
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+     .a4{
+        transform: scale(1);
+        transform-origin: top center;
+      }}
 
     @media (max-width: 500px) {
       .botoes{
@@ -167,12 +172,14 @@ header.editor{
      .formulario{
         width: 590px;
       }
-     
-     .a4 {
-    transform: scale(0.6);   /* só reduz o modelo, não o formulário */
-    transform-origin: top center;
-  }
-}
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+     .a4{
+        transform: scale(1.06);
+        transform-origin: top center;
+      }}
       
     @media (max-width: 370px) {
       .botoes{
@@ -187,11 +194,16 @@ header.editor{
         width: 1000px;
       }
 
-     .a4 {
-    transform: scale(0.5);   /* só reduz o modelo, não o formulário */
-    transform-origin: top center;
-  }
-}
+     .visualizacao{
+        transform: scale(0.4);
+        transform-origin: top center;
+      }
+
+     .a4{
+        transform: scale(1);
+        transform-origin: top center;
+      }}
+      
 
   </style>
 </head>
@@ -237,7 +249,7 @@ header.editor{
     <!-- Currículo -->
     <!-- ⛔️ Removemos a classe .a4 daqui -->
     <div class="visualizacao">
-        <div class="visualizacao" id="cartaVisual"></div>
+        <div class="a4" id="cartaVisual"></div>
     </div>
   
   
@@ -252,49 +264,60 @@ header.editor{
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const modelo = urlParams.get("modelo") || "cv1";
+  const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
+  const cartaVisual = document.getElementById('cartaVisual');
+  let modeloCarregado = false;
 
-  // carrega o modelo no container
   fetch(`modelos/${modelo}.html`)
     .then(res => res.text())
     .then(html => {
-      document.getElementById("curriculo-container").innerHTML = html;
-
-      // só aqui (após carregar o modelo) vamos verificar os campos
-      document.querySelectorAll(".campo").forEach(campo => {
-        const input = campo.querySelector("input, textarea, select");
-        if (input) {
-          const targetId = input.name; // nome do campo deve bater com id no modelo
-          if (!document.getElementById(targetId)) {
-            campo.style.display = "none";
-            console.warn(`Campo ocultado: ${targetId} não existe no modelo`);
-          }
-        }
-      });
+      cartaVisual.innerHTML = html;
+      atualizarDados();
+      modeloCarregado = true; // ✅ marca como carregado
     });
-});
 
-
-
-  // --- 3. Alteração de gênero ---
-  document.getElementById("genero").addEventListener("change", function () {
-    const genero = this.value;
-    const mapeamento = {
-      masculino: { sexo: "o" },
-      feminino: { sexo: "a" }
-    };
-    if (mapeamento[genero]) {
+// ----- Quando usuário muda gênero -----
+    document.getElementById("genero").addEventListener("change", function() {
+      const genero = this.value;
+      const mapeamento = {
+        masculino: { sexo: "o" },
+        feminino: { sexo: "a" }
+      };
       Object.entries(mapeamento[genero]).forEach(([key, valor]) => {
         document.querySelectorAll(`[data-id="${key}"]`).forEach(el => el.textContent = valor);
       });
+    });
+
+  function atualizarDados() {
+    const campos = {
+      nome: document.getElementById('nome'),
+      cargo: document.getElementById('cargo'),
+      nome: document.getElementById('nome'),
+      cargo: document.getElementById('cargo'),
+      empresa: document.getElementById('empresa'),
+      empresa: document.getElementById('empresa'),
+      empresa: document.getElementById('empresa'),
+      objetivo: document.getElementById('objetivo'),
+      habilidades: document.getElementById('habilidades'),
+      telefone: document.getElementById('telefone'),
+      email: document.getElementById('email'),
+      email: document.getElementById('email'),
+      local: document.getElementById('local'),
+      data: document.getElementById('data')
+      
+    };
+
+    for (let key in campos) {
+      campos[key].addEventListener('input', () => {
+        const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
+          els.forEach(el => el.textContent = campos[key].value);
+      });
     }
-  });
+  }
+
+
 
   
-
-  // --- 5. Baixar PDF ---
   function baixarPDF() {
     if (!modeloCarregado) {
       alert("Por favor, aguarde o carregamento completo da carta.");
@@ -307,9 +330,12 @@ header.editor{
       return;
     }
 
+   
+
     const opt = {
-      filename: "carta_apresentacao.pdf",
-      image: { type: "jpeg", quality: 1 },
+      
+      filename: 'carta_apresentacao.pdf',
+      image: { type: 'jpeg', quality: 1 },
       html2canvas: {
         scale: 4,
         useCORS: true,
@@ -317,14 +343,21 @@ header.editor{
         allowTaint: true,
         scrollY: 0
       },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(a4Element).save().then(() => {
-      // Depois do download → redireciona para página principal com upsell
-      window.location.href = "index.html?upsell=true";
+      a4Element.style.transform = originalTransform;
+      a4Element.style.width = originalWidth;
     });
   }
+
+
+
+
+
+
+
 </script>
 
 
