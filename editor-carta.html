@@ -310,7 +310,11 @@ header.editor{
       if (campos[key]) {
         campos[key].addEventListener("input", () => {
           const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
-          els.forEach(el => el.textContent = campos[key].value);
+          els.forEach(el => {
+  if (campos[key].value.trim() !== "") {
+    el.textContent = campos[key].value;
+  }
+});
         });
       }
     }
