@@ -115,24 +115,7 @@
       text-align: center;
       margin-top: 4rem;
       font-size: 0.9rem;
-      color: hsl(218, 11%, 65%);
-    }
-    .modelo .btn {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
-      border: 1px solid #ffffff;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .modelo .btn:hover {
-      background: #131c3a;
+      color: #9ca3af;
     }
   </style>
 </head>
@@ -142,35 +125,35 @@
   <div class="modelos">
     <div class="modelo">
       <img src="modelos\carta (1).png" alt="Modelo 1">
-      <button class="btn" onclick="escolherModelo(1)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta1">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (2).png" alt="Modelo 2">
-      <button class="btn" onclick="escolherModelo(2)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta2">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (3).png" alt="Modelo 3">
-      <button class="btn" onclick="escolherModelo(3)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta3">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (4).png" alt="Modelo 4">
-      <button class="btn" onclick="escolherModelo(4)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta4">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (5).png" alt="Modelo 5">
-      <button class="btn" onclick="escolherModelo(5)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta5">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (6).png" alt="Modelo 6">
-      <button class="btn" onclick="escolherModelo(6)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta6">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (7).png" alt="Modelo 7">
-      <button class="btn" onclick="escolherModelo(7)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta7">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (8).png" alt="Modelo 8">
-      <button class="btn" onclick="escolherModelo(8)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=carta&modelo=carta8">Usar este modelo</a>
     </div>
   </div>
   <section class="recomendados">
@@ -270,12 +253,5 @@ Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticam
     &copy; 2025 ServTec.ao. Feito para Angola. <br>
     Todos os Direitos Reservados
   </footer>
-
-<script>
-function escolherModelo(modelo) {
-  
-  window.location.href = `pagamento.html?modelo=cv${modelo}`;
-}
-</script>
 </body>
 </html>

@@ -122,23 +122,6 @@
       font-size: 0.9rem;
       color: #9ca3af;
     }
-    .modelo .btn {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
-      border: 1px solid #ffffff;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .modelo .btn:hover {
-      background: #131c3a;
-    }
   </style>
 </head>
 <body>
@@ -148,22 +131,22 @@
     <div class="modelo">
       <img src="modelos\requerer1.png" alt="Modelo 1">
         <h1 class="req">Requerimento para o Concurso Público</h1>
-      <button class="btn" onclick="escolherModelo(1)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=requerimento&modelo=requerer1">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\requerer2.png" alt="Modelo 2">
       <h1 class="req">Requerimento para o Concurso Público </h1>
-      <button class="btn" onclick="escolherModelo(2)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=requerimento&modelo=requerer2">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\requerer3.png" alt="Modelo 3">
       <h1 class="req">Requerimento para Escola </h1>
-      <button class="btn" onclick="escolherModelo(3)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=requerimento&?modelo=requerer3">Usar este modelo</a>
     </div>
     <div class="modelo">
       <img src="modelos\carta (4).png" alt="Modelo 4">
       <h1 class="req">Requerimento para qualquer instituição</h1>
-      <button class="btn" onclick="escolherModelo(4)">Usar este modelo</button>
+      <a href="pagamento.html?sevico=requerimento&modelo=requerer4">Usar este modelo</a>
     </div>
     
   </div>
@@ -264,11 +247,5 @@ Nosso sistema valida em poucos segundos e o seu serviço é liberado automaticam
     &copy; 2025 ServTec.ao. Feito para Angola. <br>
     Todos os Direitos Reservados
   </footer>
-   <script>
-function escolherModelo(modelo) {
-  
-  window.location.href = `pagamento.html?modelo=cv${modelo}`;
-}
-</script>
 </body>
 </html>
