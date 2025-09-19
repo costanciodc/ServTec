@@ -264,9 +264,17 @@ header.editor{
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-  const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
-  const cartaVisual = document.getElementById('cartaVisual');
-  let modeloCarregado = false;
+
+  const urlParams = new URLSearchParams(window.location.search);
+const modelo = urlParams.get("modelo") || "carta1"; // sempre algo tipo "cv1", "cv2"...
+console.log("Modelo carregado:", modelo);
+ const token = urlParams.get("token");
+
+  // 🔒 Bloqueio de acesso sem token
+  if (!token) {
+    alert("Acesso negado! Por favor, realize o pagamento primeiro.");
+    window.location.href = "pagamento.html";
+  }
 
   fetch(`modelos/${modelo}.html`)
     .then(res => res.text())
