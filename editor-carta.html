@@ -252,61 +252,30 @@ header.editor{
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-  // --- 1. Captura token e modelo da URL ---
+  window.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const modelo = urlParams.get("modelo") || "carta1";
-  const token = urlParams.get("token");
+  const modelo = urlParams.get("modelo") || "cv1";
 
-  // Se não tiver token, bloqueia acesso
-  if (!token) {
-    alert("⚠️ Acesso negado! Por favor realize o pagamento primeiro.");
-    window.location.href = "pagament.html";
-  }
+  // carrega o modelo no container
+  fetch(`modelos/${modelo}.html`)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("curriculo-container").innerHTML = html;
 
-  const cartaVisual = document.getElementById("cartaVisual");
-  let modeloCarregado = false;
-
- // --- 2. Carregar modelo selecionado ---
-fetch(`modelos/${modelo}.html`)
-  .then(res => res.text())
-  .then(html => {
-    cartaVisual.innerHTML = html;
-    modeloCarregado = true;
-
-    // só depois que o modelo já está no DOM
-    inicializarEventos();
-  })
-  .catch(() => {
-    cartaVisual.innerHTML = "<p style='color:red'>Erro ao carregar o modelo.</p>";
-  });
-
-// --- 4. Inicializar eventos de atualização dinâmica ---
-function inicializarEventos() {
-  const campos = {
-    nome: document.getElementById("nome"),
-    cargo: document.getElementById("cargo"),
-    empresa: document.getElementById("empresa"),
-    objetivo: document.getElementById("objetivo"),
-    habilidades: document.getElementById("habilidades"),
-    telefone: document.getElementById("telefone"),
-    email: document.getElementById("email"),
-    local: document.getElementById("local"),
-    data: document.getElementById("data")
-  };
-
-  for (let key in campos) {
-    if (campos[key]) {
-      campos[key].addEventListener("input", () => {
-        const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
-        els.forEach(el => {
-          if (campos[key].value.trim() !== "") {
-            el.textContent = campos[key].value;
+      // só aqui (após carregar o modelo) vamos verificar os campos
+      document.querySelectorAll(".campo").forEach(campo => {
+        const input = campo.querySelector("input, textarea, select");
+        if (input) {
+          const targetId = input.name; // nome do campo deve bater com id no modelo
+          if (!document.getElementById(targetId)) {
+            campo.style.display = "none";
+            console.warn(`Campo ocultado: ${targetId} não existe no modelo`);
           }
-        });
+        }
       });
-    }
-  }
-}
+    });
+});
+
 
 
   // --- 3. Alteração de gênero ---
