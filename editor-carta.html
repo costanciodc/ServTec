@@ -264,68 +264,71 @@ header.editor{
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-
+  // --- 1. Captura token e modelo da URL ---
   const urlParams = new URLSearchParams(window.location.search);
-const modelo = urlParams.get("modelo") || "carta1"; // sempre algo tipo "cv1", "cv2"...
-console.log("Modelo carregado:", modelo);
- const token = urlParams.get("token");
+  const modelo = urlParams.get("modelo") || "carta1";
+  const token = urlParams.get("token");
 
-  // 🔒 Bloqueio de acesso sem token
+  // Se não tiver token, bloqueia acesso
   if (!token) {
-    alert("Acesso negado! Por favor, realize o pagamento primeiro.");
-    window.location.href = "pagamento.html";
+    alert("⚠️ Acesso negado! Por favor realize o pagamento primeiro.");
+    window.location.href = "pagament.html";
   }
 
+  const cartaVisual = document.getElementById("cartaVisual");
+  let modeloCarregado = false;
+
+  // --- 2. Carregar modelo selecionado ---
   fetch(`modelos/${modelo}.html`)
     .then(res => res.text())
     .then(html => {
       cartaVisual.innerHTML = html;
       atualizarDados();
-      modeloCarregado = true; // ✅ marca como carregado
+      modeloCarregado = true;
+    })
+    .catch(() => {
+      cartaVisual.innerHTML = "<p style='color:red'>Erro ao carregar o modelo.</p>";
     });
 
-// ----- Quando usuário muda gênero -----
-    document.getElementById("genero").addEventListener("change", function() {
-      const genero = this.value;
-      const mapeamento = {
-        masculino: { sexo: "o" },
-        feminino: { sexo: "a" }
-      };
+  // --- 3. Alteração de gênero ---
+  document.getElementById("genero").addEventListener("change", function () {
+    const genero = this.value;
+    const mapeamento = {
+      masculino: { sexo: "o" },
+      feminino: { sexo: "a" }
+    };
+    if (mapeamento[genero]) {
       Object.entries(mapeamento[genero]).forEach(([key, valor]) => {
         document.querySelectorAll(`[data-id="${key}"]`).forEach(el => el.textContent = valor);
       });
-    });
+    }
+  });
 
+  // --- 4. Atualização dinâmica dos campos ---
   function atualizarDados() {
     const campos = {
-      nome: document.getElementById('nome'),
-      cargo: document.getElementById('cargo'),
-      nome: document.getElementById('nome'),
-      cargo: document.getElementById('cargo'),
-      empresa: document.getElementById('empresa'),
-      empresa: document.getElementById('empresa'),
-      empresa: document.getElementById('empresa'),
-      objetivo: document.getElementById('objetivo'),
-      habilidades: document.getElementById('habilidades'),
-      telefone: document.getElementById('telefone'),
-      email: document.getElementById('email'),
-      email: document.getElementById('email'),
-      local: document.getElementById('local'),
-      data: document.getElementById('data')
-      
+      nome: document.getElementById("nome"),
+      cargo: document.getElementById("cargo"),
+      empresa: document.getElementById("empresa"),
+      objetivo: document.getElementById("objetivo"),
+      habilidades: document.getElementById("habilidades"),
+      telefone: document.getElementById("telefone"),
+      email: document.getElementById("email"),
+      local: document.getElementById("local"),
+      data: document.getElementById("data")
     };
 
     for (let key in campos) {
-      campos[key].addEventListener('input', () => {
-        const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
+      if (campos[key]) {
+        campos[key].addEventListener("input", () => {
+          const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
           els.forEach(el => el.textContent = campos[key].value);
-      });
+        });
+      }
     }
   }
 
-
-
-  
+  // --- 5. Baixar PDF ---
   function baixarPDF() {
     if (!modeloCarregado) {
       alert("Por favor, aguarde o carregamento completo da carta.");
@@ -338,12 +341,9 @@ console.log("Modelo carregado:", modelo);
       return;
     }
 
-   
-
     const opt = {
-      
-      filename: 'carta_apresentacao.pdf',
-      image: { type: 'jpeg', quality: 1 },
+      filename: "carta_apresentacao.pdf",
+      image: { type: "jpeg", quality: 1 },
       html2canvas: {
         scale: 4,
         useCORS: true,
@@ -351,21 +351,14 @@ console.log("Modelo carregado:", modelo);
         allowTaint: true,
         scrollY: 0
       },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
     };
 
     html2pdf().set(opt).from(a4Element).save().then(() => {
-      a4Element.style.transform = originalTransform;
-      a4Element.style.width = originalWidth;
+      // Depois do download → redireciona para página principal com upsell
+      window.location.href = "index.html?upsell=true";
     });
   }
-
-
-
-
-
-
-
 </script>
 
 
