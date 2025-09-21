@@ -243,6 +243,145 @@ h2.cee{
       
     }
     }
+/*novo*/
+/* Idiomas em duas colunas quando houver vários */
+
+/* --- Estilos para o campo de foto (editor) --- */
+/* O elemento vem oculto por padrão (JS faz: campoFoto.style.display = "block") */
+#campoFoto {
+  display: none;              /* controlado pelo seu JS */
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px dashed #e6eefc;
+  background: #fbfdff;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Label + input alinhados quando o campo é mostrado */
+#campoFoto label {
+  display: inline-block;
+  font-weight: 600;
+  color: #0f172a;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+#campoFoto input[type="file"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Botão do file input (navegadores modernos) */
+#campoFoto input[type="file"]::file-selector-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #1e3a8a;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+#campoFoto input[type="file"]::file-selector-button:hover {
+  background: #374bb3;
+}
+
+/* Miniatura (opcional): adicione <img id="fotoPreview" alt="Pré-visualização"> dentro de #campoFoto se quiser preview */
+#fotoPreview {
+  display: inline-block;      /* JS pode togglar para 'block'/'inline-block' quando carregar imagem */
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-left: 12px;
+  vertical-align: middle;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 6px rgba(2,6,23,0.06);
+}
+
+/* Texto de ajuda pequeno (opcional) */
+#campoFoto .help {
+  display: inline-block;
+  margin-left: 12px;
+  color: #6b7280;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+/* Responsivo: empilha itens em telas pequenas */
+@media (max-width: 480px) {
+  #campoFoto { padding: 8px; }
+  #fotoPreview { width: 56px; height: 56px; margin-left: 8px; }
+  #campoFoto label,
+  #campoFoto input[type="file"],
+  #campoFoto .help { display: block; margin: 6px 0 0 0;  }
+}
+
+   
+.idiomas-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.idiomas-group select,
+.idiomas-group button {
+  flex: 1;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+#listaIdiomas {
+  margin-top: 8px;
+  padding-left: 16px;
+  list-style: disc;
+  color: #1e40af;
+}
+.campo-idiomas {
+  margin-bottom: 15px;
+}
+
+.campo-idiomas label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.campo-idiomas select {
+  padding: 6px 10px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.campo-idiomas button {
+  padding: 6px 12px;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.campo-idiomas button:hover {
+  background: #0056b3;
+}
+
+[data-id="idiomas"] {
+  list-style-type: disc;
+  margin-top: 8px;
+  margin-left: 20px;
+}
+
+
+
   </style>
 </head>
 
@@ -252,9 +391,14 @@ h2.cee{
  <div class="wrapper">
   
  
-    <!-- Painel de Edição -->
+    <!-- novo -->
     <div class="editor-panel">
       <h2 class="cee">Preencha com os seus dados</h2>
+      <div id="campoFoto" style="display:none;">
+  <label>Foto:</label>
+  <input type="file" id="foto" accept="image/*" />
+</div>
+
       <label>Nome completo:</label>
       <input type="text" id="nome" placeholder="Seu nome" data-input="nome"/>
 
@@ -285,38 +429,29 @@ h2.cee{
       <label>Curso(s):</label>
 <textarea id="curso" placeholder="Liste seus cursos (um por linha)" rows="3" data-input="curso"></textarea>
 
-<label>Idiomas para alé do português:</label>
-<div id="idiomas">
-  <div>
-    <label>Inglês:</label>
-    <select data-input="idioma-ingles">
-      <option value="">Selecione</option>
-      <option value="Inglês (Básico)">Básico</option>
-      <option value="Inglês (Intermediário)">Intermediário</option>
-      <option value="Inglês (Fluente)">Fluente</option>
-    </select>
-  </div>
+<label>Idiomas para além do Português:</label>
 
-  <div>
-    <label>Espanhol:</label>
-    <select data-input="idioma-espanhol">
-      <option value="">Selecione</option>
-      <option value="Espanhol (Básico)">Básico</option>
-      <option value="Espanhol (Intermediário)">Intermediário</option>
-      <option value="Espanhol (Fluente)">Fluente</option>
-    </select>
-  </div>
 
-  <div>
-    <label>Francês:</label>
-    <select data-input="idioma-frances">
-      <option value="">Selecione</option>
-      <option value="Francês (Básico)">Básico</option>
-      <option value="Francês (Intermediário)">Intermediário</option>
-      <option value="Francês (Fluente)">Fluente</option>
-    </select>
-  </div>
+<div class="idiomas-group">
+  <select data-idioma>
+    <option value="">Selecione um idioma</option>
+    <option value="Inglês">Inglês</option>
+    <option value="Francês">Francês</option>
+    <option value="Espanhol">Espanhol</option>
+  </select>
+
+  <select data-nivel>
+    <option value="">Nível</option>
+    <option value="Básico">Básico</option>
+    <option value="Intermediário">Intermediário</option>
+    <option value="Fluente">Fluente</option>
+  </select>
+
+  <button type="button" onclick="adicionarIdioma()">Adicionar</button>
 </div>
+
+<ul id="listaIdiomas"></ul>
+
 
 
       <label>Habilidades:</label>
@@ -363,46 +498,96 @@ fetch(`modelos/${modelo}.html`)
     if (!res.ok) throw new Error("Modelo não encontrado: " + modelo);
     return res.text();
   })
+
+
+
+  // novo
   .then(html => {
     document.getElementById("curriculoVisual").innerHTML = html;
-  })
+  // Mostrar campo de upload só se o modelo tiver espaço para foto
+  if (document.querySelector('[data-id="foto"]')) {
+    document.getElementById("campoFoto").style.display = "block";
+  }
+})
+
+
+
+
+
+
+
   .catch(err => {
     console.error(err);
     document.getElementById("curriculoVisual").innerHTML = "<p style='color:red'>Erro ao carregar modelo.</p>";
   });
+// novo
+document.getElementById("foto")?.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const imgTarget = curriculoVisual.querySelector('[data-id="foto"]');
+    if (imgTarget) imgTarget.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
 
 
       
-      document.querySelectorAll("[data-input]").forEach((input) => {
-        input.addEventListener("input", () => {
-          const id = input.getAttribute("data-input");
-          const target = curriculoVisual.querySelector(`[data-id="${id}"]`);
-          if (!target) return;
+    function adicionarIdioma() {
+  const idiomaEl = document.querySelector("[data-idioma]");
+  const nivelEl = document.querySelector("[data-nivel]");
+  const idioma = idiomaEl.value;
+  const nivel = nivelEl.value;
+  const container = document.querySelector('[data-id="idiomas"]');
 
-          if (input.tagName === "TEXTAREA" && (id === "experiencia" || id === "habilidades")) {
-            const items = input.value.split("\n").filter(item => item.trim() !== "");
-            target.innerHTML = items.map(i => `<li> ${i}</li>`).join("");
-          } else {
-            target.textContent = input.value;
-          }
-        });
-      });
-    
-    if (id === "curso") {
-  const items = input.value.split("\n").filter(item => item.trim() !== "");
-  target.innerHTML = items.map(i => `<li>${i}</li>`).join("");
-} else if (id.startsWith("idioma-")) {
-  // monta lista de idiomas
-  const idiomaContainer = curriculoVisual.querySelector('[data-id="idioma"]');
-  if (idiomaContainer) {
-    const idiomasSelecionados = [];
-    document.querySelectorAll('#idiomas select').forEach(sel => {
-      if (sel.value) idiomasSelecionados.push(`<li>${sel.value}</li>`);
-    });
-    idiomaContainer.innerHTML = idiomasSelecionados.join("");
-  }
+  if (!idioma || !nivel || !container) return;
+
+  // Mantém o português fixo
+  const base = ["Português (Nativo)"];
+
+  // Pega idiomas já adicionados (ignorando o português fixo)
+  const extras = [...container.querySelectorAll("li")]
+    .map(li => li.textContent)
+    .filter(txt => !txt.includes("Português"));
+
+  // Atualiza lista com português + novos idiomas
+  extras.push(`${idioma} (${nivel})`);
+  container.innerHTML = [...base, ...extras]
+    .map(i => `<li>${i}</li>`)
+    .join("");
+
+  // 🔹 Limpa os selects para mostrar que dá pra adicionar mais
+  idiomaEl.value = "";
+  nivelEl.value = "";
+  idiomaEl.focus();
 }
+
+
+// Atualização em tempo real para todos os campos de texto
+document.querySelectorAll("[data-input]").forEach(input => {
+  input.addEventListener("input", () => {
+    const targetId = input.getAttribute("data-input");
+    const targetEl = document.querySelector(`[data-id="${targetId}"]`);
+    if (!targetEl) return;
+
+    // Se o destino for lista (habilidades, experiencia, cursos, idiomas)
+    if (targetEl.tagName === "UL") {
+      // Quebra por ENTER (não por vírgula)
+      const linhas = input.value.split(/\n/).map(v => v.trim()).filter(v => v);
+      targetEl.innerHTML = linhas.map(v => `<li>${v}</li>`).join("");
+    } 
+    else {
+      // Campos simples continuam com textContent
+      targetEl.textContent = input.value;
+    }
+  });
+});
+
+
+
+
 
 
  function baixarPDF() {
