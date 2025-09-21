@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Currículo Modelo 1</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      
+    }
+
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .lateral {
+      width: 7cm;
+      color: #f8fafc;
+      position: relative;
+      padding: 2cm 1.5cm 1.5cm 1.5cm;
+      box-sizing: border-box;
+      background: linear-gradient(160deg, #0a5397 20%, #191b20 20%);
+    }
+
+    .foto {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1rem auto;
+      border-radius: 60%;
+      overflow: hidden;
+      border: 3px solid #fff;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lateral h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .lateral h3 {
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 0.3rem;
+      color: #93c5fd;
+}
+    .lateral .info, .lateral ul {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .lateral ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .lateral li::before {
+      content: "• ";
+      color: #93c5fd;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 2cm;
+      box-sizing: border-box;
+    }
+
+    .conteudo h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #1e3a8a;
+      border-bottom: 2px solid #1e3a8a;
+      display: inline-block;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: #1e40af;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      border-left: 4px solid #3b82f6;
+      padding-left: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="a4">
+    <div class="lateral">
+      <div class="foto">
+        <img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato">
+      </div>
+      <h2><span data-id="nome">João Pedro</span></h2>
+      <h3>Dados Pessoais</h3>
+      <div class="info">
+        Nº BI: <span data-id="bi">004446572LA850</span><br>
+        Nascimento: <span data-id="nascimento">02/06/2001</span>
+      </div>
+      <h3>Contato</h3>
+      <div class="info">Tel: <span data-id="telefone">+244 923 456 789</span></div>
+      <h3>Localização</h3>
+      <div class="info"><span data-id="localizacao">Luanda, Angola</span></div>
+
+      <h3>Curso</h3>
+      <ul data-id="curso">
+        <li>Gestão Empresarial</li>
+      </ul>
+
+      <h3>Idiomas</h3>
+      <ul data-id="idiomas">
+        <li>Português</li>
+      </ul>
+    </div>
+
+    <div class="conteudo">
+      
+
+      <h3>Objetivo</h3>
+      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
+
+      <h3>Perfil Profissional</h3>
+      <p data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</p>
+
+      <h3>Formação</h3>
+      <p data-id="formacao">Licenciatura em Administração - Universidade Agostinho Neto (2018 - 2022)</p>
+
+      <h3>Experiência</h3>
+      <ul data-id="experiencia">
+        <li>Gestão de arquivos</li>
+        <li>Atendimento ao público</li>
+      </ul>
+
+      <h3>Habilidades</h3>
+      <ul data-id="habilidades">
+        <li>Pacote Office</li>
+        <li>Comunicação</li>
+        <li>Trabalho em equipe</li>
+      </ul>
+
+      <h3>Observação</h3>
+      <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -27,7 +27,7 @@
     h1 {
       font-size: 2.8rem;
       color: #1e3a8a;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.1rem;
     }
     h2 {
       font-size: 1.1rem;
@@ -40,10 +40,10 @@
       color: #1e40af;
       border-left: 4px solid #3b82f6;
       padding-left: 0.5rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
     p, li {
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #1f2937;
       text-align: left;
     }
@@ -51,6 +51,62 @@
       padding-left: 2rem;
       text-align: left;
     }
+     /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="experiencia"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    .idiomas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 16px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.idiomas li::before {
+  content: "• ";
+  color: #000000;
+}
+
+[data-id="curso"] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
+  list-style: none;
+  padding-left: 0;
+}
+
+
+[data-id="curso"] li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+
+[data-id="curso"] li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
@@ -61,13 +117,18 @@
     <h3>Informações Pessoais</h3>
     <p>Nº do BI: <span data-id="bi">004446572LA850</span> | Data de nascimento: <span data-id="nascimento">02/06/2001</span></p>
       <p>Telefone: <span data-id="telefone">+244 923 456 789</span> | Residência actual: <span data-id="localizacao"> Residência Luanda Calemba 2</span></p>
-    
-    <h3>Resumo</h3>
+    <h3>Objetivo</h3>
+      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
+    <h3>Perfil Profissional</h3>
     <p><span data-id="qualidade">Profissional dedicada e atenciosa com experiência em recepção, controle de documentos e suporte a equipes administrativas.</p>
 
     <h3>Formação</h3>
     <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
-
+<h3>Cursos</h3>
+<ul data-id="curso">
+  <li>Curso de Informática</li>
+  <li>Curso de Gestão de Projetos</li>
+</ul>
     <h3>Experiência</h3>
     <ul data-id="experiencia">
       <li>Atendimento ao público</li>
@@ -81,6 +142,10 @@
       <li>Controle de arquivos</li>
       <li>Digitadora rápida</li>
     </ul>
+    <h3>Idiomas</h3>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul>
   <h3>Observação</h3>
 <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
   </div>

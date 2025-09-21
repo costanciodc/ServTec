@@ -282,6 +282,43 @@ h2.cee{
       <label>Experiência Profissional:</label>
       <textarea id="experiencia" placeholder="Experiência Profissional" rows="3" data-input="experiencia"></textarea>
 
+      <label>Curso(s):</label>
+<textarea id="curso" placeholder="Liste seus cursos (um por linha)" rows="3" data-input="curso"></textarea>
+
+<label>Idiomas para alé do português:</label>
+<div id="idiomas">
+  <div>
+    <label>Inglês:</label>
+    <select data-input="idioma-ingles">
+      <option value="">Selecione</option>
+      <option value="Inglês (Básico)">Básico</option>
+      <option value="Inglês (Intermediário)">Intermediário</option>
+      <option value="Inglês (Fluente)">Fluente</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Espanhol:</label>
+    <select data-input="idioma-espanhol">
+      <option value="">Selecione</option>
+      <option value="Espanhol (Básico)">Básico</option>
+      <option value="Espanhol (Intermediário)">Intermediário</option>
+      <option value="Espanhol (Fluente)">Fluente</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Francês:</label>
+    <select data-input="idioma-frances">
+      <option value="">Selecione</option>
+      <option value="Francês (Básico)">Básico</option>
+      <option value="Francês (Intermediário)">Intermediário</option>
+      <option value="Francês (Fluente)">Fluente</option>
+    </select>
+  </div>
+</div>
+
+
       <label>Habilidades:</label>
       <textarea id="habilidades" placeholder="Habilidades" rows="3" data-input="habilidades"></textarea>
        
@@ -352,6 +389,21 @@ fetch(`modelos/${modelo}.html`)
         });
       });
     
+    if (id === "curso") {
+  const items = input.value.split("\n").filter(item => item.trim() !== "");
+  target.innerHTML = items.map(i => `<li>${i}</li>`).join("");
+} else if (id.startsWith("idioma-")) {
+  // monta lista de idiomas
+  const idiomaContainer = curriculoVisual.querySelector('[data-id="idioma"]');
+  if (idiomaContainer) {
+    const idiomasSelecionados = [];
+    document.querySelectorAll('#idiomas select').forEach(sel => {
+      if (sel.value) idiomasSelecionados.push(`<li>${sel.value}</li>`);
+    });
+    idiomaContainer.innerHTML = idiomasSelecionados.join("");
+  }
+}
+
 
  function baixarPDF() {
   const a4Element = document.querySelector("#curriculoVisual .a4"); 

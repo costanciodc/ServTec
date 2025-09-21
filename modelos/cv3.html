@@ -47,14 +47,14 @@
 
     h1 {
       color: #1e40af;
-      font-size: 2.2rem;
-      margin-bottom: 0.3rem;
+      font-size: 2rem;
+      margin-bottom: 0.2rem;
     }
 
     h2 {
       color: #1e3a8a;
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
+      margin-top: 1.1rem;
+      font-size: 1rem;
       border-bottom: 1px solid #ddd;
       padding-bottom: 0.3rem;
     }
@@ -64,12 +64,56 @@
     }
 
     li {
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.1rem;
+      font-size: 0.9rem;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
+
+      /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    .idiomas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 16px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.idiomas li::before {
+  content: "• ";
+  color: #000000;
+}
+
+[data-id="curso"] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
+  list-style: none;
+  padding-left: 0;
+}
+
+
+[data-id="curso"] li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+
+[data-id="curso"] li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
@@ -92,7 +136,14 @@
 
       <h2>Formação Acadêmica</h2>
       <p data-id="formacao">Licenciatura em Gestão - Universidade Agostinho Neto (2018 - 2022)</p>
-      
+      <h2>Cursos</h2>
+<ul data-id="curso">
+  <li>Curso de Informática</li>
+  <li>Curso de Gestão de Projetos</li>
+</ul>
+
+
+
       <h2>Experiência Profissional</h2>
       <ul data-id="experiencia">
         <li>Organização de documentos e arquivos</li>
@@ -107,6 +158,10 @@
         <li>Trabalho em equipe</li>
         <li>Responsabilidade</li>
       </ul>
+      <h2>Idiomas</h2>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul>
 <h2>Observação</h2>
 <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
     </div>

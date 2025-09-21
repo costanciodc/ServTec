@@ -75,7 +75,7 @@
 
     .topo {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .topo h1 {
@@ -88,9 +88,9 @@
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #1e40af;
-      margin-top: 2rem;
+      margin-top: 1rem;
       margin-bottom: 0.6rem;
       border-left: 5px solid #3b82f6;
       padding-left: 0.6rem;
@@ -98,7 +98,7 @@
 
     p {
       font-size: 1rem;
-      color: #1f2937;
+      color: #000000;
     }
 
     ul {
@@ -109,6 +109,22 @@
       margin-bottom: 0.3rem;
       font-size: 1rem;
     }
+.foto {
+  width: 145px;
+  height: 150px;
+  margin: 0 auto 1.2rem auto; /* centraliza e dá espaço abaixo */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff; /* borda branca pra destacar da lateral */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+}
+
   </style>
 </head>
 <body>
@@ -117,6 +133,10 @@
     <!-- BARRA LATERAL ESTILIZADA -->
     <div class="lateral">
       <div>
+        <div class="foto">
+  <img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato">
+</div>
+
         <h2><span data-id="nome">Maria Laura</span></h2>
         <h3>Dados pessoais</h3>
         <div class="info">
@@ -132,8 +152,16 @@
         <div class="info">
           <span data-id="localizacao"> Residência Luanda Calemba 2</span> </p>
         </div>
-
+        <h3>Curso</h3>
+      <ul data-id="curso">
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
         
+      </ul>
+         <h3>Idiomas</h3>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul>
       </div>
     </div>
 
@@ -143,7 +171,9 @@
         <h1>Curriculum Vitae</h1>
       </div>
 
-      <h3>Resumo Profissional</h3>
+      <h3>Objectivo</h3>
+      <p><span data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</span></p>
+      <h3>Perfil Profissional</h3>
       <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
 
       <h3>Formação</h3>
@@ -165,7 +195,7 @@
           <li>Trabalho em equipe</li>
         </ul>
         <h3>Observação</h3>
-<p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+<p><span> Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</span></p>
     </div>
   </div>
 </body>

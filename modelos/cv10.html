@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo Modelo 5</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      
+    }
+
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+     
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Cabeçalho com faixa */
+    .cabecalho {
+      display: flex;
+      align-items: center;
+      background: #1e3a8a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      
+    }
+
+    .foto {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 20px;
+      border: 1px solid #fff;
+      flex-shrink: 0;
+    }
+
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .info-pessoal {
+      flex: 1;
+    }
+
+    .info-pessoal h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+    .info-pessoal p {
+      margin: 4px 0;
+      font-size: 0.95rem;
+    }
+
+    /* Conteúdo */
+    .conteudo {
+     padding: 2.5cm;
+      padding-left: 3cm;
+      flex: 1;
+    }
+
+    h2 {
+      color: #1e3a8a;
+      font-size: 1.1rem;
+      margin-top: 1.1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+
+    ul {
+      padding-left: 1.3rem;
+      margin-top: 0.2rem;
+    }
+
+    li {
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0.3rem 0;
+    }
+
+    /* Listas em colunas */
+    [data-id="habilidades"],
+    [data-id="experiencia"],
+    [data-id="curso"],
+    [data-id="idiomas"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style: disc inside;
+    }
+
+    [data-id="idiomas"],
+    [data-id="curso"] {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    [data-id="idiomas"] li::before,
+    [data-id="curso"] li::before {
+      content: "• ";
+      color: #000;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="a4">
+<!-- Corpo do currículo -->
+    <div class="conteudo">
+    <!-- Cabeçalho com foto + faixa -->
+    <div class="cabecalho">
+      <div class="foto">
+        <img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato">
+      </div>
+      <div class="info-pessoal">
+        <h1><span data-id="nome">Nelson Maria</span></h1>
+        <p>Nº do BI: <span data-id="bi">004446572LA850</span></p>
+        <p>Telefone: <span data-id="telefone">+244 923 456 789</span></p>
+        <p><span data-id="localizacao">Residência Luanda Calemba 2</span></p>
+      </div>
+    </div>
+
+    
+      <h2>Objetivo</h2>
+      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
+
+      <h2>Perfil Profissional</h2>
+      <p data-id="qualidade">Profissional com vivência em vendas e atendimento ao cliente. Focado em resultados e satisfação do consumidor.</p>
+
+      <h2>Formação</h2>
+      <p data-id="formacao">Ensino Médio Completo - Escola Secundária Mutu-ya-Kevela</p>
+
+      <h2>Cursos</h2>
+      <ul data-id="curso">
+        <li>Curso de Informática</li>
+        <li>Curso de Gestão de Projetos</li>
+      </ul>
+
+      <h2>Experiência</h2>
+      <ul data-id="experiencia">
+        <li>Abordagem de clientes</li>
+        <li>Controle de caixa e estoque</li>
+        <li>Alcançar metas de vendas mensais</li>
+      </ul>
+
+      <h2>Habilidades</h2>
+      <ul data-id="habilidades">
+        <li>Negociação</li>
+        <li>Organização</li>
+        <li>Determinação</li>
+        <li>Trabalho em equipe</li>
+      </ul>
+
+      <h2>Idiomas</h2>
+      <ul data-id="idiomas">
+        <li>Português (Nativo)</li>
+      </ul>
+
+      <h2>Observação</h2>
+      <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+    </div>
+  </div>
+</body>
+</html>

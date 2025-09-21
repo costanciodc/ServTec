@@ -40,21 +40,64 @@
     }
     h2 {
       color: #1e3a8a;
-      font-size: 1.1rem;
-      margin-top: 1.8rem;
+      font-size: 1rem;
+      margin-top: 1rem;
       border-bottom: 1px solid #d1d5db;
-      padding-bottom: 0.3rem;
+      padding-bottom: 0.1rem;
     }
     p, li {
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #1f2937;
     }
     ul {
       padding-left: 1.5rem;
     }
     li {
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.2rem;
     }
+
+      /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    .idiomas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 16px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.idiomas li::before {
+  content: "• ";
+  color: #000000;
+}
+
+[data-id="curso"] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
+  list-style: none;
+  padding-left: 0;
+}
+
+
+[data-id="curso"] li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+
+[data-id="curso"] li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
@@ -67,13 +110,18 @@
         <p>Tel: <span data-id="telefone">+244 923 456 789</span> | <span data-id="localizacao"> Residência Luanda Calemba 2</span></p>
       </div>
     </div>
-
+<h2>Objetivo</h2>
+      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
     <h2>Perfil</h2>
     <p data-id="qualidade">Profissional da área educacional com experiência em docência, planejamento de aulas e acompanhamento pedagógico. Forte capacidade de comunicação e liderança.</p>
 
     <h2>Formação</h2>
     <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
-
+            <h2>Cursos</h2>
+<ul data-id="curso">
+  <li>Curso de Informática</li>
+  <li>Curso de Gestão de Projetos</li>
+</ul>
     <h2>Experiência</h2>
     <ul data-id="experiencia">
       <li>Elaboração de planos de aula</li>
@@ -88,6 +136,10 @@
       <li>Relacionamento interpessoal</li>
       <li>Gestão de sala de aula</li>
     </ul>
+    <h2>Idiomas</h2>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul>
   
   <h2>Observação</h2>
 <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p></div>
