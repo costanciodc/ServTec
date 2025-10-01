@@ -14,7 +14,7 @@ export const config = {
 const NUMERO_EXPRESSE = "943799795";
 
 // Valor esperado fixo
-const VALOR_ESPERADO =500;
+const VALOR_ESPERADO =300;
 
 // Set para evitar comprovativos repetidos (reinicia em cold start)
 const comprovativosUsados = new Set();
