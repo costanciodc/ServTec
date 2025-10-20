@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Currículo Modelo 6</title>
+  <meta charset="UTF-8">
+  <title>Currículo Modelo 9</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
-   body {
-      font-family: 'Times New Roman', Times, serif;
+    body {
+      font-family: 'Poppins', sans-serif;
       
     }
 
@@ -16,43 +17,56 @@
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
       display: flex;
-      border-radius: 10px;
+    
       overflow: hidden;
     }
 
     .lateral {
-      width: 7.5cm;
-      background-color: #262b31;
-      color: #f8fafc;
-      padding: 2.5cm 1.5cm;
-      display: flex;
+      width: 6.5cm;
+      background-color: #22240f;
+      color: #ffffff;
+      padding: 0.5cm 0.7cm;
+      margin-left: 30px;
+      margin-top: 190px;
       flex-direction: column;
       justify-content: space-between;
       box-sizing: border-box;
+     border-top-right-radius: 180px;
+      border-top-left-radius: 180px;
     }
 
     .lateral h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
       text-align: left;
       color: #ffffff;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.493);
+      
       padding-bottom: 0.3rem;
     }
 
     .lateral h3 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 400;
       margin-top: 2rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
       color: #ffffff;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.432);
       padding-bottom: 0.3rem;
+      border: 2px solid #ffffff;
+      border-radius: 15px;
+      text-align: center;
+      padding: 2px; 
+      
+    }
+    .lt{
+      margin-top: 3.5rem;
+      
     }
 
     .lateral .info, .lateral ul {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       line-height: 1.5;
-      margin-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      
     }
 
     .lateral ul {
@@ -63,117 +77,205 @@
 
     .lateral li::before {
       content: "• ";
-      color: #60a5fa;
+      color: #ffffff;
     }
 
     .conteudo {
       flex: 1;
-      padding: 2.5cm;
-      padding-left: 2cm;
+      padding-top: 5cm;
+      padding-left: 1.6cm;
+      padding-right: 2cm;
       box-sizing: border-box;
     }
 
-    .topo {
-      text-align: center;
-      margin-bottom: 1.5rem;
+
+    header {
+   position: absolute;
+   width: 100%;
     }
 
-    .topo h1 {
-      font-size: 2.5rem;
-      color: #1d4ed8;
-      border-bottom: 3px solid #1d4ed8;
-      padding-bottom: 0.4rem;
-      display: inline-block;
-      letter-spacing: 1px;
+   .topo h1 {
+        
+        text-align: center;
+        margin-top: 80px;
+
+        
+        font-size: 2.5rem ;
+        color: #22240f;    
+}
+
+
+    .divider {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,197,255,0.0), #22240f, rgba(0,197,255,0.0));
+      margin-left: 170px;
     }
+
 
     h3 {
       font-size: 1.2rem;
-      color: #1e40af;
-      margin-top: 2rem;
+      color: #22240f;
+      margin-top: 1.5rem;
       margin-bottom: 0.6rem;
-      border-left: 5px solid #3b82f6;
-      padding-left: 0.6rem;
+      
+      padding-left: 0.1rem;
+    }
+    .conteudo.bi {
+     
+      color: #3a3002;
+      
     }
 
     p {
-      font-size: 1rem;
-      color: #1f2937;
+      font-size: 0.8rem;
+      color: #000000;
     }
 
     ul {
-      padding-left: 1.5rem;
+      padding-left: 1rem;
     }
 
     li {
       margin-bottom: 0.3rem;
-      font-size: 1rem;
+       font-size: 0.8rem;
+    }
+.photo {
+  width: 147px;
+  height: 2000px;
+  margin: 0 auto 1.2rem auto; /* centraliza e dá espaço abaixo */
+  border-radius: 40%;
+  overflow: hidden;
+  border: 0.4rem solid #22240f; /* borda branca pra destacar da lateral */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+   margin-left: 3px;
+}
+
+.photo-wrap {
+      width: 184px;
+      height: 210px;
+      position: absolute;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+      margin-top: 100px;
+      margin-left: 55px;
+      
     }
 
+.photo {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/300x300.png?text=FOTO');
+      background-size: cover;
+      background-position: center;
+      background: #ffffff;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.05);
+    }
+
+
+
     
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      border: 14px solid #ffffff;
+      pointer-events: none;
+        border-radius: 40%;
+        
+    }
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+}
+
+    
+
+    .photo-wrap::after {
+      bottom: -12.5px;
+      right: -15px;
+      width: calc(85% + 24px);
+      height: calc(87.5% + 24px);
+      
+    }
+    .bi {
+      margin-right: 9px;
+    }
+
+
   </style>
 </head>
 <body>
   <div class="a4">
+   <header>
+      <div class="topo">
+                  <h1><span data-id="nome">Maria Laura dos Santos </span><div class="divider"></div></h1>
+                </div></header>
 
     <!-- BARRA LATERAL ESTILIZADA -->
     <div class="lateral">
-      <div>
-        <h2><span data-id="nome">Maria Laura</span></h2>
-        <h3>Dados pessoais</h3>
+      
+        
+
+        
+        <div class="lt">
         <div class="info">
+          <h3>Dados pessoais</h3>
           Nº do BI: <span data-id="bi">004446572LA850</span><br>
           Data de nascimento: <span data-id="nascimento">02/06/2001</span>
         </div>
-        <h3>Contato</h3>
+        
         <div class="info">
+          <h3>Contato</h3><i class="bi bi-telephone"></i>
           Tel: <span data-id="telefone">+244 923 456 789</span> 
         </div>
 
-        <h3>Localização</h3>
+        
         <div class="info">
-          <span data-id="localizacao"> Residência Luanda Calemba 2</span> </p>
-        </div>
-<h3>Cursos</h3>
-<ul data-id="curso">
-  <li>Curso de Informática</li>
-  <li>Curso de Gestão de Projetos</li>
-</ul>
-      <h3>Idiomas</h3>
-<ul data-id="idiomas" class="idiomas">
-  <li>Português (Nativo)</li>
-</ul>  
+          <h3>Localização</h3>
+          <i class="bi bi-geo-alt"></i><span data-id="localizacao"> Residência Luanda Calemba 2</span> 
+        </div><div class="info">
+        <h3>Curso</h3>
+      <ul data-id="curso">
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
+        
+      </ul></div>
+      <div class="info">
+        <h3> Habilidades</h3>
+                  <ul data-id="habilidades">
+                    <li>Comunicação eficaz</li>
+                    <li>Gestão de tempo</li>
+                    <li>Organização</li>
+                    <li>Pacote Office</li>
+                    <li>Trabalho em equipe</li>
+                  </ul></div>
       </div>
-    </div>
-
+      </div>
+    
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="conteudo">
-      
-<h3>Objetivo</h3>
-      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
-      <h3>Resumo Profissional</h3>
-      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+                
 
-      <h3>Formação</h3>
-      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+                <h3><i class="bi bi-ui-checks"></i>  Objectivo</h3>
+                <p><span data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</span></p>
+                <h3><i class="bi bi-ui-radios"></i> Perfil Profissional</h3>
+                <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
 
-      <h3>Experiência</h3>
-      <ul data-id="experiencia">
-        <li>Gestão de documentos e arquivos</li>
-        <li>Atendimento de chamadas e e-mails corporativos</li>
-        <li>Organização de agendas e eventos</li>
-      </ul>
+                <h3><i class="bi bi-mortarboard"></i> Formação</h3>
+                <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
 
-     <h3>Habilidades</h3>
-        <ul data-id="habilidades">
-          <li>Comunicação eficaz</li>
-          <li>Gestão de tempo</li>
-          <li>Organização</li>
-          <li>Pacote Office</li>
-          <li>Trabalho em equipe</li></ul>
-          
-        <h3>Observação</h3>
-<p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+                <h3><i class="bi bi-briefcase-fill"></i> Experiência</h3>
+                  <p data-id="experiencia">Atuei em atividades relacionadas à função de Designer grafico, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.</p>
+
+                  <h3><i class="bi bi-translate"></i> Idiomas</h3>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul>
+              
+                  <h3><i class="bi bi-gear-fill"></i> Observação</h3>
+          <p><span> Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</span></p>
     </div>
   </div>
 </body>

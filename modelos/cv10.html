@@ -1,181 +1,273 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currículo Modelo 5</title>
+  <meta charset="UTF-8" />
+  <title>Currículo Modelo 2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
     body {
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Poppins', sans-serif;
       
     }
 
     .a4 {
       width: 21cm;
       height: 29.7cm;
-     
       background-color: #ffffff;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
       display: flex;
+     
+      overflow: hidden;
+    }
+
+    .lateral {
+      width: 7.5cm;
+      background-color: #0d0f1b;
+      color: #f8fafc;
+      padding: 2.5cm 1.5cm;
+      
       flex-direction: column;
       justify-content: space-between;
+      box-sizing: border-box;
+     border-top-right-radius: 180px;
+      border-bottom-left-radius: 180px;
     }
 
-    /* Cabeçalho com faixa */
-    .cabecalho {
-      display: flex;
-      align-items: center;
-      background: #1e3a8a;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 6px;
-      margin-bottom: 1.5rem;
+    .lateral h2 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-align: left;
+      color: #ffffff;
       
-    }
-
-    .foto {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 20px;
-      border: 1px solid #fff;
-      flex-shrink: 0;
-    }
-
-    .foto img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .info-pessoal {
-      flex: 1;
-    }
-
-    .info-pessoal h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: #fff;
-    }
-
-    .info-pessoal p {
-      margin: 4px 0;
-      font-size: 0.95rem;
-    }
-
-    /* Conteúdo */
-    .conteudo {
-     padding: 2.5cm;
-      padding-left: 3cm;
-      flex: 1;
-    }
-
-    h2 {
-      color: #1e3a8a;
-      font-size: 1.1rem;
-      margin-top: 1.1rem;
-      border-bottom: 1px solid #ccc;
       padding-bottom: 0.3rem;
     }
 
-    ul {
-      padding-left: 1.3rem;
-      margin-top: 0.2rem;
+    .lateral h3 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      padding-bottom: 0.3rem;
+      border: 2px solid #ffffff;
+      border-radius: 15px;
+      text-align: center;
+      padding: 2px; 
+      
+    }
+    .lt{
+      margin-top: 3.5rem;
+      
     }
 
-    li {
-      margin-bottom: 0.2rem;
-      font-size: 1rem;
+    .lateral .info, .lateral ul {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      
+    }
+
+    .lateral ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .lateral li::before {
+      content: "• ";
+      color: #ffffff;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 2.5cm;
+      padding-left: 1.6cm;
+      box-sizing: border-box;
+    }
+
+    .topo {
+    
+      margin-bottom: 1rem;
+    }
+
+   .topo h1 {
+  font-size: 1.6rem ;
+  color: #0b1342;
+  border-bottom: 3.3px solid #03105c;
+  border-bottom-right-radius: 20px;
+  
+  padding-bottom: 0.1rem;
+  display: inline-block;
+  padding-right: 0.6rem;
+
+
+  max-width: 140%;
+ 
+}
+
+
+    h3 {
+      font-size: 1.2rem;
+      color: #0b1342;
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+      border-left: 5px solid #06166d;
+      padding-left: 0.6rem;
     }
 
     p {
-      font-size: 1rem;
-      margin: 0.3rem 0;
+      font-size: 0.8rem;
+      color: #000000;
     }
 
-    /* Listas em colunas */
-    [data-id="habilidades"],
-    [data-id="experiencia"],
-    [data-id="curso"],
-    [data-id="idiomas"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style: disc inside;
+    ul {
+      padding-left: 1rem;
     }
 
-    [data-id="idiomas"],
-    [data-id="curso"] {
-      list-style: none;
-      padding-left: 0;
+    li {
+      margin-bottom: 0.3rem;
+       font-size: 0.8rem;
+    }
+.photo {
+  width: 145px;
+  height: 2000px;
+  margin: 0 auto 1.2rem auto; /* centraliza e dá espaço abaixo */
+  border-radius: 40%;
+  overflow: hidden;
+  border: 2px solid #ffffff; /* borda branca pra destacar da lateral */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.photo-wrap {
+      width: 160px;
+      height: 200px;
+      position: relative;
+      margin-bottom: 20px;
+      flex-shrink: 0;
     }
 
-    [data-id="idiomas"] li::before,
-    [data-id="curso"] li::before {
-      content: "• ";
-      color: #000;
+.photo {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/300x300.png?text=FOTO');
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.05);
     }
+
+
+
+    .photo-wrap::before,
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #e6e9ee;
+      pointer-events: none;
+        border-radius: 40%;
+    }
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+}
+
+    .photo-wrap::before {
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(-2deg);
+      opacity: 0.9;
+    }
+    
+
+    .photo-wrap::after {
+      bottom: -12px;
+      right: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(2deg);
+      opacity: 0.7;
+    }
+    .bi {
+      margin-right: 9px;
+    }
+
 
   </style>
 </head>
 <body>
   <div class="a4">
-<!-- Corpo do currículo -->
-    <div class="conteudo">
-    <!-- Cabeçalho com foto + faixa -->
-    <div class="cabecalho">
-      <div class="foto">
-        <img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato">
-      </div>
-      <div class="info-pessoal">
-        <h1><span data-id="nome">Nelson Maria</span></h1>
-        <p>Nº do BI: <span data-id="bi">004446572LA850</span></p>
-        <p>Telefone: <span data-id="telefone">+244 923 456 789</span></p>
-        <p><span data-id="localizacao">Residência Luanda Calemba 2</span></p>
-      </div>
-    </div>
 
-    
-      <h2>Objetivo</h2>
-      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
+    <!-- BARRA LATERAL ESTILIZADA -->
+    <div class="lateral">
+      
+        <div class="photo-wrap">
+          <div class="photo">
+          <img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato"></div>
+        </div>
 
-      <h2>Perfil Profissional</h2>
-      <p data-id="qualidade">Profissional com vivência em vendas e atendimento ao cliente. Focado em resultados e satisfação do consumidor.</p>
+        
+        <div class="lt">
+        <div class="info">
+          <h3>Dados pessoais</h3>
+          Nº do BI: <span data-id="bi">004446572LA850</span><br>
+          Data de nascimento: <span data-id="nascimento">02/06/2001</span>
+        </div>
+        
+        <div class="info">
+          <h3>Contato</h3><i class="bi bi-telephone"></i>
+          Tel: <span data-id="telefone">+244 923 456 789</span> 
+        </div>
 
-      <h2>Formação</h2>
-      <p data-id="formacao">Ensino Médio Completo - Escola Secundária Mutu-ya-Kevela</p>
-
-      <h2>Cursos</h2>
+        
+        <div class="info">
+          <h3>Localização</h3>
+          <i class="bi bi-geo-alt"></i><span data-id="localizacao"> Residência Luanda Calemba 2</span> 
+        </div><div class="info">
+        <h3>Curso</h3>
       <ul data-id="curso">
-        <li>Curso de Informática</li>
-        <li>Curso de Gestão de Projetos</li>
-      </ul>
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
+        
+      </ul></div>
+      <div class="info">
+         <h3>Idiomas</h3>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul></div></div>
+      </div>
+    
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo">
+                <div class="topo">
+                  <h1><span data-id="nome">Maria Laura dos Santos </span></h1>
+                </div>
 
-      <h2>Experiência</h2>
-      <ul data-id="experiencia">
-        <li>Abordagem de clientes</li>
-        <li>Controle de caixa e estoque</li>
-        <li>Alcançar metas de vendas mensais</li>
-      </ul>
+                <h3>Objectivo</h3>
+                <p><span data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</span></p>
+                <h3>Perfil Profissional</h3>
+                <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
 
-      <h2>Habilidades</h2>
-      <ul data-id="habilidades">
-        <li>Negociação</li>
-        <li>Organização</li>
-        <li>Determinação</li>
-        <li>Trabalho em equipe</li>
-      </ul>
+                <h3>Formação</h3>
+                <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
 
-      <h2>Idiomas</h2>
-      <ul data-id="idiomas">
-        <li>Português (Nativo)</li>
-      </ul>
+                <h3>Experiência</h3>
+                  <p data-id="experiencia">Atuei em atividades relacionadas à função de Designer grafico, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.</p>
 
-      <h2>Observação</h2>
-      <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+              <h3>Habilidades</h3>
+                  <ul data-id="habilidades">
+                    <li>Comunicação eficaz</li>
+                    <li>Gestão de tempo</li>
+                    <li>Organização</li>
+                    <li>Pacote Office</li>
+                    <li>Trabalho em equipe</li>
+                  </ul>
+                  <h3>Observação</h3>
+          <p><span> Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</span></p>
     </div>
   </div>
 </body>

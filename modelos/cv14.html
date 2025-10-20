@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Currículo Modelo 8</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+      
+    }
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      display: flex;
+    }
+
+    
+
+    .conteudo {
+      margin-top: 3.5rem;
+      margin-left: 7rem;
+      margin-right: 7rem;
+      
+    }
+    .cabeca {
+      margin-right: 9.5rem;
+      
+    }
+    .obs {
+      margin-right: 7.5rem;
+      
+    }
+    .cara {
+      background: #1e40af;
+      padding: 80px;
+      margin-left: 525px;
+      position: absolute;
+      
+      
+    }
+    
+
+    .cabila{
+      border-left: 2px solid #3b82f6;
+      padding-left: 0.5rem;
+    
+      
+    }
+    
+    
+    
+
+
+
+
+
+
+
+    h1 {
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 0.1rem;
+    }
+    h2 {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      text-align: left;
+      font-size: 1rem;
+      color: #1e40af;
+      margin-top: 0.5rem;
+    }
+    p, li {
+      font-size: 0.7rem;
+      color: #1f2937;
+      text-align: left;
+      margin: 1px;
+    }
+
+    ul {
+      padding-left: 2rem;
+      text-align: left;
+    }
+     /* Ajuste da lista de habilidades em 2 colunas */
+    
+    /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      list-style-type: disc;
+    }
+    .idiomas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 16px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.idiomas li::before {
+  content: "• ";
+  color: #000000;
+}
+
+[data-id="curso"] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
+  list-style: none;
+  padding-left: 0;
+}
+
+
+[data-id="curso"] li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+
+[data-id="curso"] li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-weight: bold;
+}
+
+ /* Foto quadrada estilizada */
+    .photo-wrap {
+      width: 170px;
+      height: 170px;
+      position: absolute;
+      flex-shrink: 0;
+      
+      
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/300x300.png?text=FOTO');
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #1e40af;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.05);
+      margin-top: 108px;
+      margin-left: 519px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .photo-wrap::before {
+      content: "";
+      position: absolute;
+      border: 10px solid #ffffff;
+      pointer-events: none;
+      margin-left: 508.5px;
+      margin-top: 98px;
+    }
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+  border-radius: 50%;
+}
+    .photo-wrap::before {
+      
+      width: calc(88% + 22px);
+      height: calc(89% + 22px);
+      border-radius: 50%;
+    }
+
+    
+    .cabila1{
+      background: #ffffff;
+      height: 6px;
+      width: 6px;
+      margin-top: 171px;
+      position: absolute;
+      margin-left: 6.85rem;
+      border: 1px solid #3b82f6;
+      border-radius: 50%;
+    }
+    .cabila2{
+      background: #ffffff;
+      height: 6px;
+      width: 6px;
+      margin-top: 220px;
+      position: absolute;
+      margin-left: 6.85rem;
+      border: 1px solid #3b82f6;
+      border-radius: 50%;
+    }
+
+.baixoo {
+      background: #1e40af;
+      padding: 50px;
+      height: 150px;
+      margin-left: 120px;
+      position: absolute;
+      margin-top: 973px;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      
+      
+    }
+.baixooo {
+      background: transparent;
+      border: 2.5px solid #ffffff;
+      padding: 42px;
+      height: 141px;
+      margin-left: 126px;
+      position: absolute;
+      margin-top: 982px;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      
+      
+    }
+
+  </style>
+</head>
+<body>
+  <div class="a4">
+    <div class="cara"></div>
+        <div class="photo-wrap">
+          <div class="photo"><img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato"></div>
+        </div>
+    <div class="conteudo">
+      
+      <div class="cabeca">
+    <h1><span data-id="nome">Ana Maria Manuel</span></h1>
+    <h3>Informações Pessoais</h3>
+    <div class="cabila">
+    <p>Nº do BI: <span data-id="bi">004446572LA850</span> | Data de nascimento: <span data-id="nascimento">02/06/2001</span></p>
+      <p>Telefone: <span data-id="telefone">+244 923 456 789</span> | Residência actual: <span data-id="localizacao"> Residência Luanda Calemba 2</span></p></div></div>
+      <div class="obs">
+    <h3>Objetivo</h3>
+     <div class="cabila"> <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p></div></div>
+    <h3>Perfil Profissional</h3><div class="cabila">
+    <p><span data-id="qualidade">Profissional dedicada e atenciosa com experiência em recepção, controle de documentos e suporte a equipes administrativas.</p></div>
+
+    <h3>Formação</h3>
+    <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+
+    <h3>Experiência</h3><div class="cabila">
+      <p data-id="experiencia">Atuei em atividades relacionadas à função de Designer grafico, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.</p></div>
+<h3>Cursos</h3>
+<ul data-id="curso">
+  <li>Curso de Informática</li>
+  <li>Curso de Gestão de Projetos</li>
+</ul>
+    <h3>Habilidades</h3><div class="cabila">
+    <ul data-id="habilidades">
+      <li>Simpatia no atendimento</li>
+      <li>Controle de arquivos</li>
+      <li>Digitadora rápida</li>
+    </ul></div>
+    <h3>Idiomas</h3>
+<ul data-id="idiomas" class="idiomas">
+  <li>Português (Nativo)</li>
+</ul>
+  <h3>Observação</h3>
+<p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+  </div> <div class="baixoo"></div>
+  </div> <div class="baixooo"></div>
+  </div>
+</body>
+</html>

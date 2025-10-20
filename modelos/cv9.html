@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Currículo Modelo 2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
     body {
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Poppins', sans-serif;
       
     }
 
@@ -16,61 +17,111 @@
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
       display: flex;
-      border-radius: 10px;
+      
       overflow: hidden;
     }
 
     .lateral {
-      width: 7.5cm;
-      background-color: #4a4552;
-      color: #f8fafc;
-      padding: 2.5cm 1.5cm;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-sizing: border-box;
-    }
+  position: relative;
+  margin-left: 30px;
+  width: 7.5cm;
+  background: linear-gradient(180deg, #0e161f 0%, #011324 100%);
+  color: #f8fafc;
+  padding-left:1.5cm;
+  padding-top:5cm;
+  padding-right:1cm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
-    .lateral h2 {
-      font-size: 1.9rem;
-      margin-bottom: 1.2rem;
-      text-align: left;
-      color: #ffffff;
-      border-bottom: 2px solid rgba(255,255,255,0.4);
-      padding-bottom: 0.3rem;
-    }
 
-    .lateral h3 {
-      font-size: 1rem;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-      color: #cbd5e1;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      padding-bottom: 0.3rem;
-    }
+/* Elementos decorativos geométricos */
+.lateral .decoracao-quadrada {
+  position: absolute;
+  bottom: -90px;
+  left: -30px;
+  width: 200px;
+  height: 200px;
+  
+  transform: rotate(15deg);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  z-index: 0;
+}
 
-    .lateral .info, .lateral ul {
-      font-size: 0.85rem;
-      line-height: 1.5;
-      margin-bottom: 0.4rem;
-    }
+.lateral .decoracao-quadrada2 {
+  position: absolute;
+  bottom: -60px;
+  left: -10px;
+  width: 160px;
+  height: 190px;
+  transform: rotate(-10deg);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
 
-    .lateral ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
+.lateral h2, 
+.lateral h3, 
+.lateral .info, 
+.lateral ul {
+  position: relative;
+  z-index: 3;
+}
 
-    .lateral li::before {
-      content: "• ";
-      color: #60a5fa;
-    }
+.lateral h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  color: #ffffff;
+  border-bottom: 2px solid rgba(255,255,255,0.4);
+  padding-bottom: 0.3rem;
+}
+
+.lateral h3 {
+  font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  border: 1px solid#ffffff;
+   border-radius: 18px;
+      margin-left: -85px;
+      padding-left: 20px;
+      border-radius: 18px;
+      text-align: center;
+      font-weight: 300;
+}
+
+.lateral .info, .lateral ul {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.lateral ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.lateral li::before {
+  content: "• ";
+  color: #60a5fa;
+}
+
 
     .conteudo {
       flex: 1;
-      padding: 2.5cm;
-      padding-left: 2cm;
+      padding-top: 5cm;
+      padding-left: 1.4cm;
+      padding-right: 2.3cm;
       box-sizing: border-box;
+    }
+header.h4{
+      position: absolute;
+      width: 100%;
+      z-index: 10;
     }
 
     .topo {
@@ -79,93 +130,101 @@
     }
 
     .topo h1 {
-      font-size: 2.5rem;
-      color: #1d4ed8;
-      border-bottom: 3px solid #1d4ed8;
-      padding-bottom: 0.4rem;
-      display: inline-block;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 2.6rem;
+      color: #ffffff;
       letter-spacing: 1px;
+      background: #19293a;
+      padding-right: 68px;
+      padding-left: 20px;
+      margin-top: 40px;
+      padding: 25px;
+      
     }
 
-    h3 {
+
+    /* Substituir a regra antiga por esta */
+.topo h1 span[data-id="nome"] {
+  display: inline-block;       /* permite manipular largura e font-size */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: inherit;          /* começa com o tamanho do h1 */
+
+  vertical-align: middle;
+}
+
+
+    .conteudo h3 {
       font-size: 1.1rem;
-      color: #1e40af;
+      color: #093768;
       margin-top: 2rem;
       margin-bottom: 0.6rem;
-      border-left: 5px solid #3b82f6;
+      border: 3px solid #07337a;
       padding-left: 0.6rem;
+      border-radius: 18px;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 0.80rem;
       color: #1f2937;
     }
 
-    ul {
+    .conteudo ul {
       padding-left: 1rem;
+      color: #1f2937;
     }
 
-    li {
+   .conteudo li {
       margin-bottom: 0.3rem;
-      font-size: 1rem;
+      font-size: 0.80rem;
+      color: #1f2937;
     }
   </style>
 </head>
 <body>
   <div class="a4">
 
+<header class="h4">
+  <div class="topo">
+        <h1><span data-id="nome">Ana Maria Laura</span></h1>
+      </div>
+</header>
+
     <!-- BARRA LATERAL ESTILIZADA -->
     <div class="lateral">
-      <div>
-        <h2><span data-id="nome">Maria Laura</span></h2>
-        <h3>Dados pessoais</h3>
-        <div class="info">
-          Nº do BI: <span data-id="bi">004446572LA850</span><br>
-          Data de nascimento: <span data-id="nascimento">02/06/2001</span>
-        </div>
-        <h3>Contato</h3>
-        <div class="info">
-          Tel: <span data-id="telefone">+244 923 456 789</span> 
-        </div>
+      
 
-        <h3>Localização</h3>
-        <div class="info">
-          <span data-id="localizacao"> Residência Luanda Calemba 2</span> </p>
-          <h3>Cursos</h3>
-<ul data-id="curso">
-  <li>Curso de Informática</li>
-  <li>Curso de Gestão de Projetos</li>
-</ul>
-<h3>Idiomas</h3>
-<ul data-id="idiomas" class="idiomas">
-  <li>Português (Nativo)</li>
-</ul>
-        </div>
+  <!-- Decoração geométrica -->
+  <div class="decoracao-quadrada"></div>
+  <div class="decoracao-quadrada2"></div>
+  
 
-        
-      </div>
+  <div>
+
+    <h3>Dados pessoais</h3>
+    <div class="info">
+      Nº do BI: <span data-id="bi">004446572LA850</span><br>
+      Data de nascimento: <span data-id="nascimento">02/06/2001</span>
     </div>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <div class="conteudo">
-      <div class="topo">
-        <h1>Curriculum Vitae</h1>
-      </div>
+    <h3>Contato</h3>
+    <div class="info"><i class="bi bi-telephone"></i> 
+      Tel: <span data-id="telefone">+244 923 456 789</span>
+    </div>
 
-      <h3>Resumo Profissional</h3>
-      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+    <h3>Localização</h3>
+    <div class="info"><i class="bi bi-geo-alt"></i>
+       <span data-id="localizacao"> Residência Luanda Calemba 2</span>
+    </div>
 
-      <h3>Formação</h3>
-      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+    <h3>Cursos</h3>
+    <ul data-id="curso">
+      <li>Curso de Informática</li>
+      <li>Curso de Gestão de Projetos</li>
+    </ul>
 
-      <h3>Experiência</h3>
-      <ul data-id="experiencia">
-        <li>Gestão de documentos e arquivos</li>
-        <li>Atendimento de chamadas e e-mails corporativos</li>
-        <li>Organização de agendas e eventos</li>
-      </ul>
-
-     <h3>Habilidades</h3>
+    <h3>Habilidades</h3>
         <ul data-id="habilidades">
           <li>Comunicação eficaz</li>
           <li>Gestão de tempo</li>
@@ -173,9 +232,108 @@
           <li>Pacote Office</li>
           <li>Trabalho em equipe</li>
         </ul>
+
+    <h3>Idiomas</h3>
+    <ul data-id="idiomas" class="idiomas">
+      <li>Português (Nativo)</li>
+    </ul>
+        </div>
+
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo">
+      
+
+      <h3>Objectivo</h3>
+      <p><span data-id="objetivo">Meu objetivo é atuar como Designer Grafico, contribuindo com criatividade, dedicação e foco em resultados para impulsionar o crescimento da organização. Tenho compromisso com a excelência e busco constantemente aprimorar minhas competências para agregar valor à equipe e aos projetos.</span></p>
+      <h3>Resumo Profissional</h3>
+      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+
+      <h3>Formação</h3>
+      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+
+      <h3>Experiência</h3>
+      <p data-id="experiencia">
+        Atuei em atividades relacionadas à função de ssssssssssss, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.
+      </p>
+
+     
         <h3>Observação</h3>
 <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
     </div>
   </div>
+  <script>
+(function () {
+  const spanSelector = '.topo h1 span[data-id="nome"]';
+  const targetSpan = document.querySelector(spanSelector);
+  const targetH1 = document.querySelector('.topo h1');
+
+  if (!targetSpan || !targetH1) return;
+
+  // calcula a largura disponível dentro do H1 (remove paddings)
+  function getAvailableWidth() {
+    const h1Rect = targetH1.getBoundingClientRect();
+    const style = window.getComputedStyle(targetH1);
+    const paddingLeft = parseFloat(style.paddingLeft) || 0;
+    const paddingRight = parseFloat(style.paddingRight) || 0;
+    return Math.max(10, Math.floor(h1Rect.width - paddingLeft - paddingRight));
+  }
+
+  // Ajusta o tamanho da fonte do span até caber em uma linha (px).
+  function ajustarNomeParaCaber() {
+    // restaura font-size base a partir do h1 (para recalcular)
+    const h1Computed = window.getComputedStyle(targetH1);
+    const baseFontPx = parseFloat(h1Computed.fontSize) || 20;
+
+    // definir tamanho inicial do span igual ao h1
+    let fontSize = baseFontPx;
+    targetSpan.style.fontSize = fontSize + 'rem';
+
+    const available = getAvailableWidth();
+
+    // se já couber, nada a fazer
+    if (targetSpan.scrollWidth <= available) return;
+
+    // reduzir progressivamente até caber ou até minFont
+    const minFont = Math.max(2.5, Math.round(baseFontRem * 1)); // não fica menor que ~60% ou 12px
+    while (targetSpan.scrollWidth > available && fontSize > minFont) {
+      fontSize -= 1;
+      targetSpan.style.fontSize = fontSize + 'rem';
+    }
+
+    // se ainda não couber (nome gigante), reduz espaco interno do h1 (fallback)
+    if (targetSpan.scrollWidth > available) {
+      targetSpan.style.letterSpacing = '-0.5rem';
+      targetSpan.style.maxWidth = (available - 1.5) + 'rem';
+    } else {
+      // garante espaçamento normal caso caiba
+      targetSpan.style.letterSpacing = '';
+      targetSpan.style.maxWidth = '';
+    }
+  }
+
+  // Debounce utilitário
+  function debounce(fn, wait = 80) {
+    let t;
+    return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+  }
+
+  // executa depois que tudo renderizar
+  window.addEventListener('load', ajustarNomeParaCaber);
+  // também quando o DOM estiver pronto (caso o load esteja em cache)
+  document.addEventListener('DOMContentLoaded', ajustarNomeParaCaber);
+
+  // reajusta ao redimensionar (debounced)
+  window.addEventListener('resize', debounce(ajustarNomeParaCaber, 120));
+
+  // observa mutações de texto (caso o nome seja alterado dinamicamente)
+  const obs = new MutationObserver(debounce(ajustarNomeParaCaber, 60));
+  obs.observe(targetSpan, { childList: true, characterData: true, subtree: true });
+
+})();
+</script>
+
+
 </body>
 </html>

@@ -1,164 +1,446 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Currículo Modelo 1</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV — Modelo 1 (Ana Pereira)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Times New Roman', Times, serif;
+    /* Definições de página A4 com margens */
+    @page {
+      size: A4;
+      margin-top: 2cm;
+      margin-bottom: 1cm;
+      margin-left: 1.5cm;
+      margin-right: 1.5cm;
     }
+
+    /* Reset básico */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { 
+      
+     
+      font-family: 'Poppins', sans-serif;
+      -webkit-font-smoothing:antialiased; 
+      -moz-osx-font-smoothing:grayscale; 
+    }
+
+    .container {
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+    }
+
     .a4 {
       width: 21cm;
       height: 29.7cm;
-      background-color: #ffffff;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box;
+      background: #ffffff;
+      box-shadow: 0 0 30px rgba(16,24,40,0.12);
       display: flex;
+      overflow: hidden;
+      color: #222;
     }
-    .barra-lateral {
-      width: 8px;
-      background-color: #1e40af;
-      margin-left: 2.5cm;
-      margin-top: 2.5cm;
-      margin-bottom: 2.5cm;
-      border-radius: 4px;
+
+    .left {
+      margin-left: 40px;
+      position: relative;
+      width: 7.5cm;
+      background: #222923;
+      color: #ffffff;
+      padding: 2.5cm 1.5cm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .conteudo {
-      padding: 2.5cm;
-      padding-left: 2cm;
-      flex: 1;
+
+    /* Foto quadrada estilizada */
+    .photo-wrap {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      margin-bottom: 20px;
+      flex-shrink: 0;
     }
-    .titulo {
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/300x300.png?text=FOTO');
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.05);
+    }
+
+    .photo-wrap::before,
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #e6e9ee;
+      pointer-events: none;
+    }
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+}
+    .photo-wrap::before {
+      top: -12px;
+      left: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(-2deg);
+      opacity: 0.9;
+    }
+
+    .photo-wrap::after {
+      bottom: -12px;
+      right: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(2deg);
+      opacity: 0.7;
+    }
+
+    .left .nome-curta {
       text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #1e3a8a;
-      margin-bottom: 1.1rem;
-      border-bottom: 3px solid #1e3a8a;
-      padding-bottom: 0.5rem;
-      letter-spacing: 1px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
     }
-    .cabecalho {
-      text-align: center;
-      margin-bottom: 1.1rem;
-      border-bottom: 2px solid #1e40af;
-      padding-bottom: 0.8rem;
+
+    .left .cargo-curta {
+      font-size: 0.86rem;
+      color: #a7b3bf;
+      margin-bottom: 18px;
     }
-    h1 {
-      color: #1e40af;
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
+
+    .divider {
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(0,197,255,0.0), #00c5ff, rgba(0,197,255,0.0));
+      margin: 1px 0 20px;
     }
-    h2 {
-      color: #1e3a8a;
-      margin-top: 1rem;
+
+    .info-section { width: 100%; margin-bottom: 18px; }
+    .info-section h4 {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.6px;
+    }
+
+    .info-item {
+      font-size: 0.9rem;
+      color: #dbe6ef;
+      margin-bottom: 8px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+    }
+
+    .right {
+      width: 66%;
+      padding: 50px 50px;
+      padding-right: 90px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      background: #222923;
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+      padding: 1rem;
+      margin-left: -55px;
+      padding-left: 55px;
+    }
+
+    .top-left { max-width: 90%; }
+
+    .nome {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+      letter-spacing: 0.6px;
+    }
+
+    
+
+    .section { margin-top: 18px; }
+     h3 {
       font-size: 1rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.1rem;
+      margin-bottom: 8px;
+      color: #222923;
+      font-weight: 700;
+      letter-spacing: 0.6px;
     }
-    ul {
-      padding-left: 1.5rem;
+
+    .profile-text {
+      font-size: 0.95rem;
+      color: #3b4752;
+      line-height: 1.5;
+      
     }
-    li {
-      margin-bottom: 0.1rem;
-      font-size: 0.9rem;
+
+    .experience-item, .education-item { margin-bottom: 14px; }
+    .experience-item h4, .education-item h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #10121a;
     }
-    p {
-      font-size: 0.9rem;
+
+    .muted {
+      font-size: 0.86rem;
+      color: #6b7280;
+      display: block;
+      margin-bottom: 6px;
     }
-    /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="habilidades"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+
+    .body-text {
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.45;
     }
-    .idiomas {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px 16px;
-  list-style: none;
-  padding-left: 0;
-}
+    .obg {
+      margin-top: 40px;
+    }
 
-.idiomas li::before {
-  content: "• ";
-  color: #000000;
-}
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
 
-[data-id="curso"] {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
-  list-style: none;
-  padding-left: 0;
-}
+    .bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: #374151;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c5ff;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .right .bottom-space { height: 18px; }
+
+    @media print {
+      body { background: #fff; }
+      .container { padding: 0; }
+      .a4 { box-shadow: none; margin: 0; }
+    }
+
+   
+
+    a { color: inherit; text-decoration: none; }
 
 
-[data-id="curso"] li {
-  position: relative;
-  padding-left: 1.2rem;
-}
 
 
-[data-id="curso"] li::before {
-  content: "•";
+    /* Elementos decorativos geométricos */
+.left .decoracao-quadrada {
   position: absolute;
-  left: 0;
-  color: #000000;
-  font-weight: bold;
+  bottom: -60px;
+  left: 670px;
+  width: 150px;
+  height: 150px;
+  background: #222923;
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #222923 solid 1px;
+}
+.left .decoracao-quadrada4 {
+  position: absolute;
+  bottom: -50px;
+  left: 700px;
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #222923 solid 1px;
+}
+.left .decoracao-quadrada3 {
+  position: absolute;
+  bottom: -65px;
+  left: 620px;
+  width: 220px;
+  height: 220px;
+  
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #222923 solid 1px;
+}
+
+.left .decoracao-quadrada2 {
+  position: absolute;
+  bottom: 40px;
+  left: -10px;
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.075);
+  transform: rotate(-10deg);
+  border: #10121a solid 1px;
+  z-index: 0;
 }
   </style>
 </head>
 <body>
-  <div class="a4">
-    <div class="barra-lateral"></div>
-    <div class="conteudo">
+  <div class="container">
+    <article class="a4" role="document">
+      <aside class="left">
+        <div class="photo-wrap">
+          <div class="photo"><img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato"></div>
+        </div>
 
-      <div class="titulo">Curriculum Vitae</div>
 
-      <h2>Informações Pessoais</h2>
-      <p>Nome:<span data-id="nome"> João Domingos Zema</span></p>
-      <p>Nº do BI:<span data-id="bi"> 004446572LA850</span></p>
-      <p>Data de nascimento:<span data-id="nascimento"> 02/06/2001</span></p>
-      <p>Telefone:<span data-id="telefone"> +244 923 456 789</span></p>
-      <p>Endereço:<span data-id="localizacao"> Residência Luanda Calemba 2</span></p>
+<!-- Decoração geométrica -->
+  <div class="decoracao-quadrada"></div>
+  <div class="decoracao-quadrada3"></div>
+  <div class="decoracao-quadrada4"></div>
 
-      <h2>Objetivo</h2>
-      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
 
-      <h2>Formação Acadêmica</h2>
-      <p data-id="formacao">Licenciatura em Gestão - Universidade Agostinho Neto (2018 - 2022)</p>
+        <div class="nome-curta"><span data-id="nome">Ana Maria Pereira</span></div>
+        <div class="cargo-curta"><span data-id="profissao">Designer Gráfico</span></div>
 
-      <h2>Curso(s)</h2>
-      <ul data-id="curso">
-        <li>Informática Básica - Centro de Formação XYZ</li>
-      </ul>
+        <div class="divider"></div>
 
-      <h2>Experiência Profissional</h2>
-      <ul data-id="experiencia">
-        <li>Assistente Administrativo - Empresa XYZ (2022 - 2024)</li>
-        <li>Organização de documentos e arquivos</li>
-        <li>Atendimento ao cliente</li>
-        <li>Controle de agenda e reuniões</li>
-      </ul>
+        <section class="info-section">
+          <h4>DADOS PESSOAIS</h4>
+          <div class="info-item telefone"> Nº do BI: <span data-id="bi">004446572LA850</span></div>
+          <div class="info-item email">Data de nascimento: <span data-id="nascimento">02/06/2001</span></div>
+          
+        </section>
 
-      <h2>Habilidades</h2>
-      <ul data-id="habilidades">
-        <li>Pacote Office</li>
-        <li>Comunicação</li>
-        <li>Trabalho em equipe</li>
-        <li>Responsabilidade</li>
-      </ul>
+        <section class="info-section">
+          <h4>CONTACTO</h4>
+          <div class="info-item telefone"><i class="bi bi-telephone"> </i><span data-id="telefone">+244 923 456 789</span></div>
+          
+          <div class="info-item cidade"><i class="bi bi-geo-alt"></i> <span data-id="localizacao"> Luanda, Angola</span></div>
+        </section>
+        
 
-      <h2>Idiomas</h2>
-<ul data-id="idiomas" class="idiomas">
+        <section class="info-section">
+          <h4>Curso</h4>
+          <div class="skills">
+            <span class="skill-pill"><ul data-id="curso">
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
+      </ul></span>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h4>Idiomas</h4>
+          <div class="info-item education-1">
+            <ul data-id="idiomas" class="idiomas">
   <li>Português (Nativo)</li>
 </ul>
+          </div>
+        </section>
+      </aside>
 
-      <h2>Observação</h2>
-      <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
-    </div>
-  </div>
+      <main class="right">
+        <header class="top">
+          <div class="top-left">
+            <h1 class="nome"><span data-id="nome">Ana Maria Pereira</span></h1>
+          </div>
+        </header>
+         <div class="obg">
+        <section class="section profile">
+          <h3><i class="bi bi-ui-checks"></i> </i>OBJECTIVO</h3>
+          <p class="profile-text perfil"><span data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</span>
+          </p>
+        </section>
+        <section class="section profile">
+          <h3><i class="bi bi-motherboard"></i> PERFIL PROFISSIONAL</h3>
+          <p class="profile-text perfil"><span data-id="qualidade">
+            Designer gráfico com mais de 6 anos de experiência em criação de identidades visuais, materiais impressos e digitais.</span>
+          </p>
+        </section>
+        <section class="section profile">
+          <h3><i class="bi bi-mortarboard"></i> FORMAÇÃO ACADÊMICA</h3>
+          <p class="profile-text perfil">
+            <span data-id="formacao">Licenciatura em Design — Universidade Agostinho Neto</span>
+          </p>
+        </section>
+
+        <section class="section experience">
+          <h3><i class="bi bi-clipboard2-data"></i> EXPERIÊNCIA</h3>
+            <div class="body-text">
+              <ul class="bullet-list" data-id="experiencia">
+                <li>Coordenação de equipa de design em projetos de branding e marketing digital.</li>
+              </ul>
+            </div>
+          
+        </section><section>
+          <h3><i class="bi bi-list-check"></i> Habilidades</h3>
+            <div class="body-text">
+              <ul class="bullet-list" data-id="habilidades">
+          <li>Comunicação eficaz</li>
+          <li>Gestão de tempo</li>
+          <li>Organização</li>
+          <li>Pacote Office</li>
+          <li>Trabalho em equipe</li>
+        </ul>
+            </div>
+        </section><section>
+<h3>Observação</h3>
+<p class="profile-text perfil"> Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p></section>
+        
+
+        <div class="bottom-space"></div>
+      </main>
+    </article>
+  </div></div>
+
+  <script>
+    // Recebe dados do editor para atualizar os campos e a foto
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (data.type === 'updatePhoto' && data.imageUrl) {
+        document.getElementById('foto-perfil').style.backgroundImage = `url('${data.imageUrl}')`;
+      }
+      if (data.type === 'updateField') {
+        const elements = document.querySelectorAll(data.selector);
+        elements.forEach(el => el.textContent = data.value);
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,154 +1,312 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <title>Currículo Modelo 8</title>
+  <meta charset="UTF-8" />
+  <title>Currículo Modelo 2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <style>
-   body {
-      font-family: 'Times New Roman', Times, serif;
+    body {
+      font-family: 'Poppins', sans-serif;
       
     }
+
     .a4 {
       width: 21cm;
       height: 29.7cm;
       background-color: #ffffff;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
       display: flex;
+      
+      overflow: hidden;
     }
 
-    
+    .lateral {
+  position: relative;
+  width: 7.5cm;
+  background: linear-gradient(180deg, #475d79 0%, #3d300c 100%);
+  color: #f8fafc;
+  padding: 2.5cm 1.5cm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Foto quadrada estilizada */
+    .photo-wrap {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/300x300.png?text=FOTO');
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.05);
+    }
+
+    .photo-wrap::before,
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #e6e9ee;
+      pointer-events: none;
+    }
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+}
+    .photo-wrap::before {
+      top: -12px;
+      left: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(-2deg);
+      opacity: 0.9;
+    }
+
+    .photo-wrap::after {
+      bottom: -12px;
+      right: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(2deg);
+      opacity: 0.7;
+    }
+
+
+
+/* ONDA separadora mais visível */
+.lateral svg.onda {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  height: 100%;
+  width: 70px;
+  fill: #086cdf;
+  z-index: 1;
+}
+
+/* Elementos decorativos geométricos */
+.lateral .decoracao-quadrada {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 220px;
+  height: 220px;
+  
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #08f1f1b9 solid 1px;
+}
+
+.lateral .decoracao-quadrada2 {
+  position: absolute;
+  bottom: 40px;
+  left: -10px;
+  width: 180px;
+  height: 180px;
+  background: rgba(4, 255, 201, 0.082);
+  transform: rotate(-10deg);
+  border: #08f1f1b9 solid 1px;
+  z-index: 0;
+}
+
+.lateral h2, 
+.lateral h3, 
+.lateral .info, 
+.lateral ul {
+  position: relative;
+  z-index: 3;
+}
+
+.lateral h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  color: #ffffff;
+  border-bottom: 2px solid rgba(255,255,255,0.4);
+  padding-bottom: 0.3rem;
+}
+
+.lateral h3 {
+  font-size: 1rem;
+  margin-top: 2rem;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding-bottom: 0.3rem;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 300;
+  padding-top: 5px;
+  
+}
+
+.lateral .info, .lateral ul {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.lateral ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.lateral li::before {
+  content: "• ";
+  color: #60a5fa;
+}
+
 
     .conteudo {
-      padding: 2.5cm;
-      padding-left: 3cm;
       flex: 1;
+      padding: 2cm;
+      padding-left: 2cm;
+      box-sizing: border-box;
     }
-    h1 {
-      font-size: 2.8rem;
-      color: #1e3a8a;
-      margin-bottom: 0.1rem;
+
+    .topo {
+      text-align: center;
     }
-    h2 {
-      font-size: 1.1rem;
-      color: #64748b;
-      margin-bottom: 1.5rem;
+
+    .topo h1 {
+      font-size: 1.8rem;
+      color: #1d4ed8;
+      
+      letter-spacing: 1px;
     }
+
     h3 {
-      text-align: left;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #1e40af;
-      border-left: 4px solid #3b82f6;
-      padding-left: 0.5rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 0.6rem;
     }
-    p, li {
-      font-size: 0.9rem;
+
+    p {
+      font-size: 0.75rem;
       color: #1f2937;
-      text-align: left;
     }
+
     ul {
-      padding-left: 2rem;
-      text-align: left;
+      padding-left: 1rem;
+      font-size: 0.75rem;
     }
-     /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="experiencia"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+
+    li {
+      margin-bottom: 0.3rem;
+      font-size: 0.75rem;
     }
-    /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="habilidades"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+
+     .divider {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(0,197,255,0.0), #104fc5, rgba(0,197,255,0.0));
+      margin: 5px ;
+      margin-bottom: 3px;
     }
-    /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="habilidades"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+     .bi {
+      margin-right: 6px;
     }
-    .idiomas {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px 16px;
-  list-style: none;
-  padding-left: 0;
-}
-
-.idiomas li::before {
-  content: "• ";
-  color: #000000;
-}
-
-[data-id="curso"] {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
-  list-style: none;
-  padding-left: 0;
-}
-
-
-[data-id="curso"] li {
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-
-[data-id="curso"] li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #000000;
-  font-weight: bold;
-}
+    
   </style>
 </head>
 <body>
   <div class="a4">
-    <div class="conteudo">
-    <h1><span data-id="nome">Ana Maria Manuel</span></h1>
 
-    <h3>Informações Pessoais</h3>
-    <p>Nº do BI: <span data-id="bi">004446572LA850</span> | Data de nascimento: <span data-id="nascimento">02/06/2001</span></p>
-      <p>Telefone: <span data-id="telefone">+244 923 456 789</span> | Residência actual: <span data-id="localizacao"> Residência Luanda Calemba 2</span></p>
-    <h3>Objetivo</h3>
-      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
-    <h3>Perfil Profissional</h3>
-    <p><span data-id="qualidade">Profissional dedicada e atenciosa com experiência em recepção, controle de documentos e suporte a equipes administrativas.</p>
+    <!-- BARRA LATERAL ESTILIZADA -->
+    <div class="lateral">
+      <!-- Ondas SVG -->
+  <svg class="onda" viewBox="0 0 50 100" preserveAspectRatio="none">
+    <path d="M0,0 C30,25 20,75 50,100 L50,0 Z"></path>
+  </svg>
 
-    <h3>Formação</h3>
-    <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
-<h3>Cursos</h3>
-<ul data-id="curso">
-  <li>Curso de Informática</li>
-  <li>Curso de Gestão de Projetos</li>
-</ul>
-    <h3>Experiência</h3>
-    <ul data-id="experiencia">
-      <li>Atendimento ao público</li>
-      <li>Agendamento de consultas</li>
-      <li>Controle de planilhas e arquivos</li>
+  <!-- Decoração geométrica -->
+  <div class="decoracao-quadrada"></div>
+  <div class="decoracao-quadrada2"></div>
+  
+
+  <div>
+    <div class="photo-wrap">
+          <div class="photo"><img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato"></div>
+        </div>
+
+    <h3>Dados pessoais</h3>
+    <div class="info">
+      Nº do BI: <span data-id="bi">004446572LA850</span><br>
+      Data de nascimento: <span data-id="nascimento">02/06/2001</span>
+    </div>
+
+    <h3>Contato</h3>
+    <div class="info"><i class="bi bi-telephone"></i>
+      Tel: <span data-id="telefone">+244 923 456 789</span>
+    </div>
+
+    <h3>Localização</h3>
+    <div class="info"><i class="bi bi-geo-alt"></i>
+      <span data-id="localizacao"> Residência Luanda Calemba 2</span>
+    </div>
+
+    <h3>Cursos</h3>
+    <ul data-id="curso">
+      <li>Curso de Informática</li>
+      <li>Curso de Gestão de Projetos</li>
     </ul>
 
-    <h3>Habilidades</h3>
-    <ul data-id="habilidades">
-      <li>Simpatia no atendimento</li>
-      <li>Controle de arquivos</li>
-      <li>Digitadora rápida</li>
-    </ul>
     <h3>Idiomas</h3>
-<ul data-id="idiomas" class="idiomas">
-  <li>Português (Nativo)</li>
-</ul>
-  <h3>Observação</h3>
+    <ul data-id="idiomas" class="idiomas">
+      <li>Português (Nativo)</li>
+    </ul>
+        </div>
+
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo">
+      <div class="topo">
+        <h1><span data-id="nome">Ana Maria Laura </span> <div class="divider"></div></h1>
+      </div>
+
+      <h3>Objectivo</h3>
+      <p><span data-id="objetivo">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+      <h3>Resumo Profissional</h3>
+      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+
+      <h3>Formação</h3>
+      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+
+      <h3>Experiência</h3>
+      <ul data-id="experiencia">
+        <li>Gestão de documentos e arquivos</li>
+        <li>Atendimento de chamadas e e-mails corporativos</li>
+        <li>Organização de agendas e eventos</li>
+      </ul>
+
+     <h3>Habilidades</h3>
+        <ul data-id="habilidades">
+          <li>Comunicação eficaz</li>
+          <li>Gestão de tempo</li>
+          <li>Organização</li>
+          <li>Pacote Office</li>
+          <li>Trabalho em equipe</li>
+        </ul>
+        <h3>Observação</h3>
 <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
-  </div>
+    </div>
   </div>
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Editor de Currículo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <style>
     
 * {
@@ -17,14 +18,15 @@
       padding: 20px;
     }
 
-    header{
+    header.editor{
       background-color: #1e3a8a;
       color: white;
-      padding: 1rem;
+      
       font-weight: 620;
       text-align: center;
       font-size: 1.5rem;
       border-radius: 10px;
+      padding: 1rem;
       align-items: center;
     }
 
@@ -143,6 +145,56 @@
       padding-bottom: 0.3rem;
       margin-bottom: 1.5rem;
     }
+/* Botões de geração automáticos */
+.gerar-btn {
+  background: linear-gradient(135deg, #1452fc, #10e209);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.gerar-btn:hover {
+  background: linear-gradient(135deg, #10e209, #1e40af);
+  transform: translateY(-2px);
+}
+
+.gerar-btn:active {
+  transform: translateY(0);
+}
+
+/* Alerta elegante (tipo toast) */
+.toast-msg {
+  position: fixed;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e3a8a;
+  color: #fff;
+  padding: 2px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+
 
     @media (max-width: 798px) {
       
@@ -380,6 +432,64 @@ h2.cee{
   margin-left: 20px;
 }
 
+.campo-habilidades {
+  position: relative;
+  margin-top: 8px;
+}
+
+.input-habilidades {
+  padding: 10px 14px;
+  border-radius: 30px;
+  border: 1px solid #3b82f6;
+  background-color: #f0f4ff;
+  color: #1e40af;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.input-habilidades:hover {
+  background-color: #e0ecff;
+}
+
+.opcoes-habilidades {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.opcao-habilidade {
+  padding: 8px 12px;
+  border-radius: 30px;
+  margin: 4px 0;
+  cursor: pointer;
+  background-color: #f0f4ff;
+  color: #1e40af;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.opcao-habilidade:hover {
+  background-color: #dbe9ff;
+}
+
+.opcao-habilidade.selected {
+  background-color: #1e40af;
+  color: white;
+  border: 1px solid #1e3a8a;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 
 
   </style>
@@ -387,7 +497,7 @@ h2.cee{
 
 
 <body>
- <header>Editor de Currículo</header>
+ <header class="editor">Editor de Currículo</header>
  <div class="wrapper">
   
  
@@ -401,6 +511,7 @@ h2.cee{
 
       <label>Nome completo:</label>
       <input type="text" id="nome" placeholder="Seu nome" data-input="nome"/>
+<div id="toast" class="toast-msg"></div>
 
       <label>Nº do BI:</label>
       <input type="text" id="bi" placeholder="Número do BI" data-input="bi"/>
@@ -415,17 +526,44 @@ h2.cee{
       <label>Localização:</label>
       <input type="text" id="localizacao" placeholder="Endereço" data-input="localizacao"/>
 
-      <label>Objetivo:</label>
-      <textarea id="objetivo" placeholder="Escreva seu objetivo" rows="3" data-input="objetivo"></textarea>
-      <label>Perfil Profissional(suas Qualidades):</label>
-      <textarea id="qualidade" placeholder="Fale sobre Você/Suas Qualidades" rows="3" data-input="qualidade"></textarea>
+
+<div class="form-group">
+  <label for="profissao">Profissão</label>
+  <input type="text" id="profissao" data-input="profissao" placeholder="Ex: Designer Gráfico" />
+</div>
+
+<!-- Campo Objetivo -->
+<div class="form-group">
+  <label for="objetivo">Objetivo Profissional</label>
+  <textarea id="objetivo" rows="3" placeholder="Digite ou gere automaticamente"></textarea>
+  <button type="button" class="gerar-btn" onclick="gerarTexto('objetivo')">Gerar automaticamente</button>
+</div>
+
+<!-- Campo Perfil Profissional -->
+<div class="form-group">
+  <label for="qualidade">Perfil Profissional</label>
+  <textarea id="qualidade" rows="3" placeholder="Digite ou gere automaticamente"></textarea>
+  <button type="button" class="gerar-btn" onclick="gerarTexto('qualidade')">Gerar automaticamente</button>
+</div>
+
+<!-- Campo Experiência Profissional -->
+<div class="form-group">
+  <label for="experiencia">Experiência Profissional</label>
+  <textarea id="experiencia" rows="4" placeholder="Digite ou gere automaticamente"></textarea>
+  <button type="button" class="gerar-btn" onclick="gerarTexto('experiencia')">Gerar automaticamente</button>
+</div>
+<!-- Toast -->
+<div id="toast" class="toast-msg"></div>
+
+      
+     
 
       <label>Formação Acadêmica:</label>
       <textarea id="formacao" placeholder="Formação acadêmica" rows="3" data-input="formacao"></textarea>
 
-      <label>Experiência Profissional:</label>
-      <textarea id="experiencia" placeholder="Experiência Profissional" rows="3" data-input="experiencia"></textarea>
-
+     
+<!-- Toast -->
+<div id="toast" class="toast-msg"></div>
       <label>Curso(s):</label>
 <textarea id="curso" placeholder="Liste seus cursos (um por linha)" rows="3" data-input="curso"></textarea>
 
@@ -454,8 +592,39 @@ h2.cee{
 
 
 
-      <label>Habilidades:</label>
-      <textarea id="habilidades" placeholder="Habilidades" rows="3" data-input="habilidades"></textarea>
+<label>Habilidades:</label>
+<div id="habilidadesWrapper" class="campo-habilidades">
+  <div id="habilidadesInput" class="input-habilidades">Clique para selecionar habilidades</div>
+  <div id="habilidadesOptions" class="opcoes-habilidades">
+    <div class="opcao-habilidade" data-value="Simpatia no atendimento">Simpatia no atendimento</div>
+    <div class="opcao-habilidade" data-value="Controle de arquivos">Controle de arquivos</div>
+    <div class="opcao-habilidade" data-value="Digitadora rápida">Digitadora rápida</div>
+    <div class="opcao-habilidade" data-value="Organização">Organização</div>
+    <div class="opcao-habilidade" data-value="Comunicação">Comunicação</div>
+    <div class="opcao-habilidade" data-value="Trabalho em equipe">Trabalho em equipe</div>
+    <div class="opcao-habilidade" data-value="Liderança">Liderança</div>
+    <div class="opcao-habilidade" data-value="Criatividade">Criatividade</div>
+    <div class="opcao-habilidade" data-value="Planejamento">Planejamento</div>
+    <div class="opcao-habilidade" data-value="Tomada de decisão">Tomada de decisão</div>
+    <div class="opcao-habilidade" data-value="Adaptabilidade">Adaptabilidade</div>
+    <div class="opcao-habilidade" data-value="Proatividade">Proatividade</div>
+    <div class="opcao-habilidade" data-value="Resolução de problemas">Resolução de problemas</div>
+    <div class="opcao-habilidade" data-value="Negociação">Negociação</div>
+    <div class="opcao-habilidade" data-value="Gestão de tempo">Gestão de tempo</div>
+  </div>
+  <div id="habilidadesToast" class="toast-msg"></div>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="habilidadesToast" class="toast-msg"></div>
+
        
       <div class="acoes">
         <button onclick="document.getElementById('curriculoVisual').scrollIntoView({behavior:'smooth'})">Ver Currículo</button>
@@ -489,6 +658,8 @@ console.log("Modelo carregado:", modelo);
     alert("Acesso negado! Por favor, realize o pagamento primeiro.");
     window.location.href = "pagament.html";
   }
+
+  
 
 
 
@@ -569,22 +740,29 @@ document.getElementById("foto")?.addEventListener("change", (e) => {
 document.querySelectorAll("[data-input]").forEach(input => {
   input.addEventListener("input", () => {
     const targetId = input.getAttribute("data-input");
-    const targetEl = document.querySelector(`[data-id="${targetId}"]`);
-    if (!targetEl) return;
 
-    // Se o destino for lista (habilidades, experiencia, cursos, idiomas)
-    if (targetEl.tagName === "UL") {
-      // Quebra por ENTER (não por vírgula)
-      const linhas = input.value.split(/\n/).map(v => v.trim()).filter(v => v);
-      targetEl.innerHTML = linhas.map(v => `<li>${v}</li>`).join("");
-    } 
-    else {
-      // Campos simples continuam com textContent
-      targetEl.textContent = input.value;
+    // Seleciona TODAS as ocorrências com o mesmo data-id
+    const targetEls = document.querySelectorAll(`[data-id="${targetId}"]`);
+    if (!targetEls.length) return;
+
+    targetEls.forEach(targetEl => {
+      if (targetEl.tagName === "UL") {
+        // Para listas (ex: habilidades, cursos)
+        const linhas = input.value.split(/\n/).map(v => v.trim()).filter(v => v);
+        targetEl.innerHTML = linhas.map(v => `<li>${v}</li>`).join("");
+      } else {
+        // Para campos simples (nome, profissão, etc)
+        targetEl.textContent = input.value;
+      }
+    });
+
+   // 👇 Adiciona aqui: ajuste de tamanho automático para o nome
+    if (targetId === "nome") {
+      targetEls.forEach(el => ajustarTamanhoFonte(el));
     }
+
   });
 });
-
 
 
 
@@ -618,6 +796,150 @@ document.querySelectorAll("[data-input]").forEach(input => {
     }, 2000);
   });
 }
+
+// ===============================
+// Geradores Automáticos de Texto
+// ===============================
+const textosGerados = {
+  objetivo: [
+    prof => `Meu objetivo é atuar como ${prof}, contribuindo com criatividade, dedicação e foco em resultados para impulsionar o crescimento da organização. Tenho compromisso com a excelência e busco constantemente aprimorar minhas competências para agregar valor à equipe e aos projetos.`,
+  
+  prof => `Busco uma oportunidade como ${prof}, onde eu possa aplicar meus conhecimentos técnicos e desenvolver novas habilidades em um ambiente colaborativo. Acredito que meu perfil proativo e adaptável pode fortalecer a cultura da empresa e gerar resultados consistentes a curto e longo prazo.`,
+  
+  prof => `Pretendo exercer a função de ${prof} com excelência, participando ativamente de processos estratégicos e operacionais. Desejo contribuir com soluções inovadoras, fortalecer a comunicação interna e apoiar a construção de um ambiente de trabalho eficiente e motivador.`,
+  
+  prof => `Desejo integrar uma equipe como ${prof}, atuando de forma participativa em projetos desafiadores e de impacto real. Tenho interesse em colaborar com profissionais experientes, trocar conhecimento e crescer de maneira sólida dentro da empresa.`,
+  
+  prof => `Almejo uma posição como ${prof}, onde possa aliar meu comprometimento profissional com a visão estratégica da organização. Meu objetivo é construir uma trajetória sólida, assumindo responsabilidades crescentes e contribuindo para o alcance de metas ambiciosas.`,
+  
+  prof => `Procuro uma oportunidade para atuar como ${prof}, oferecendo comprometimento, capacidade analítica e visão inovadora. Estou preparado para enfrentar desafios com responsabilidade e foco, ajudando a empresa a atingir novos patamares de desempenho.`,
+  
+  prof => `Tenho como meta consolidar minha carreira como ${prof}, aplicando minhas competências técnicas e interpessoais para oferecer soluções práticas e eficazes. Acredito no trabalho em equipe, na melhoria contínua e no impacto positivo das boas práticas profissionais.`,
+  
+  prof => `Desejo exercer a função de ${prof} em uma organização que valorize o crescimento profissional, a inovação e a cooperação. Quero contribuir com ideias criativas, dedicação e uma postura profissional alinhada aos valores da empresa.`,
+  
+  prof => `Busco desenvolver minha trajetória como ${prof} em um ambiente desafiador e inspirador, que estimule o aprendizado contínuo. Pretendo evoluir profissionalmente, agregar valor às operações da empresa e me tornar uma referência dentro da equipe.`,
+  
+  prof => `Tenho o objetivo de atuar como ${prof}, contribuindo de forma significativa para o alcance de metas estratégicas e operacionais. Meu compromisso é com a entrega de resultados consistentes, com ética, eficiência e espírito de colaboração.`,
+],
+  qualidade: [
+    prof => `Profissional dedicado e proativo, com forte capacidade de adaptação e interesse em aprimorar continuamente minhas competências na área de ${prof}.`,
+    prof => `Sou uma pessoa organizada, responsável e focada em resultados, com facilidade em trabalhar em equipe e desempenhar funções relacionadas a ${prof}.`,
+    prof => `Tenho perfil dinâmico, espírito colaborativo e grande motivação para evoluir constantemente como ${prof}.`,
+    prof => `Comunicativo, comprometido e com espírito inovador, busco contribuir de forma significativa na função de ${prof}.`
+  ],
+  experiencia: [
+    prof => `Atuei em atividades relacionadas à função de ${prof}, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.`,
+    prof => `Desenvolvi experiências práticas na área de ${prof}, trabalhando em projetos que exigiram planejamento, execução e trabalho em equipe.`,
+    prof => `Participei de iniciativas que fortaleceram minhas habilidades como ${prof}, contribuindo para a melhoria de processos e bons resultados.`,
+    prof => `Tive a oportunidade de atuar como ${prof}, adquirindo experiência sólida, senso de liderança e capacidade de resolução de problemas.`
+  ]
+};
+
+const geradorIndex = { objetivo: 0, qualidade: 0, experiencia: 0 };
+
+function gerarTexto(campo) {
+  const profissao = document.getElementById("profissao").value.trim();
+  if (!profissao) {
+    mostrarToast("Por favor, insira a sua profissão antes de gerar o texto.");
+    return;
+  }
+
+  const area = textosGerados[campo];
+  const index = geradorIndex[campo] % area.length;
+  const texto = area[index](profissao);
+  geradorIndex[campo]++;
+
+  const textarea = document.getElementById(campo);
+  textarea.value = texto;
+
+  // Atualiza visualização em tempo real, se já tiver ligação
+  const targetEl = document.querySelector(`[data-id="${campo}"]`);
+  if (targetEl) targetEl.textContent = texto;
+
+  // Muda o texto do botão após a primeira geração
+  const btn = textarea.nextElementSibling;
+  if (btn && btn.classList.contains("gerar-btn")) {
+    btn.textContent = "Gerar outro";
+  }
+}
+
+function mostrarToast(mensagem) {
+  const toast = document.getElementById("toast");
+  toast.textContent = mensagem;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+// 📌 Mostrar dica ao clicar no campo "Nome completo"
+const nomeInput = document.getElementById("nome");
+
+nomeInput.addEventListener("focus", () => {
+  mostrarToast("Se o seu nome for muito extenso, use apenas o primeiro e o último.");
+});
+
+function mostrarToast(mensagem) {
+  const toast = document.getElementById("toast");
+  toast.textContent = mensagem;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000); // ⏳ Esconde após 3 segundos
+}
+
+
+
+
+
+const inputHab = document.getElementById('habilidadesInput');
+const optionsHab = document.getElementById('habilidadesOptions');
+const toastHab = document.getElementById('habilidadesToast');
+
+inputHab.addEventListener('click', () => {
+  optionsHab.style.display = optionsHab.style.display === 'block' ? 'none' : 'block';
+});
+
+// Fecha quando clicar fora
+document.addEventListener('click', e => {
+  if (!document.getElementById('habilidadesWrapper').contains(e.target)) {
+    optionsHab.style.display = 'none';
+  }
+});
+
+// Seleção das habilidades
+const habElems = document.querySelectorAll('.opcao-habilidade');
+
+habElems.forEach(hab => {
+  hab.addEventListener('click', () => {
+    const selecionadas = document.querySelectorAll('.opcao-habilidade.selected');
+
+    if (!hab.classList.contains('selected') && selecionadas.length >= 5) {
+      toastHab.textContent = "Você só pode selecionar no máximo 5 habilidades.";
+      toastHab.classList.add("show");
+      setTimeout(() => toastHab.classList.remove("show"), 2000);
+      return;
+    }
+
+    hab.classList.toggle('selected');
+
+    // Atualiza o input com as selecionadas
+    const selecionadasArray = Array.from(document.querySelectorAll('.opcao-habilidade.selected'))
+                                   .map(el => el.dataset.value);
+    inputHab.textContent = selecionadasArray.join(', ') || "Clique para selecionar habilidades";
+
+    // Atualiza CV em tempo real
+    const containerCV = document.querySelector('#curriculoVisual [data-id="habilidades"]');
+    if (containerCV) {
+      containerCV.innerHTML = selecionadasArray.map(v => `<li>${v}</li>`).join("");
+    }
+  });
+});
+
+
 
 
 </script>

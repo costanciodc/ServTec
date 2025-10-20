@@ -2,186 +2,321 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <title>Currículo Modelo 7</title>
+  <title>Currículo Modelo 1</title>
+  <!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Times New Roman', Times, serif;
-    }
-
-    .a4 {
-      width: 21cm;
-      height: 29.7cm;
-      background-color: #ffffff;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box;
-      display: flex;
-    }
-
-    .barra-lateral {
-      width: 8px;
-      background-color: #343b55;
-      margin-left: 1.5cm;
-      margin-top: 2.5cm;
-      margin-bottom: 1.5cm;
-      border-radius: 4px;
-    }
-
-    .conteudo {
-      padding: 2.5cm;
-      padding-left: 1cm;
-      flex: 1;
-    }
-
-    .titulo {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #1e3a8a;
-      margin-bottom: 1.5rem;
-      border-bottom: 3px solid #1e3a8a;
-      padding-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-
-    .cabecalho {
-      text-align: center;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #1e40af;
-      padding-bottom: 1rem;
-    }
-
-    h1 {
-      color: #1e40af;
-      font-size: 2.2rem;
-      margin-bottom: 0.3rem;
-    }
-
-    h3 {
-      color: #1e3a8a;
-      margin-top: 0.6rem;
-      font-size: 1rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.1rem;
-    }
-
-    ul {
-      padding-left: 1.5rem;
-    }
-
-    li {
-      margin-bottom: 0.1rem;
-      font-size: 0.9rem;
-    }
-
-    p {
-      font-size: 0.9rem;
       
     }
 
-    /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="experiencia"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+    .a4 {
+      font-family: 'Poppins', sans-serif;
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      
+      overflow: hidden;
     }
-    /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="habilidades"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+
+    .lateral {
+      width: 7cm;
+      color: #f8fafc;
+      position: relative;
+      padding: 2cm 1.5cm 1.5cm 1.5cm;
+      box-sizing: border-box;
+      background: linear-gradient(160deg, #1c2946 20%, #151f33 40%);
     }
-    /* Ajuste da lista de habilidades em 2 colunas */
-    [data-id="habilidades"] {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px 20px;
-      list-style-type: disc;
+
+    
+
+    
+
+    .lateral h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      margin-top: 1rem;
     }
-    .idiomas {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px 16px;
-  list-style: none;
-  padding-left: 0;
+
+    
+.lateral h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  padding: 4px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  border-radius: 18px;
+  font-weight: 400;
+  
 }
 
-.idiomas li::before {
-  content: "• ";
-  color: #000000;
-}
-
-[data-id="curso"] {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem 1rem; /* espaço entre colunas e linhas */
-  list-style: none;
-  padding-left: 0;
-}
-
-
-[data-id="curso"] li {
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-
-[data-id="curso"] li::before {
-  content: "•";
+/* Linha atravessando por trás */
+.conteudo h3.barra::after {
+  content: "";
   position: absolute;
-  left: 0;
-  color: #000000;
-  font-weight: bold;
+  left: -30%; /* Reduzi a parte da esquerda */
+  top: 50%;
+  width: 270%; /* ⚠️ Diminui o lado direito (antes 180%) */
+  height: 1px;
+  background: #2e4881;
+  z-index: -1; /* ✅ Fica atrás do texto */
+}
+
+
+
+
+
+    .tudo{
+      margin-top: 4rem;
+    }
+    .lateral .info, .lateral ul {
+      font-size: 0.80rem;
+      line-height: 1.5;
+      font-weight: 300;
+      
+    }
+
+    .lateral ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .lateral li::before {
+      content: "• ";
+      color: #93c5fd;
+    }
+
+    .conteudo {
+      flex: 1;
+      padding: 1.5cm;
+      padding-left: 1.5cm;
+      padding-right: 2cm;
+      box-sizing: border-box;
+    }
+
+    .conteudo h1 {
+      
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #1e3a8a;
+     
+      display: inline-block;
+    }
+
+    .conteudo h3.barra {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: hsl(0, 0%, 100%);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+      padding: 4px 1px;
+      border-radius: 18px;
+      background: #2e4881;
+      z-index: 10; /* Texto e borda acima da linha */
+      width: 160px;
+    }
+
+    ul {
+      padding-left: 0.85rem;
+      font-size: 0.75rem;
+    }
+
+    li {
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    /* Foto quadrada estilizada */
+    .photo-wrap {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/300x300.png?text=FOTO');
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.05);
+    }
+
+    .photo-wrap::before,
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #e6e9ee;
+      pointer-events: none;
+    }
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* garante corte proporcional */
+}
+    .photo-wrap::before {
+      top: -12px;
+      left: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(-2deg);
+      opacity: 0.9;
+    }
+
+    .photo-wrap::after {
+      bottom: -12px;
+      right: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      transform: rotate(2deg);
+      opacity: 0.7;
+    }
+
+
+
+/* ONDA separadora mais visível */
+.lateral svg.onda {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  height: 100%;
+  width: 40px;
+  fill: #ffffff;
+  z-index: 2;
+  border-top-left-radius: 100px;
+  
+}
+
+/* Elementos decorativos geométricos */
+.lateral .decoracao-quadrada {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 150px;
+  height: 150px;
+  
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #ffffff solid 1px;
+}
+.lateral .decoracao-quadrada4 {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
+  
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #ffffff solid 1px;
+}
+.lateral .decoracao-quadrada3 {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 220px;
+  height: 220px;
+  
+  transform: rotate(15deg);
+  
+  z-index: 0;
+  border: #ffffff solid 1px;
 }
   </style>
 </head>
 <body>
   <div class="a4">
-    <div class="barra-lateral"></div>
-    <div class="barra-lateral"></div>
-    <div class="conteudo">
+    <div class="lateral">
+      <!-- Ondas SVG -->
+  <svg class="onda" viewBox="0 0 50 100" preserveAspectRatio="none">
+    <path d="M0,0 C30,25 20,75 50,100 L50,0 Z"></path>
+  </svg>
 
-      <div class="titulo">Curriculum Vitae</div>
+  <!-- Decoração geométrica -->
+  <div class="decoracao-quadrada"></div>
+  <div class="decoracao-quadrada3"></div>
+  <div class="decoracao-quadrada4"></div>
+  
+  
 
-      <h3>Informações Pessoais</h3>
-      <p>Nome: <span data-id="nome">Juliana Maria</span> | Nº do BI: <span data-id="bi">004446572LA850</span></p>
-      <p>Data de nascimento: <span data-id="nascimento">02/06/2001</span> | Telefone: <span data-id="telefone">+244 923 456 789</span></p>
-      <p>Residência actual: <span data-id="localizacao"> Residência Luanda Calemba 2</span></p>
-      <h3>Objetivo</h3>
-      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
-     <div class="corpo">
-      <h3>Perfil Profissional</h3>
-      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+  
+    <div class="photo-wrap">
+          <div class="photo"><img data-id="foto" src="https://via.placeholder.com/150" alt="Foto do candidato"></div>
+        </div>
 
-      <h3>Formação</h3>
-      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
-<h3>Cursos</h3>
-<ul data-id="curso">
-  <li>Curso de Informática</li>
-  <li>Curso de Gestão de Projetos</li>
-</ul>
-      <h3>Experiência</h3>
-      <ul data-id="experiencia">
-        <li>Gestão de documentos e arquivos</li>
-        <li>Atendimento de chamadas e e-mails corporativos</li>
-        <li>Organização de agendas e eventos</li>
+      <div class="tudo">
+      <h3 > Dados Pessoais</h3>
+      <div class="info">
+        Nº BI: <span data-id="bi">004446572LA850</span><br>
+        Nascimento: <span data-id="nascimento">02/06/2001</span>
+      </div>
+      <h3>Contato</h3>
+      <div class="info"><i class="bi bi-telephone"></i>  Tel: <span data-id="telefone">+244 923 456 789</span></div>
+      <h3>Localização</h3>
+      <div class="info"><i class="bi bi-geo-alt"></i> <span data-id="localizacao">Luanda, Angola</span></div>
+
+      <h3>Curso</h3>
+      <ul data-id="curso">
+      <li>Gestão Empresarial</li>
       </ul>
 
-     <h3>Habilidades</h3>
-        <ul data-id="habilidades">
-          <li>Comunicação eficaz</li>
-          <li>Gestão de tempo</li>
-          <li>Organização</li>
-          <li>Pacote Office</li>
-          <li>Trabalho em equipe</li></ul>
-          <h3>Idiomas</h3>
-<ul data-id="idiomas" class="idiomas">
-  <li>Português (Nativo)</li>
-</ul>
-        <h3>Observação</h3>
-<p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
-  </div></div>
+      <h3>Idiomas</h3>
+      <ul data-id="idiomas">
+      <li>Português</li>
+      </ul>
+    </div></div>
+
+    <div class="conteudo">
+      <h1><span data-id="nome">Nelson João Pedro</span></h1>
+
+      <h3 class="barra">Objectivo</h3>
+      <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
+
+      <h3 class="barra">Perfil Profissional</h3>
+      <p data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</p>
+
+      <h3 class="barra">Formação</h3>
+      <p data-id="formacao">Licenciatura em Administração - Universidade Agostinho Neto (2018 - 2022)</p>
+
+      <h3 class="barra">Experiência</h3>
+      <p data-id="experiencia">Atuei em atividades relacionadas à função de Designer grafico, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.</p>
+
+      <h3 class="barra">Habilidades</h3>
+      <ul data-id="habilidades">
+        <li>Pacote Office</li>
+        <li>Comunicação</li>
+        <li>Trabalho em equipe</li>
+      </ul>
+
+      <h3 class="barra">Observação</h3>
+      <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+    </div>
+  </div>
 </body>
 </html>
-

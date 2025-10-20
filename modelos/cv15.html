@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Currículo Modelo 2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      
+    }
+
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+      
+      overflow: hidden;
+    }
+
+    .lateral {
+  position: relative;
+  width: 7.5cm;
+  background: linear-gradient(180deg, #121214 0%, #011324 100%);
+  color: #f8fafc;
+  padding-left:1.5cm;
+  padding-top:2.4cm;
+  padding-right:1cm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ONDA separadora mais visível */
+.lateral svg.onda {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  height: 100%;
+  width: 80px;
+  fill: #086cdf;
+  z-index: 1;
+}
+
+/* Elementos decorativos geométricos */
+.lateral .decoracao-quadrada {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 220px;
+  height: 220px;
+  background: rgba(96, 165, 250, 0.18);
+  transform: rotate(15deg);
+  border: 2px solid rgba(96, 165, 250, 0.35);
+  z-index: 0;
+}
+
+.lateral .decoracao-quadrada2 {
+  position: absolute;
+  bottom: 40px;
+  left: -10px;
+  width: 180px;
+  height: 180px;
+  background: rgba(59, 130, 246, 0.15);
+  transform: rotate(-10deg);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  z-index: 0;
+}
+
+.lateral h2, 
+.lateral h3, 
+.lateral .info, 
+.lateral ul {
+  position: relative;
+  z-index: 3;
+}
+
+.lateral h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  color: #ffffff;
+  border-bottom: 2px solid rgba(255,255,255,0.4);
+  padding-bottom: 0.3rem;
+}
+
+.lateral h3 {
+  font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  border: 1px solid#ffffff;
+   border-radius: 18px;
+      margin-left: -85px;
+      padding-left: 20px;
+      border-radius: 18px;
+      text-align: center;
+      font-weight: 300;
+}
+
+.lateral .info, .lateral ul {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.lateral ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.lateral li::before {
+  content: "• ";
+  color: #60a5fa;
+}
+
+
+    .conteudo {
+      flex: 1;
+      padding-top: 2.5cm;
+      padding-left: 2cm;
+      padding-right: 2.3cm;
+      box-sizing: border-box;
+    }
+
+    .topo {
+    
+      margin-bottom: 1.5rem;
+    }
+
+   .topo h1 {
+  display: flex; /* Removemos flex para não atrapalhar o cálculo */
+  font-size: 1.7rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+  background: #086cdf;
+  padding-right: 38px;
+  margin-right: -8px;
+  padding-left: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-weight: 600;
+ 
+}
+
+
+
+ 
+
+
+
+    .conteudo h3 {
+      font-size: 1.1rem;
+      color: #054fa3;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 0.6rem;
+    }
+
+    p {
+      font-size: 0.80rem;
+      color: #1f2937;
+    }
+
+    .conteudo ul {
+      padding-left: 1rem;
+      color: #1f2937;
+    }
+
+   .conteudo li {
+      margin-bottom: 0.3rem;
+      font-size: 0.80rem;
+      color: #1f2937;
+    }
+  </style>
+</head>
+<body>
+  <div class="a4">
+
+    <!-- BARRA LATERAL ESTILIZADA -->
+    <div class="lateral">
+      <!-- Ondas SVG -->
+  <svg class="onda" viewBox="0 0 50 100" preserveAspectRatio="none">
+    <path d="M0,0 C30,25 20,75 50,100 L50,0 Z"></path>
+  </svg>
+
+  <!-- Decoração geométrica -->
+  <div class="decoracao-quadrada"></div>
+  <div class="decoracao-quadrada2"></div>
+  
+
+  <div>
+
+    <h3>Dados pessoais</h3>
+    <div class="info">
+      Nº do BI: <span data-id="bi">004446572LA850</span><br>
+      Data de nascimento: <span data-id="nascimento">02/06/2001</span>
+    </div>
+
+    <h3>Contato</h3>
+    <div class="info"><i class="bi bi-telephone"></i> 
+      Tel: <span data-id="telefone">+244 923 456 789</span>
+    </div>
+
+    <h3>Localização</h3>
+    <div class="info"><i class="bi bi-geo-alt"></i>
+       <span data-id="localizacao"> Residência Luanda Calemba 2</span>
+    </div>
+
+    <h3>Cursos</h3>
+    <ul data-id="curso">
+      <li>Curso de Informática</li>
+      <li>Curso de Gestão de Projetos</li>
+    </ul>
+
+    <h3>Habilidades</h3>
+        <ul data-id="habilidades">
+          <li>Comunicação eficaz</li>
+          <li>Gestão de tempo</li>
+          <li>Organização</li>
+          <li>Pacote Office</li>
+          <li>Trabalho em equipe</li>
+        </ul>
+
+    <h3>Idiomas</h3>
+    <ul data-id="idiomas" class="idiomas">
+      <li>Português (Nativo)</li>
+    </ul>
+        </div>
+
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo">
+      <div class="topo">
+        <h1><span data-id="nome">Ana Maria Laura</span></h1>
+      </div>
+
+      <h3>Objectivo</h3>
+      <p><span data-id="objetivo">Meu objetivo é atuar como Designer Grafico, contribuindo com criatividade, dedicação e foco em resultados para impulsionar o crescimento da organização. Tenho compromisso com a excelência e busco constantemente aprimorar minhas competências para agregar valor à equipe e aos projetos.</span></p>
+      <h3>Resumo Profissional</h3>
+      <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+
+      <h3>Formação</h3>
+      <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+
+      <h3>Experiência</h3>
+      <p data-id="experiencia">
+        Atuei em atividades relacionadas à função de ssssssssssss, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.
+      </p>
+
+     
+        <h3>Observação</h3>
+<p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
+    </div>
+  </div>
+
+
+  <script>
+(function () {
+  const spanSelector = '.topo h1 span[data-id="nome"]';
+  const targetSpan = document.querySelector(spanSelector);
+  const targetH1 = document.querySelector('.topo h1');
+
+  if (!targetSpan || !targetH1) return;
+
+  function aplicarAutoScale() {
+    requestAnimationFrame(() => {
+      // Zerar estilo para recalcular corretamente
+      targetSpan.style.transform = 'scale(1)';
+      targetSpan.style.display = 'inline-block';
+      targetSpan.style.whiteSpace = 'nowrap';
+      targetSpan.style.transformOrigin = 'left center';
+
+      // PEGAR largura real e NÃO o clientWidth que ignora bordas e padding!
+      const availableWidth = targetH1.getBoundingClientRect().width - 30; // Descontar as bordas/arcos visuais
+      const spanWidth = targetSpan.getBoundingClientRect().width;
+
+      if (spanWidth > availableWidth) {
+        const scale = (availableWidth / spanWidth);
+        targetSpan.style.transform = `scale(${scale})`;
+      }
+    });
+  }
+
+  // Rodar várias vezes na primeira renderização para garantir ajuste
+  window.addEventListener('load', () => {
+    aplicarAutoScale();
+    setTimeout(aplicarAutoScale, 60); 
+    setTimeout(aplicarAutoScale, 150);
+  });
+
+  window.addEventListener('resize', aplicarAutoScale);
+
+  const observer = new MutationObserver(() => aplicarAutoScale());
+  observer.observe(targetSpan, { childList: true, characterData: true, subtree: true });
+})();
+</script>
+
+
+
+
+
+
+</body>
+</html>
