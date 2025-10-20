@@ -47,6 +47,56 @@ header.editor{
       box-shadow: 0 0 15px #02ad0b;
     }
 
+
+/* Botões de geração automáticos */
+.gerar-btn {
+  background: linear-gradient(135deg, #1452fc, #10e209);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.gerar-btn:hover {
+  background: linear-gradient(135deg, #10e209, #1e40af);
+  transform: translateY(-2px);
+}
+
+.gerar-btn:active {
+  transform: translateY(0);
+}
+
+/* Alerta elegante (tipo toast) */
+.toast-msg {
+  position: fixed;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e3a8a;
+  color: #fff;
+  padding: 2px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.toast-msg.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
     .formulario h2 {
       margin-top: 0;
     }
@@ -203,7 +253,113 @@ header.editor{
         transform: scale(1);
         transform-origin: top center;
       }}
-      
+      /* ---------- HABILIDADES - estilo dropdown tipo select ---------- */
+.custom-select {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+}
+
+.custom-select .select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  color: #0f172a;
+  box-shadow: 0 1px 4px rgba(2,6,23,0.04);
+}
+
+.custom-select .select-trigger::after {
+  content: "▾";
+  margin-left: 8px;
+  font-size: 12px;
+  color: #374151;
+}
+
+/* opções - estilo do painel */
+.custom-select .options {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #fff;
+  border: 1px solid #e6eefc;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.08);
+  padding: 8px;
+  z-index: 50;
+  display: none; /* oculto até abrir */
+  max-height: 260px;
+  overflow: auto;
+}
+
+.btn-primary { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 18px; font-weight: 700; font-size: 16px; color: #fff; border: none; border-radius: 10px; cursor: pointer; background: linear-gradient(90deg,#0ea5e9,#10b981); box-shadow: 0 8px 24px rgba(16,185,129,0.18), 0 4px 10px rgba(14,165,233,0.08); transition: transform .12s ease, box-shadow .12s ease; } .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(16,185,129,0.22); } .btn-primary .pulse { display:inline-block; width:12px; height:12px; border-radius:50%; background: linear-gradient(180deg,#fff,#ffd700); box-shadow: 0 0 6px rgba(255,215,0,0.9); animation: pulse 1.6s infinite; opacity: 0.95; }
+
+/* cada opção */
+.custom-select .option {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.custom-select .option:hover {
+  background: rgba(59,130,246,0.06);
+}
+
+/* estado selecionado - aparece um tick */
+.custom-select .option.selected {
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.custom-select .option.selected::before {
+  content: "✓";
+  display: inline-block;
+  width: 18px;
+  text-align: center;
+  color: #059669;
+  font-weight: 700;
+}
+
+/* info de limite */
+.info-habilidade {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* estado aberto (classe que JS adiciona) */
+.custom-select.open .options {
+  display: block;
+}
+
+/* resumo exibido no trigger quando tem seleções */
+.select-trigger .summary {
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* responsividade: deixa o painel confortável em mobile */
+@media (max-width: 480px) {
+  .custom-select .options { max-height: 220px; }
+  .custom-select .select-trigger { padding: 10px; }
+}
+
 
   </style>
 </head>
@@ -226,15 +382,44 @@ header.editor{
                 <option value="feminino">Feminino</option>
               </select>
             </div>
-       <label>Cargo desejado:</label>
-      <input type="text" id="cargo" placeholder="Cargo desejado" data-input="cargo"/>
+       <!-- Objetivo e Experiência (ocultos ou visíveis) -->
+<input type="hidden" id="objetivo" data-field="objetivo">
+<input type="hidden" id="experiencia_input" data-field="experiencia">
+<div class="form-group">           <label for="cargo">Cargo desejado:</label>
+      <input type="text" id="cargo" placeholder="Cargo desejado Ex: Designer Gráfico" data-input="cargo"/></div> 
 
-     <label>Nome da Empresa:</label>
+     <label for="nomedaempresa">Nome da Empresa:</label>
       <input type="text" id="empresa" placeholder="Nome da Empresa" data-input="empresa"/>
-      <label>Seu Objectivo:</label>
-      <textarea id="objetivo" placeholder="Objetivo Profissional" data-input="objetivo"></textarea>
-      <label>Habilidades e Qualidades:</label>
-      <textarea id="habilidades" placeholder="Habilidades e pontos fortes" data-input="habilidades"></textarea>
+     
+    <div class="form-group">
+  <label for="habilidades_select">Habilidades (escolha até 3)</label>
+  <div class="custom-select" id="habilidades_wrapper">
+    <div class="select-trigger">Selecionar habilidades</div>
+    <div class="options" id="habilidades_select">
+      <div class="option" data-value="Comunicação Clara">Comunicação Clara</div>
+      <div class="option" data-value="Trabalho em Equipe">Trabalho em Equipe</div>
+      <div class="option" data-value="Adaptabilidade">Adaptabilidade</div>
+      <div class="option" data-value="Liderança">Liderança</div>
+      <div class="option" data-value="Criatividade">Criatividade</div>
+      <div class="option" data-value="Gestão de Tempo">Gestão de Tempo</div>
+      <div class="option" data-value="Atendimento ao Cliente">Atendimento ao Cliente</div>
+      <div class="option" data-value="Resolução de Problemas">Resolução de Problemas</div>
+      <div class="option" data-value="Proatividade">Proatividade</div>
+      <div class="option" data-value="Aprendizagem Rápida">Aprendizagem Rápida</div>
+      <div class="option" data-value="Organização">Organização</div>
+      <div class="option" data-value="Gestão de Conflitos">Gestão de Conflitos</div>
+    </div>
+  </div>
+  <small class="info-habilidade">Máximo de 3 habilidades</small>
+</div>
+
+<!-- CAMPO OCULTO PARA RECEBER O TEXTO FINAL FORMATADO -->
+<input type="hidden" id="habilidades_texto" data-field="habilidades">
+
+
+     
+      <!-- Toast -->
+<div id="toast" class="toast-msg"></div>
       <label>Nº de Telefone:</label>
      <input type="text" id="telefone" placeholder="Telefone">
      <label>Seu Email:</label>
@@ -242,7 +427,14 @@ header.editor{
       <label>Seu Endereço:</label>
       <input type="text" id="local" placeholder="Província/Município">
       <label>Data (ex: 07 de Agosto de 2025):</label>
-      <input type="text" id="data" placeholder="Data (ex: 07 de Agosto de 2025)">
+      <input type="date" id="data" placeholder="Data (ex: 07 de Agosto de 2025)">
+
+      <div style="margin-top:12px;">
+        <button id="btnGerarTudo" class="btn-primary" title="Gera Objetivo, Experiência e Habilidades automaticamente">
+          <span class="pulse" aria-hidden="true"></span>
+          ⚡ Gerar Carta Automática
+        </button>
+      </div>
     </div>
     
 
@@ -254,6 +446,7 @@ header.editor{
   
   
   
+  <div id="toast" class="toast-msg" role="status" aria-live="polite"></div>
 
 
   <div class="botoes">
@@ -262,105 +455,244 @@ header.editor{
   </div>
 </div>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-  const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
-  const cartaVisual = document.getElementById('cartaVisual');
-  let modeloCarregado = false;
+/* -------------------------
+   Carrega modelo dinamicamente
+------------------------- */
+const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
+const cartaVisual = document.getElementById('cartaVisual');
+let modeloCarregado = false;
 
-  fetch(`modelos/${modelo}.html`)
-    .then(res => res.text())
-    .then(html => {
-      cartaVisual.innerHTML = html;
-      atualizarDados();
-      modeloCarregado = true; // ✅ marca como carregado
+fetch(`modelos/${modelo}.html`)
+  .then(res => {
+    if (!res.ok) throw new Error("Modelo não encontrado");
+    return res.text();
+  })
+  .then(html => {
+    cartaVisual.innerHTML = html;
+    atualizarDados();
+    modeloCarregado = true;
+  })
+  .catch(err => {
+    cartaVisual.innerHTML = "<p style='color:red'>Erro ao carregar modelo.</p>";
+    console.error(err);
+  });
+
+/* -------------------------
+   Atualiza campos simples em tempo real
+------------------------- */
+function atualizarDados() {
+  const bindings = [
+    { id: 'nome', data: 'nome' },
+    { id: 'cargo', data: 'cargo' },
+    { id: 'empresa', data: 'empresa' },
+    { id: 'objetivo', data: 'objetivo' },
+    { id: 'experiencia_input', data: 'experiencia' },
+    { id: 'telefone', data: 'telefone' },
+    { id: 'email', data: 'email' },
+    { id: 'local', data: 'local' },
+    { id: 'data', data: 'data' }
+  ];
+
+  bindings.forEach(b => {
+    const el = document.getElementById(b.id);
+    if (!el) return;
+    el.addEventListener('input', () => {
+      let val = el.value;
+
+      // Formata a data automaticamente
+      if (b.id === 'data') val = formatarData(val);
+
+      const targets = cartaVisual.querySelectorAll(`[data-id="${b.data}"]`);
+      targets.forEach(t => t.textContent = val);
     });
+  });
 
-// ----- Quando usuário muda gênero -----
-    document.getElementById("genero").addEventListener("change", function() {
-      const genero = this.value;
-      const mapeamento = {
-        masculino: { sexo: "o" },
-        feminino: { sexo: "a" }
-      };
-      Object.entries(mapeamento[genero]).forEach(([key, valor]) => {
-        document.querySelectorAll(`[data-id="${key}"]`).forEach(el => el.textContent = valor);
-      });
-    });
+  const generoEl = document.getElementById('genero');
+  generoEl?.addEventListener('change', () => {
+    const genero = generoEl.value;
+    const map = { masculino: 'o', feminino: 'a', '': '' };
+    cartaVisual.querySelectorAll('[data-id="sexo"]').forEach(e => e.textContent = map[genero] ?? '');
+  });
+}
 
-  function atualizarDados() {
-    const campos = {
-      nome: document.getElementById('nome'),
-      cargo: document.getElementById('cargo'),
-      nome: document.getElementById('nome'),
-      cargo: document.getElementById('cargo'),
-      empresa: document.getElementById('empresa'),
-      empresa: document.getElementById('empresa'),
-      empresa: document.getElementById('empresa'),
-      objetivo: document.getElementById('objetivo'),
-      habilidades: document.getElementById('habilidades'),
-      telefone: document.getElementById('telefone'),
-      email: document.getElementById('email'),
-      email: document.getElementById('email'),
-      local: document.getElementById('local'),
-      data: document.getElementById('data')
-      
-    };
-
-    for (let key in campos) {
-      campos[key].addEventListener('input', () => {
-        const els = cartaVisual.querySelectorAll(`[data-id="${key}"]`);
-          els.forEach(el => el.textContent = campos[key].value);
-      });
-    }
-  }
-
-
-
+/* -------------------------
+   Formata data "07/08/2025" → "07 de Agosto de 2025"
+------------------------- */
+function formatarData(str) {
+  const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
   
-  function baixarPDF() {
-    if (!modeloCarregado) {
-      alert("Por favor, aguarde o carregamento completo da carta.");
-      return;
-    }
+  let ano, mes, dia;
 
-    const a4Element = cartaVisual.querySelector(".a4");
-    if (!a4Element) {
-      alert("Não foi possível encontrar o conteúdo da carta.");
-      return;
-    }
-
-   
-
-    const opt = {
-      
-      filename: 'carta_apresentacao.pdf',
-      image: { type: 'jpeg', quality: 1 },
-      html2canvas: {
-        scale: 4,
-        useCORS: true,
-        logging: false,
-        allowTaint: true,
-        scrollY: 0
-      },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(a4Element).save().then(() => {
-      a4Element.style.transform = originalTransform;
-      a4Element.style.width = originalWidth;
-    });
+  if (str.includes('-')) { // formato ISO YYYY-MM-DD
+    [ano, mes, dia] = str.split('-');
+  } else if (str.includes('/')) { // formato DD/MM/YYYY
+    [dia, mes, ano] = str.split('/');
+  } else {
+    return str; // qualquer outro formato
   }
 
+  dia = dia.padStart(2,'0');
+  mes = meses[parseInt(mes,10)-1] || mes;
+
+  return `${dia} de ${mes} de ${ano}`;
+}
 
 
+/* -------------------------
+   Toast util
+------------------------- */
+function showToast(text, ms = 2400) {
+  const toast = document.getElementById('toast');
+  toast.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), ms);
+}
 
+/* -------------------------
+   Shake button style
+------------------------- */
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes shakeX {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+.btn-primary.shake { animation: shakeX .6s ease; box-shadow: 0 6px 20px rgba(255,0,0,0.12); }
+`;
+document.head.appendChild(style);
 
+/* -------------------------
+   Variantes de texto
+------------------------- */
+const variantTexts = {
+  objetivo: [
+    (cargo, empresa) => { const emp = empresa ? ` na ${empresa}` : ''; return `Busco integrar a equipa${emp} como ${cargo}, contribuindo com profissionalismo, responsabilidade e foco em resultados consistentes.`; },
+    (cargo, empresa) => { const emp = empresa ? ` em ${empresa}` : ''; return `Desejo exercer a função de ${cargo}${emp}, aplicando minhas competências de forma prática para otimizar processos e apoiar a equipa.`; },
+    (cargo, empresa) => { const emp = empresa ? ` na equipa da ${empresa}` : ''; return `Tenho interesse em atuar como ${cargo}${emp}, trazendo energia, adaptação rápida e vontade de aprender para crescer com a empresa.`; }
+  ],
+  experiencia: [
+    (cargo) => `Atuei em funções relacionadas a ${cargo}, desempenhando tarefas com rigor, organização e atenção ao detalhe, contribuindo para a melhoria de processos e cumprimento de metas.`,
+    (cargo) => `Experiência prática na área de ${cargo}, com foco em execução eficiente de tarefas diárias, atendimento ao cliente e trabalho em equipa.`,
+    (cargo) => `Experiência hands-on como ${cargo}, com vontade de inovar, resolver problemas e aprender novas ferramentas para agilizar o trabalho da equipa.`
+  ]
+};
+let variantIndex = 0; // Ciclo 0,1,2
 
+/* -------------------------
+   Dropdown customizado de Habilidades
+------------------------- */
+const customSelect = document.getElementById('habilidades_wrapper');
+const trigger = customSelect.querySelector('.select-trigger');
+const options = customSelect.querySelectorAll('.option');
+let selectedHabs = [];
 
+trigger.addEventListener('click', (e) => {
+  e.stopPropagation(); // evita fechar imediatamente ao clicar
+  customSelect.classList.toggle('open');
+});
+
+options.forEach(opt => {
+  opt.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const val = opt.dataset.value;
+    if (opt.classList.contains('selected')) {
+      opt.classList.remove('selected');
+      selectedHabs = selectedHabs.filter(v => v !== val);
+    } else {
+      if (selectedHabs.length >= 3) {
+        showToast("Máximo 3 habilidades selecionadas");
+        return;
+      }
+      opt.classList.add('selected');
+      selectedHabs.push(val);
+    }
+    updateTriggerText();
+  });
+});
+
+function updateTriggerText() {
+  const summary = selectedHabs.length ? selectedHabs.join(', ') : "Selecionar habilidades";
+  trigger.innerHTML = `<span class="summary">${summary}</span> ▾`;
+}
+
+// Fecha dropdown ao clicar fora
+document.addEventListener('click', () => {
+  customSelect.classList.remove('open');
+});
+
+/* -------------------------
+   Função principal: Gera tudo automaticamente
+------------------------- */
+function gerarTudoAutomático() {
+  const cargo = (document.getElementById('cargo')?.value || '').trim();
+  const empresa = (document.getElementById('empresa')?.value || '').trim();
+
+  if (!cargo || !empresa) {
+    const btn = document.getElementById('btnGerarTudo');
+    btn.classList.add('shake');
+    showToast('Por favor preencha primeiro: Cargo desejado e Nome da Empresa.');
+    setTimeout(() => btn.classList.remove('shake'), 650);
+    return;
+  }
+
+  const idx = variantIndex % 3;
+  const objetivoTxt = variantTexts.objetivo[idx](cargo, empresa);
+  const experienciaTxt = variantTexts.experiencia[idx](cargo);
+
+  // Atualiza Objetivo e Experiência
+  document.getElementById('objetivo').value = objetivoTxt;
+  document.getElementById('experiencia_input').value = experienciaTxt;
+  cartaVisual.querySelectorAll('[data-id="objetivo"]').forEach(t => t.textContent = objetivoTxt);
+  cartaVisual.querySelectorAll('[data-id="experiencia"]').forEach(t => t.textContent = experienciaTxt);
+
+  // Habilidades: transforma seleção manual em parágrafo elegante
+  let habText = '';
+  if (selectedHabs.length === 1) habText = `Possuo habilidade destacada em ${selectedHabs[0]}, aplicada com compromisso e foco na excelência.`;
+  if (selectedHabs.length === 2) habText = `Possuo habilidades destacadas em ${selectedHabs[0]} e ${selectedHabs[1]}, aplicadas de forma estratégica para agregar valor às operações da empresa.`;
+  if (selectedHabs.length === 3) habText = `Possuo habilidades destacadas em ${selectedHabs[0]}, ${selectedHabs[1]} e ${selectedHabs[2]}, aplicando essas competências de forma estratégica para agregar valor real às operações da empresa.`;
+  document.getElementById('habilidades_texto').value = habText;
+  cartaVisual.querySelectorAll('[data-id="habilidades"]').forEach(t => t.textContent = habText);
+
+  showToast(`Versão aplicada: ${['Formal Elegante','Direto Objetivo','Criativo Jovem'][idx]}`, 1800);
+  variantIndex++;
+}
+
+/* Botão de gerar carta automática */
+document.getElementById('btnGerarTudo').addEventListener('click', gerarTudoAutomático);
+
+/* -------------------------
+   Função Download PDF
+------------------------- */
+function baixarPDF() {
+  if (!modeloCarregado) { showToast("Aguarde: modelo ainda está a carregar."); return; }
+  const a4Element = cartaVisual.querySelector(".a4");
+  if (!a4Element) { showToast("Conteúdo da carta não encontrado."); return; }
+
+  const opt = {
+    margin: 0,
+    filename: 'carta_de_apresentação.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: { scale: 4, useCORS: true, logging: false, allowTaint: true, scrollY: 0 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(a4Element).save().then(() => {
+    a4Element.style.transform = originalTransform;
+    a4Element.style.width = originalWidth;
+
+    // 🔥 Após download, redireciona para a página principal com Upsell
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 2000);
+  });
+}
 </script>
-
-
-
 </body>
 </html>
