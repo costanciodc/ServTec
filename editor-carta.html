@@ -460,10 +460,22 @@ header.editor{
 <script>
 /* -------------------------
    Carrega modelo dinamicamente
+   
 ------------------------- */
-const modelo = new URLSearchParams(window.location.search).get('modelo') || 'carta1';
-const cartaVisual = document.getElementById('cartaVisual');
-let modeloCarregado = false;
+
+const urlParams = new URLSearchParams(window.location.search);
+const modelo = urlParams.get("modelo") || "carta1"; // sempre algo tipo "cv1", "cv2"...
+console.log("Modelo carregado:", modelo);
+ const token = urlParams.get("token");
+
+  // 🔒 Bloqueio de acesso sem token
+  if (!token) {
+    alert("Acesso negado! Por favor, realize o pagamento primeiro.");
+    window.location.href = "pagament.html";
+  }
+
+
+
 
 fetch(`modelos/${modelo}.html`)
   .then(res => {
@@ -693,6 +705,14 @@ function baixarPDF() {
     }, 2000);
   });
 }
+
+
 </script>
+
+
+
+
+
+
 </body>
 </html>
