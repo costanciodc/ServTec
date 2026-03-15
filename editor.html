@@ -513,9 +513,7 @@ h2.cee{
       <input type="text" id="nome" placeholder="Seu nome" data-input="nome"/>
 <div id="toast" class="toast-msg"></div>
 
-      <label>Nº do BI:</label>
-      <input type="text" id="bi" placeholder="Número do BI" data-input="bi"/>
-
+     
       <label>Telefone:</label>
       <input type="text" id="telefone" placeholder="Telefone" data-input="telefone"/>
 
@@ -535,21 +533,21 @@ h2.cee{
 <!-- Campo Objetivo -->
 <div class="form-group">
   <label for="objetivo">Objetivo Profissional</label>
-  <textarea id="objetivo" rows="3" placeholder="Digite ou gere automaticamente"></textarea>
+  <textarea type="text" data-input="objetivo" id="objetivo" rows="3" placeholder="Digite ou gere automaticamente"></textarea>
   <button type="button" class="gerar-btn" onclick="gerarTexto('objetivo')">Gerar automaticamente</button>
 </div>
 
 <!-- Campo Perfil Profissional -->
 <div class="form-group">
   <label for="qualidade">Perfil Profissional</label>
-  <textarea id="qualidade" rows="3" placeholder="Digite ou gere automaticamente"></textarea>
+  <textarea type="text" data-input="qualidade" id="qualidade" rows="3" placeholder="Digite ou gere automaticamente"></textarea>
   <button type="button" class="gerar-btn" onclick="gerarTexto('qualidade')">Gerar automaticamente</button>
 </div>
 
 <!-- Campo Experiência Profissional -->
 <div class="form-group">
   <label for="experiencia">Experiência Profissional</label>
-  <textarea id="experiencia" rows="4" placeholder="Digite ou gere automaticamente"></textarea>
+  <textarea type="text" data-input="experiencia" id="experiencia" rows="4" placeholder="Digite ou gere automaticamente"></textarea>
   <button type="button" class="gerar-btn" onclick="gerarTexto('experiencia')">Gerar automaticamente</button>
 </div>
 <!-- Toast -->
@@ -888,7 +886,7 @@ function mostrarToast(mensagem) {
 
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 3000); // ⏳ Esconde após 3 segundos
+  }, 8000); // ⏳ Esconde após 8 segundos
 }
 
 
