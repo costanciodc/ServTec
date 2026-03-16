@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV — Modelo 1 (Ana Pereira)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Definições de página A4 com margens */
+    @page {
+      size: A4;
+      margin-top: 2cm;
+      margin-bottom: 1cm;
+      margin-left: 1.5cm;
+      margin-right: 1.5cm;
+    }
+
+    /* Reset básico */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { 
+      
+     
+      font-family: 'Poppins', sans-serif;
+      -webkit-font-smoothing:antialiased; 
+      -moz-osx-font-smoothing:grayscale; 
+    }
+
+    .container {
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background: #ffffff;
+      box-shadow: 0 0 30px rgba(16,24,40,0.12);
+      display: flex;
+      overflow: hidden;
+      color: #222;
+      
+    }
+
+    
+
+    .cargo-curta {
+      font-size: 1.40rem;
+      color: #222923;
+      margin-top: -18px;
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+   
+
+    .info-section { 
+      width: 100%; 
+      margin-top: 9px; 
+      margin-bottom: 4px; 
+    }
+    .info-section h4 {
+      color: #222923;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.6px;
+    }
+
+    .info-item {
+      font-size: 0.75rem;
+      color: #222923;
+      margin-bottom: 8px;
+      
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      
+    }
+
+    .skill-pill {
+      background: rgba(255,255,255,0.06);
+      color: #222923;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      
+    }
+    
+
+    .right {
+      width: 90%;
+      padding: 50px 50px;
+      padding-right: 10px;
+      margin-left: 1.5cm;
+      margin-right: 2cm;
+      font-weight: 500;
+    }
+
+    
+   
+
+    .cimera {
+      border-top: 2.3px solid #484e49da;
+      border-bottom: 2.3px solid #484e49da;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 20px;
+      
+    }
+    .cimera01 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 10px;
+      
+    }
+
+    .nome {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      color: #222923;
+      margin-bottom: 1px;
+      margin-top: 40px;
+      letter-spacing: 0.6px;
+     
+    }
+
+    
+
+    .section { margin-top: 18px; }
+     h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #222923;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
+
+    .profile-text {
+      font-size: 0.95rem;
+      color: #3b4752;
+      line-height: 1.5;
+      
+    }
+
+    .experience-item, .education-item { margin-bottom: 14px; }
+    .experience-item h4, .education-item h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #10121a;
+    }
+
+    .muted {
+      font-size: 0.86rem;
+      color: #6b7280;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .body-text {
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.45;
+    }
+    .obg {
+      margin-top: 40px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 1px;
+      font-size: 0.92rem;
+      color: #374151;
+    }
+
+    
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #00c5ff;
+      font-weight: 700;
+  
+    }
+
+    .right .bottom-space { height: 18px; }
+
+    @media print {
+      body { background: #fff; }
+      .container { padding: 0; }
+      .a4 { box-shadow: none; margin: 0; }
+    }
+
+   
+
+    a { color: inherit; text-decoration: none; }
+
+
+/* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+    }
+    
+
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="a4" role="document">
+      
+
+      <main class="right">
+        <header class="top">
+          <div class="top-left">
+            <h1 class="nome"><span data-id="nome">Ana Maria Pereira</span></h1>
+          </div>
+          <div class="cargo-curta"><span data-id="profissao">Designer Gráfico</span></div>
+        </header>
+<div class="cimera">
+      <section class="info-section">
+     <div class="info-item email"><i class="bi bi-file-person"> </i> Nascido em: <span data-id="nascimento">02/06/2001</span></div></section>
+          <section class="info-section">
+          <div class="info-item telefone"><i class="bi bi-telephone"> </i><span data-id="telefone">+244 923 456 789</span></div></section>
+          <section class="info-section">
+          <div class="info-item cidade"><i class="bi bi-geo-alt"></i> <span data-id="localizacao"> Luanda, Angola</span></div>
+        </section></div>
+
+
+         <div class="obg">
+        <section class="section profile">
+          <h3><i class="bi bi-ui-checks"></i> </i>OBJECTIVO</h3>
+          <p class="profile-text perfil"><span data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</span>
+          </p>
+        </section>
+
+
+
+
+
+
+        
+        
+
+        
+
+        
+        
+
+     
+
+
+
+        <section class="section profile">
+          <h3><i class="bi bi-motherboard"></i> PERFIL PROFISSIONAL</h3>
+          <p class="profile-text perfil"><span data-id="qualidade">
+            Designer gráfico com mais de 6 anos de experiência em criação de identidades visuais, materiais impressos e digitais.</span>
+          </p>
+        </section>
+        <section class="section profile">
+          <h3><i class="bi bi-mortarboard"></i> FORMAÇÃO ACADÊMICA</h3>
+          <p class="profile-text perfil">
+            <span data-id="formacao">Licenciatura em Design — Universidade Agostinho Neto</span>
+          </p>
+        </section>
+
+        <section class="section experience">
+          <h3><i class="bi bi-clipboard2-data"></i> EXPERIÊNCIA</h3>
+            <div class="body-text">
+              <ul class="bullet-list" data-id="experiencia">
+                <li>Coordenação de equipa de design em projetos de branding e marketing digital.</li>
+              </ul>
+            </div>
+          
+
+
+            
+
+        </section><section>
+          <h3><i class="bi bi-list-check"></i> Habilidades</h3>
+            <div class="body-text">
+              <ul class="bullet-list" data-id="habilidades">
+          <li>Comunicação eficaz</li>
+          <li>Gestão de tempo</li>
+          <li>Organização</li>
+          <li>Pacote Office</li>
+          <li>Trabalho em equipe</li>
+        </ul>
+            </div>
+        </section><section>
+          <div class="cimera01">
+        <section class="info-section">
+          <h4>Curso</h4>
+          <div class="skills">
+            <span class="skill-pill"><ul class="bullet-list" data-id="curso">
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
+      </ul></span>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h4>Idiomas</h4>
+          <div class="info-item education-1">
+            <ul data-id="idiomas" class="bullet-list">
+  <li>Português (Nativo)</li>
+</ul>
+          </div>
+        </section></div>
+<h3>Observação</h3>
+<p class="profile-text perfil"> Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p></section>
+        
+
+        <div class="bottom-space"></div>
+      </main>
+    </article>
+  </div></div>
+
+  <script>
+    // Recebe dados do editor para atualizar os campos e a foto
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (data.type === 'updatePhoto' && data.imageUrl) {
+        document.getElementById('foto-perfil').style.backgroundImage = `url('${data.imageUrl}')`;
+      }
+      if (data.type === 'updateField') {
+        const elements = document.querySelectorAll(data.selector);
+        elements.forEach(el => el.textContent = data.value);
+      }
+    });
+  </script>
+</body>
+</html>

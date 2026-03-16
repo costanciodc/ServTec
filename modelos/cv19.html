@@ -25,50 +25,28 @@
       overflow: hidden;
     }
 
+    
     .lateral {
-      width: 0.1cm;
+      width: 2.2cm;
       color: #f8fafc;
       position: relative;
-      padding: 2cm 1.5cm 1.5cm 1.5cm;
       box-sizing: border-box;
-      background: linear-gradient(160deg, #346a80 20%, #105c52d5 50%);
+       background-color: #10304e;
+       
     }
 
     
 
-    
-
-    .lateral h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    
-.lateral h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-  padding: 4px;
-  text-align: center;
-  border: 1px solid #ffffff;
-  border-radius: 18px;
-  font-weight: 400;
-  
-}
 
 /* Linha atravessando por trás */
 .conteudo h3.barra::after {
   content: "";
   position: absolute;
-  left: -20%; /* Reduzi a parte da esquerda */
+  left: -30%; /* Reduzi a parte da esquerda */
   top: 50%;
-  width: 260%; /* ⚠️ Diminui o lado direito (antes 180%) */
+  width: 370%; /* ⚠️ Diminui o lado direito (antes 180%) */
   height: 1px;
-  background: #346a80;
+  background: #2e4881;
   z-index: -1; /* ✅ Fica atrás do texto */
 }
 
@@ -98,63 +76,109 @@
 
     .conteudo {
       flex: 1;
-      padding-top: 1.5cm;
+      padding: 1.5cm;
       padding-left: 1.5cm;
       padding-right: 2cm;
       box-sizing: border-box;
     }
 
-   
-    .catana h1 {
-      display: flex;
-      font-size: 2.5rem;
+    .conteudo h1 {
+      
+      text-align: center;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
-      color: #297897;
+      color: #1e3a8a;
+     
+      display: inline-block;
     }
 
-    .conteudo h3.barra {
+    
+    .conteudo .barrass {
+      font-family: 'Poppins', sans-serif;
       text-align: center;
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
+      margin-left: 105px;
       color: hsl(0, 0%, 100%);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
       position: relative;
+      display: inline-block;
       padding: 4px 1px;
       border-radius: 18px;
-      background: #346a80;
+      background: #2e4881;
       z-index: 10; /* Texto e borda acima da linha */
-      width: 220px;
+      width: 160px;
     }
-    .conteudo h4.barra {
+    .conteudo .barrasss {
+      font-family: 'Poppins', sans-serif;
       text-align: center;
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
+      margin-left: 10px;
       color: hsl(0, 0%, 100%);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
       position: relative;
-      
+      display: inline-block;
       padding: 4px 1px;
       border-radius: 18px;
-      background: #346a80;
+      background: #2e4881;
       z-index: 10; /* Texto e borda acima da linha */
-      width: 220px;
+      width: 160px;
+    }
+    .conteudo h3.barra {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: hsl(0, 0%, 100%);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+      padding: 4px 1px;
+      border-radius: 18px;
+      background: #2e4881;
+      z-index: 10; /* Texto e borda acima da linha */
+      width: 160px;
     }
 
     ul {
       padding-left: 0.85rem;
-      margin-top: -8px;
       font-size: 0.75rem;
     }
 
     li {
       font-size: 0.75rem;
+      margin-top: -2px;
+      margin-bottom: 0.3rem;
       font-weight: 400;
     }
 
     p {
-      margin-top: -8px;
       font-size: 0.75rem;
       font-weight: 400;
     }
 
+    .osp p{
+      margin-top: -2px;
+      margin-bottom: -2px;
+      font-size: 0.85rem;
+      font-weight: 400;
+    }
+    .osp {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 10px;
+    }
+
+   /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+    }
     
 
 
@@ -208,28 +232,12 @@
   z-index: 0;
   border: #ffffff solid 1px;
 }
-
-
-.conteudo .la {
-  display: flex;
-  
-  
-}
-.conteudo .ca {
-  padding-right: 19rem;
-  
-  
-}
-.conteudo .ta {
-  padding-left: 50px;
-  
-}
-.conteudo .ra {
-margin-left: 280px;
-  margin-top: -8px;
-  position: absolute;
-}
-
+.cimera01 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 10px;
+      
+    }
 
   </style>
 </head>
@@ -246,25 +254,19 @@ margin-left: 280px;
   <div class="decoracao-quadrada3"></div>
   <div class="decoracao-quadrada4"></div>
   
-  
+  </div>
+    
 
-  
-   
-
-      <div class="tudo">
-      
-    </div></div> 
     <div class="conteudo">
-      <div class="catana">
-<h1><span data-id="nome">Nelson João Pedro</span></h1></div>
-<h3 class="barra"> Dados Pessoais</h3>
-      <p>
-        
-        Data de Nascimento: <span data-id="nascimento">02/06/2001</span>
-      </p>
-      <p><i class="bi bi-telephone"></i>  Tel: <span data-id="telefone">+244 923 456 789</span> | <i class="bi bi-geo-alt"></i> <span data-id="localizacao">Luanda, Angola</span></p>
-
+      <h1><span data-id="nome">Nelson João Pedro</span></h1>
+<div class="barras">
+      <h3 class="barra"><span data-id="profissao">Designer Gráfico</span></h3>
+      <h3 class="barrass"><i class="bi bi-telephone"></i>  <span data-id="telefone">+244 923 456 789</span></h3>
+</div> <div class="osp">
       
+     <p> Data de nascimento: <span data-id="nascimento">02/06/2001</span></p>
+    <p> <i class="bi bi-geo-alt"></i> <span data-id="localizacao">Luanda, Angola</span></p>
+    </div>
       <h3 class="barra">Objectivo</h3>
       <p data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</p>
 
@@ -277,15 +279,6 @@ margin-left: 280px;
       <h3 class="barra">Experiência</h3>
       <p data-id="experiencia">Atuei em atividades relacionadas à função de Designer grafico, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.</p>
 
-      <div class="la"><h3 class="barra">Curso</h3> <div class="ta"> <h4 class="barra">Idiomas</h3></div></div>
-      <div class="la"><ul class="ca" data-id="curso">
-      <li>Gestão Empresarial</li>
-      </ul>
-
-      
-      <ul class="ra" data-id="idiomas">
-      <li>Português</li>
-      </ul></div>
       <h3 class="barra">Habilidades</h3>
       <ul data-id="habilidades">
         <li>Pacote Office</li>
@@ -293,6 +286,23 @@ margin-left: 280px;
         <li>Trabalho em equipe</li>
       </ul>
 
+      <div class="cimera01">
+                <section class="info-section">
+          <h3 class="barra">Curso</h3>
+          <div class="skills">
+            <span class="skill-pill"><ul class="bullet-list" data-id="curso">
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
+      </ul></span>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3 class="barrasss">Idiomas</h3>
+          <div class="info-item education-1">
+            <ul data-id="idiomas" class="bullet-list">
+  <li>Português (Nativo)</li>
+</ul></div></div>
       <h3 class="barra">Observação</h3>
       <p>Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</p>
     </div>

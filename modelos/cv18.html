@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Currículo Modelo 2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      
+    }
+
+    .a4 {
+      width: 21cm;
+      height: 29.7cm;
+      background-color: #ffffff;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      display: flex;
+     
+      overflow: hidden;
+    }
+
+    
+
+    .conteudo {
+      flex: 1;
+      padding: 2.5cm;
+      padding-left: 1.6cm;
+      box-sizing: border-box;
+      margin-left: 1.3cm;
+      margin-right: 0.5cm;
+    }
+.cargo-curta {
+      font-size: 1.40rem;
+      color: #222923;
+      margin-top: -45px;
+      margin-bottom: 18px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+   
+
+    .info-section { 
+      width: 100%; 
+    }
+
+    .info-item {
+      font-size: 1rem;
+      color: #222923;
+      
+    }
+    .education-1{
+      font-size: 1rem;
+      color: #222923;
+      margin-top: -8px;
+      
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      
+    }
+
+    .skill-pill {
+     margin-left: 24px;
+      
+    }
+
+
+   
+
+   .topo h1 {
+  font-size: 2.9rem ;
+  color: #0b1342;
+  text-align: center;
+  margin-top: -19px;
+ 
+}
+
+
+    h3 {
+      font-size: 1.2rem;
+      color: #0b1342;
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+      border-left: 5px solid #06166d;
+      padding-left: 0.6rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: #000000;
+    }
+
+    ul {
+      padding-left: 1rem;
+      margin-top: -10px;
+    }
+    
+
+    li {
+      margin-bottom: 0.1rem;
+       font-size: 0.8rem;
+    }
+
+    .bi {
+      margin-right: 9px;
+    }
+
+.cimera {
+      border-top: 2.3px solid #03105c;
+      border-bottom: 2.3px solid #03105c;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 20px;
+      text-align: center;
+      justify-items: center;
+      
+    }
+    .cimera01 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 10px;
+      
+    }
+
+    /* Ajuste da lista de habilidades em 2 colunas */
+    [data-id="habilidades"] {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 20px;
+      margin-left: 24px;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="a4">
+    
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo">
+                <div class="topo">
+                  <h1><span data-id="nome">Maria dos Santos </span></h1>
+                  <div class="cargo-curta"><span data-id="profissao">Designer Gráfico</span></div>
+                </div>
+<div class="cimera">
+      <section class="info-section">
+     <div class="info-item email"><i class="bi bi-file-person"> </i> Nascido em: <span data-id="nascimento">02/06/2001</span></div></section>
+          <section class="info-section">
+          <div class="info-item telefone"><i class="bi bi-telephone"> </i><span data-id="telefone">+244 923 456 789</span></div></section>
+          <section class="info-section">
+          <div class="info-item cidade"><i class="bi bi-geo-alt"></i> <span data-id="localizacao"> Luanda, Angola</span></div>
+        </section></div>
+                <h3>Objectivo</h3>
+                <p><span data-id="objetivo">Conseguir uma posição na área administrativa onde possa aplicar minhas habilidades organizacionais e contribuir para o crescimento da empresa.</span></p>
+                <h3>Perfil Profissional</h3>
+                <p><span data-id="qualidade">Profissional organizada e comprometida, com experiência em atendimento ao público e suporte administrativo. Boa comunicação e foco em resultados.</span></p>
+
+                <h3>Formação</h3>
+                <p data-id="formacao">Licenciatura em Administração de Empresas - Universidade Metodista de Angola (2016 - 2020)</p>
+
+                <h3>Experiência</h3>
+                  <p data-id="experiencia">Atuei em atividades relacionadas à função de Designer grafico, executando tarefas com responsabilidade, eficiência e atenção aos detalhes.</p>
+
+              <h3>Habilidades</h3>
+                  <ul data-id="habilidades" class="uuu">
+                    <li>Comunicação eficaz</li>
+                    <li>Gestão de tempo</li>
+                    <li>Organização</li>
+                    <li>Pacote Office</li>
+                    <li>Trabalho em equipe</li>
+                  </ul>
+                  <section>
+          <div class="cimera01">
+        <section class="info-section">
+          <h3>Curso</h3>
+          <div class="skills">
+            <span class="skill-pill"><ul class="bullet-list" data-id="curso">
+        <li>Gestão Empresarial</li>
+        <li>Informatica basica</li>
+      </ul></span>
+          </div>
+        </section>
+
+        <section class="info-section">
+          <h3>Idiomas</h3>
+          <div class="info-item education-1">
+            <ul data-id="idiomas" class="bullet-list">
+  <li>Português (Nativo)</li>
+</ul>
+          </div>
+        </section></div>
+                  <h3>Observação</h3>
+          <p><span> Não sou portador de nenhuma doença infectocontagiosa, nunca fui chamado a responder a processo judicial e não tenho pendências com a lei.</span></p>
+    </div>
+  </div>
+</body>
+</html>
