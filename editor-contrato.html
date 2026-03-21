@@ -553,8 +553,17 @@ function aplicarGeneroInicial() {
       };
       campos && Object.entries(campos).forEach(([key, input]) => {
         input.addEventListener('input', () => {
-          document.querySelectorAll(`#cartaVisual [data-id="${key}"]`).forEach(el => el.textContent = input.value);
-        });
+  let valor = input.value;
+
+  // ✅ 🔥 CORREÇÃO DAS DATAS
+  if ((key === "inicio" || key === "fim" || key === "dataaviso") && valor) {
+    const partes = valor.split("-");
+    valor = `${partes[2]}/${partes[1]}/${partes[0]}`;
+  }
+
+  document.querySelectorAll(`#cartaVisual [data-id="${key}"]`)
+    .forEach(el => el.textContent = valor);
+});
       });
     }
 

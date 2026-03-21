@@ -739,22 +739,26 @@ document.querySelectorAll("[data-input]").forEach(input => {
   input.addEventListener("input", () => {
     const targetId = input.getAttribute("data-input");
 
-    // Seleciona TODAS as ocorrências com o mesmo data-id
     const targetEls = document.querySelectorAll(`[data-id="${targetId}"]`);
     if (!targetEls.length) return;
 
+    let valor = input.value;
+
+    // ✅ 🔥 AQUI ESTÁ A CORREÇÃO DA DATA
+    if (targetId === "nascimento" && valor) {
+      const partes = valor.split("-");
+      valor = `${partes[2]}/${partes[1]}/${partes[0]}`;
+    }
+
     targetEls.forEach(targetEl => {
       if (targetEl.tagName === "UL") {
-        // Para listas (ex: habilidades, cursos)
-        const linhas = input.value.split(/\n/).map(v => v.trim()).filter(v => v);
+        const linhas = valor.split(/\n/).map(v => v.trim()).filter(v => v);
         targetEl.innerHTML = linhas.map(v => `<li>${v}</li>`).join("");
       } else {
-        // Para campos simples (nome, profissão, etc)
-        targetEl.textContent = input.value;
+        targetEl.textContent = valor;
       }
     });
 
-   // 👇 Adiciona aqui: ajuste de tamanho automático para o nome
     if (targetId === "nome") {
       targetEls.forEach(el => ajustarTamanhoFonte(el));
     }
