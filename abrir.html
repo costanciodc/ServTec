@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuar no Navegador</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(145deg, #0c0c0c, #011427);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* CARD */
+.container {
+  background: rgba(255,255,255,0.05);
+  padding: 35px;
+  border-radius: 18px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: fadeIn 0.8s ease;
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* DESTAQUE */
+.highlight {
+  color: #4b7be2;
+  font-weight: bold;
+}
+
+/* BOTÃO */
+button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, #1d4ed8, #2563eb);
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* PROGRESSO */
+.progress {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* LOADING */
+.loader {
+  margin: 15px auto;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #444;
+  border-top: 4px solid #4b7be2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Abrir no navegador...</h1>
+
+  <p>
+    Para garantir <span class="highlight"> melhor experiência</span>.
+  </p>
+
+  <p>
+    Isso leva menos de <span class="highlight">3 segundos</span>.
+  </p>
+
+  <button onclick="abrirChrome()">Continuar no navegador</button>
+
+  <div class="loader" id="loader"></div>
+
+  <div class="progress">
+    Rápido • Seguro • Sem complicações
+  </div>
+
+</div>
+
+<script>
+function abrirChrome() {
+  document.getElementById("loader").style.display = "block";
+
+  const params = new URLSearchParams(window.location.search);
+  const url = params.get("url") || window.location.origin;
+
+  setTimeout(() => {
+    window.location.href =
+      "intent://" +
+      url.replace(/^https?:\/\//, '') +
+      "#Intent;scheme=https;package=com.android.chrome;end;";
+  }, 800);
+}
+</script>
+
+</body>
+</html>

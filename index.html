@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <script>
+(function () {
+  function isFacebookBrowser() {
+    const ua = navigator.userAgent || "";
+    return ua.includes("FBAN") || ua.includes("FBAV");
+  }
+
+  // evita loop
+  const jaRedirecionado = sessionStorage.getItem("fb_redirect");
+
+  if (isFacebookBrowser() && !jaRedirecionado) {
+    sessionStorage.setItem("fb_redirect", "1");
+
+    // guarda URL atual (importante para voltar depois)
+    const urlAtual = window.location.href;
+
+    // redireciona com a URL como parâmetro
+    window.location.href = "/abrir.html?url=" + encodeURIComponent(urlAtual);
+  }
+})();
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ServTec.ao - Microserviços Online</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
