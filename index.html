@@ -26,17 +26,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ServTec.ao - Microserviços Online</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+  
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
      
     }
-    body {
+    body {font-family: 'Poppins', sans-serif;
       background: linear-gradient(145deg, #0c0c0c, #011427);
       color: #333;
       line-height: 1.6;
@@ -72,27 +71,29 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
-      padding: 2rem;
+      padding: 4rem;
     }
     .card {
       background: rgba(253, 253, 253, 0.075);
-      border-radius: 1.2rem;
-      padding: 1.5rem;
-      box-shadow: 0 10px 20px rgba(247, 246, 246, 0.192);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(72, 255, 0, 0.171);
       transition: all 0.3s ease;
-      padding: 1.8rem;
+      text-align: center;
     }
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 25px rgba(82, 78, 78, 0.315);
     }
     .card h3 {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       margin-bottom: 0.5rem;
-      color: #4b7be2;
+      color: #43fa15;
+      font-weight: 700;
+      
     }
     .card p {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: #bebebe;
       margin-bottom: 1rem;
     }
@@ -107,15 +108,7 @@
       padding: 0.5rem 1rem;
     }
     
-    .card a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: #1d4ed8;
-      color: white;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-    }
+   
     
     footer {
       background: rgba(15, 23, 42, 0.9);
@@ -131,11 +124,11 @@
    
 nav a {
       color: #ddd;
-      margin-left: 2rem;
       text-decoration: none;
       font-weight: 500;
       transition: color .3s;
       text-align: center;
+      padding: 10px;
     }
 
     nav a:hover {color: #facc15;}
@@ -159,9 +152,25 @@ nav a {
   transform: scale(1.08); /* Dá um leve zoom no hover */
 }
    
+ .card a {
+      background: linear-gradient(45deg, #1519fa, #1df916);
+      padding: 1rem 2.2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 400;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      text-decoration: none;
+      display: inline-block;
+    }
 
+    .card a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(249,115,22,0.4);
+    }
 
-@media (max-width: 720px) {
+@media (max-width: 940px) {
   a.btn-whatsapp{     
     
     font-size: 13px;
@@ -170,10 +179,14 @@ nav a {
       }
   nav a{     
     
-    font-size: 12px;
+    font-size: 14px;
       }
       footer p {font-size: 15;}
     footer p.bai {font-size: 15;}
+     p.topo{     
+      font-size: 12px;
+      
+    }
       }
     .color-change {
       font-weight: bold;
@@ -187,7 +200,7 @@ nav a {
       ;
     }
   p.topo{     
-      font-size: 10px;
+      font-size: 12px;
       
     }
   .besua p{     
@@ -197,57 +210,210 @@ nav a {
      }
      p.topo{
     text-align: center;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 25px;
     color: #ffffff;
-    margin-top: 2px;
+    margin-top: 8px;
+    margin-bottom: -80px;
+    padding: 36px;
   }
+
+
+.beneficios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .beneficio {
+      background: rgba(255,255,255,0.08);
+      padding: 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: transform .3s;
+    }
+
+    .beneficio:hover {transform: translateY(-8px);}
+    .beneficio h3 {margin-bottom: 3px; color: #43fa15}
+    .beneficio p {
+      font-size: 14px;
+      margin-bottom: 2rem;
+      color: #e5e5e5;
+      margin-bottom: 2px;
+    }
+
+    /* PORTFÓLIO */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .portfolio img {
+      width: 100%;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s ease;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    section {
+      padding: 5rem 8%;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color:  #43fa15;
+    }
+    h2.section-titlo {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-top: -5rem;
+      color:  #ffffff;
+      margin-bottom: -155px;
+       padding: 5rem;
+    }
+    h2.section-titlo span{
+      color: #43fa15;
+    }
+
+
+
   </style>
 </head>
 <body>
   <header>
     <h1>Serv<span>Tec</span></h1>
-   
+   <nav>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#servico">Serviços</a>
+    </nav>
   </header>
   <div class="besua">
- <p class="topo"> Microserviços digitais criados para apoiar pessoas e empresas em Angola. Poupe tempo na criação e dedique-se ao que realmente importa: crescer.</p></div>
-  <section class="grid">
+ <p class="topo"> Poupe tempo na criação e dedique-se ao que realmente importa: crescer.</p></div>
+ 
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio">
+    <h2 class="section-title">O que podemos fazer por você</h2>
+    <div class="portfolio">
+      <div class="portfolio-item">
+        <img src="img\25.png" alt="Logo 1">
+        <div class="portfolio-overlay">Quem se destaca, é chamado.</div>
+      </div>
+      
+      <div class="portfolio-item">
+        <img src="img\contrato.png" alt="Logo 2">
+        <div class="portfolio-overlay">Não arrisque — formalize.</div>
+      </div>
+      <div class="portfolio-item">
+        <img src="img\arte.png" alt="Logo 3">
+        <div class="portfolio-overlay">A identidade certa muda tudo.</div>
+      </div>
+      
+    </div>
+  </section>
+ 
+  <!-- SERVICO --><h2 class="section-titlo">Os melhores <span>serviços</span>  no melhor <span>preço</span> </h2>
+ <section class="grid" id="servico">
+  
     <div class="card">
       <h3>Currículo Profissional</h3>
-      <p>Currículos profissionais e modernos que aumentam as suas chances de contratação, prontos para baixar em PDF.</p> <p class="kz"> Por apenas <span class="color-change">300Kz.</span></p>
-      <a href="escolher-modelo.html">Começar</a>
+      <p>Currículos profissionais e modernos que aumentam as suas chances de contratação, prontos para baixar em PDF.</p> <p class="kz">Faça o seu pedido <br> Por apenas <span class="color-change">300Kz.</span></p>
+      <a href="escolher-modelo.html">Começar agora</a>
     </div>
     
     <div class="card">
       <h3>Carta de Apresentação</h3>
-      <p>Crie uma carta personalizada para destacar-se junto ao seu currículo.</p><p class="kz"> Por apenas <span class="color-change">100Kz.</span></p>
-      <a href="escolher-carta.html">Começar</a>
+      <p>Carta personalizada para destacar-se junto ao seu currículo.</p><p class="kz">Faça o seu pedido <br> Por apenas <span class="color-change">100Kz.</span></p>
+      <a href="escolher-carta.html">Começar agora</a>
     </div>
     <div class="card">
       <h3>Requerimento</h3>
-      <p>Gere requerimentos formais em segundos, prontos para impressão ou envio digital.</p><p class="kz"> Por apenas <span class="color-change">100Kz.</span></p>
-      <a href="escolher-requerimento.html">Começar</a>
+      <p>Requerimentos formais em segundos, prontos para impressão ou envio digital.</p><p class="kz">Faça o seu pedido <br> Por apenas <span class="color-change">100Kz.</span></p>
+      <a href="escolher-requerimento.html">Começar agora</a>
+    </div>
+  
+    <div class="card">
+      <h3> Contrato de Compra e Venda</h3>
+      <p>Organize suas transações com contratos prontos em PDF, prontos para assinar.</p><p class="kz"> Faça o seu pedido <br> Por apenas <span  class="color-change">300Kz.</span></p>
+      <a href="escolher-contrato.html">Começar agora</a>
+    </div>
+<div class="card">
+      <h3>Logotipo Profissinais</h3>
+      <p>Logotipos Profissionais que deixam a sua marca marcada.</p><p class="kz"> Faça o seu pedido <span  class="color-change">Promoção</span>.</p>
+      <a href="logo.html">Começar agora</a>
     </div>
     
     <div class="card">
-      <h3> Contrato de Compra e Venda</h3>
-      <p>Organize suas transações com contratos prontos em PDF, prontos para assinar.</p><p class="kz"> Por apenas <span  class="color-change">300Kz.</span></p>
-      <a href="escolher-contrato.html">Começar</a>
+      <h3>Designer Profissinal</h3>
+      <p>Solicite a sua Arte de Designer Profissional e Recebe em menos de 2h.</p><p class="kz">Faça o seu pedido <span  class="color-change">Promoção</span>.</p>
+      <a href="arte.html">Começar agora</a>
     </div>
-
     
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios">
+    <h2 class="section-title">Por que escolher nossos serviços</h2>
+    <div class="beneficios">
+      <div class="beneficio">
+        <h3>Rápido</h3>
+        <p>Receba seu pedido em poucos minutos.</p>
+      </div>
+      <div class="beneficio">
+        <h3>Criativo</h3>
+        <p>Designs modernos e exclusivos para destacar você e sua marca.</p>
+      </div>
+      <div class="beneficio">
+        <h3>Profissional</h3>
+        <p>Transmita confiança com uma identidade visual forte.</p>
+      </div>
+    </div>
   </section>
 
 <section class="recomendados">
   <div class="interface">
     <h4 class="mais">Forma de <SPAn>Pagamento.</SPAn></h4>
     <h4 class="mas">Segurança em <SPAn>Primeiro Lugar.</SPAn></h4>
-  </div><!--inteface-->
+ </div><!--inteface-->
+ <div class="modelo"> <img src="img\Express.png"  alt="Express"></div>
  </section><!--recomendados-->
 <section class="grid">
  <div class="pag">
-      <h3 class="baixa">Transferência Expresse</h3>
+      <h3 class="baixa">Transferência Express</h3>
       <p>
-      Trabalhamos exclusivamente com <strong>transferência expresse</strong>, garantindo rapidez e segurança. 
+      Trabalhamos exclusivamente com <strong>transferência Express</strong>, garantindo rapidez e segurança. 
       Após realizar o pagamento, basta enviar o comprovativo na pagina de pagamento. 
       Em poucos segundos, nosso sistema valida e libera automaticamente o seu serviço.
     </p>
@@ -256,19 +422,39 @@ nav a {
  </section>
 
    <style>
+    .recomendados {
+      margin-top: -190px;
+    }
+  
+.modelo {
+      margin-left: 140px;
+      margin-right: 140px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    
+    .modelo:hover {
+      transform: translateY(-5px);
+    }
+
+    .modelo img {
+      width: 8%;
+      object-fit: cover;
+      margin-bottom: -20px;
+      margin-top: 2px;
+    }
 
 .pag {
     border-radius: 1.2rem;
     box-shadow: 0 10px 20px rgba(247, 246, 246, 0.192);
     transition: all 0.3s ease;
     font-size: 10px;
-    padding: 20px 50px;
+    padding: 20px 35px;
     margin: 5px 5px;
     gap: 50px;
-
+    margin-top: -120px;
      border: 1px solid #ffffff;
-    padding: 30px 30px;
-    margin: 10px 10px;
     font-size: 10px;
     transition: 0.55s;
     cursor: pointer;
@@ -280,12 +466,12 @@ nav a {
     .pag h3 {
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
-      color: #4b7be2;
+      color: #43fa15;
       text-align: center;
     }
     .pag p {
       font-size: 0.95rem;
-      color: #bebebe;
+      color: #ffffff;
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -297,18 +483,18 @@ nav a {
     text-align: center;
     font-size: 20px;
     margin-top: 70px;
-    color: #8f8f8f;
+    color: #ffffff;
   }
 
   h4.mas{
     text-align: center;
     font-size: 15px;
-    color: #8f8f8f;
+    color: #ffffff;
   }
   h4.mas span{
     text-align: center;
     font-size: 15px;
-    color: #4b7be2;;
+    color: #43fa15;
   }
   h1 span{
     background: linear-gradient(90deg, #04ff82, #eeff00);
@@ -323,7 +509,7 @@ nav a {
   }
 
   h4.mais span{
-    color: #4b7be2;
+    color: #43fa15;
   }
   .baixa p{
     display: flex;
@@ -358,7 +544,27 @@ nav a {
   100% { background-position: 0% 50%; }
 }
 
-
+@media (max-width: 720px) {
+  a.btn-whatsapp{     
+    
+    font-size: 13px;
+      }
+      .modelo img {
+      width: 50%;
+    }
+  .hero h2{     
+    font-size: 28px;
+    margin-top: -30px;
+      }
+  .hero p{     
+    font-size: 14px;
+      }
+      nav a{     
+    
+    font-size: 12px;
+      }
+      
+      }
 </style>
 
   <footer id="contato">
