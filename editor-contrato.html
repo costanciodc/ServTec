@@ -576,7 +576,22 @@ function aplicarGeneroInicial() {
 
     let modeloCarregado = false;
     const cartaVisual = document.getElementById('cartaVisual');
-    const modelo = new URLSearchParams(window.location.search).get('modelo') || 'requerer1';
+
+const params = new URLSearchParams(window.location.search);
+
+const modelo = params.get('modelo') || 'contrato1';
+
+const token = params.get('token');
+
+
+// 🚫 BLOQUEIO DE ACESSO
+if (!token) {
+
+  alert("Acesso negado. Pagamento necessário.");
+
+  window.location.href = "pagament.html";
+
+}
 
     
 
@@ -585,7 +600,7 @@ function aplicarGeneroInicial() {
       const a4Element = cartaVisual.querySelector(".a4") || cartaVisual;
       html2pdf()
         .set({
-          filename: 'requerimento.pdf',
+          filename: 'contrato.pdf',
           image: { type: 'jpeg', quality: 1 },
           html2canvas: { scale: 4 },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -634,7 +649,14 @@ fetch(`modelos/${modelo}.html`)
         aplicarGeneroInicial();   // <<<<< aplica gênero inicial
       });
 
+      const tokenURL = urlParams.get("token");
+const tokenSalvo = sessionStorage.getItem("editorToken");
 
+// 🔒 Bloqueio real
+if (!tokenURL || !tokenSalvo || tokenURL !== tokenSalvo) {
+  alert("Acesso negado! Realize o pagamento primeiro.");
+  window.location.href = "pagament.html";
+}
 
 
 
