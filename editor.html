@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Editor de Currículo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <style>
     
@@ -665,13 +666,15 @@ h2.cee{
  const urlParams = new URLSearchParams(window.location.search);
 const modelo = urlParams.get("modelo") || "cv1"; // sempre algo tipo "cv1", "cv2"...
 console.log("Modelo carregado:", modelo);
- const token = urlParams.get("token");
 
-  // 🔒 Bloqueio de acesso sem token
-  if (!token) {
-    alert("Acesso negado! Por favor, realize o pagamento primeiro.");
-    window.location.href = "pagament.html";
-  }
+const tokenURL = urlParams.get("token");
+const tokenSalvo = sessionStorage.getItem("editorToken");
+
+// 🔒 Bloqueio real
+if (!tokenURL || !tokenSalvo || tokenURL !== tokenSalvo) {
+  alert("Acesso negado! Realize o pagamento primeiro.");
+  window.location.href = "pagament.html";
+}
 
   
 
