@@ -114,7 +114,7 @@
     <h1>Pagamento via Multicaixa Express</h1>
     <p>Realize a transferência no Multicaixa Express para o número abaixo. Depois, envie o comprovativo em PDF para validação automática.</p>
     
-<div class="pill small">Valor: <spam id="amount">Valor a ser pago 300Kz</spam></div>
+<div class="pill small">Valor: <span id="amount">Valor a ser pago 300Kz</span></div>
     <div class="copy-box">
       <div class="copy-num" id="expresse-number">943799795</div>
       <button class="btn" type="button" onclick="copyNumber()">Copiar</button>
@@ -205,6 +205,7 @@
    setTimeout(() => {
     // pega o token devolvido pelo backend
     const token = dados.token || "";
+    sessionStorage.setItem("editorToken", token);
     window.location.href = `editor.html?modelo=${encodeURIComponent(modelo)}&token=${encodeURIComponent(token)}`;
   }, 1400);
 
